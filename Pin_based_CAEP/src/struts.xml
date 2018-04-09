@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	
+<struts>
+    <include file="struts-default.xml"/>
+      
+    <package name="REG" extends="struts-default">
+    	<!-- 
+	     <action name="find-book" class="action.BookDB" method="find">
+	      	<result name="SUCCESS">/WEB-INF/pages/list.jsp</result>
+	      	<result name="NOPERSON">/WEB-INF/pages/no-person.jsp</result>
+	     </action>
+	     
+	     <action name="RegSwitch">
+	      	<result>/WEB-INF/pages/Register/RegSwitch.jsp</result>
+	     </action>
+	     <action name="RegDev">
+	      	<result>/WEB-INF/pages/Register/Developer.jsp</result>
+	     </action>
+	     <action name="RegNeed">
+	      	<result>/WEB-INF/pages/Register/Needer.jsp</result>
+	     </action>
+	     <action name="RegDevSubmit" class="register.RegDeveloper" method="register">
+	      	<result name="SUCCESS">index.jsp</result>
+	      	<result name="REGISTED">/WEB-INF/pages/Register/Developer.jsp</result>
+	      	<result name="ERROR">/WEB-INF/pages/Register/Developer.jsp</result>
+	     </action>
+	     <action name="RegNeedSubmit" class="register.RegNeeder" method="register">
+	      	<result name="SUCCESS">index.jsp</result>
+	      	<result name="REGISTED">/WEB-INF/pages/Register/Needer.jsp</result>
+	      	<result name="ERROR">/WEB-INF/pages/Register/Needer.jsp</result>
+	     </action>
+	     -->
+	     
+    </package>
+   
+</struts>
