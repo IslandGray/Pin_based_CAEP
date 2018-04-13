@@ -8,14 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Home</title>
 	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-	<link rel="stylesheet" href="./css/bootstrap.css">
+	<link rel="stylesheet" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-dropdown.css">
+	
 	
 	<!--  
 	<link href="./css/bootstrap-glyphicons.css" rel="stylesheet">
 	-->
 	
 	<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
-	<link rel="stylesheet" href="./css/bootstrap-theme.css">
+	<link rel="stylesheet" href="./css/bootstrap-theme.min.css">
 	
 </head>
 <body>
@@ -28,22 +30,22 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarColor02">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" href="#" id="experiment">Experiment</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="#">Achievement</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
+        <a class="nav-link" href="#">Contact</a>
       </li>
     </ul>
     
-    <ul class="nav navbar-nav navbar-right"> 
+    <ul class="nav navbar-nav ml-auto"> 
             <li class="nav-item">
             	<a class="nav-link" href="RegSwitch.action">Sign Up</a>
             </li> 
@@ -51,13 +53,7 @@
             	<a class="nav-link" href="#">Log In</a>
             </li> 
     </ul>
-    
-    <!-- 
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-    </form>
-     -->
+         
   </div>
 </div>
 </nav>
@@ -65,6 +61,6 @@
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
 <script type="text/javascript" src="./js/jquery.min.js"></script>
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-<script src="./js/bootstrap.js"></script>
+<script src="./js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -4,28 +4,35 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Home</title>
+	<title>注册</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-	<link rel="stylesheet" href="./css/bootstrap.css">
+	<link rel="stylesheet" href="./css/bootstrap.min.css">
 	
 	<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
-	<link rel="stylesheet" href="./css/bootstrap-theme.css">
-	<!--  
+	<link rel="stylesheet" href="./css/bootstrap-theme.min.css">
+	 
 	<style type="text/css">
-        li{
-            float:left;
-            list-style:none;
-            
-        }
+        .navbar {
+		    text-align:center;
+		}
+		.navbar ul {
+		    display:inline-block;
+		    position: relative;
+			left: 44%;
+		}
+		.navbar li {
+		    float:left;
+		}
 	</style>
-	-->
+	
+	
 	
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 <div class="container">
   <a class="navbar-brand" href="#">CAEP</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,29 +40,12 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarColor02">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
+        <a class="nav-link" href="#">Sign Up</a>
       </li>
     </ul>
     
-    <ul class="nav navbar-nav navbar-right"> 
-            <li class="nav-item">
-            	<a class="nav-link" href="RegSwitch.action">Sign Up</a>
-            </li> 
-            <li class="nav-item">
-            	<a class="nav-link" href="#">Log In</a>
-            </li> 
-    </ul>
          
   </div>
 </div>
@@ -63,36 +53,21 @@
 
 <div class="container">
 	<div class="row clearfix">
-		<div class="col-md-6 column">
-			<div class="jumbotron">
-				<h1>
-					Hello, world!
-				</h1>
-				<p>
-					This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
-				</p>
-				<p>
-					 <a class="btn btn-primary btn-large" href="#">Learn more</a>
-				</p>
-			</div>
-		</div>
-		<div class="col-md-6 column">
-			<div class="jumbotron">
-				<h1>
-					Hello, world!
-				</h1>
-				<p>
-					This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
-				</p>
-				<p>
-					 <a class="btn btn-primary btn-large" href="#">Learn more</a>
-				</p>
+		
+		<div style="display:flex;justify-content:center;padding:20px 10px;width:100%;">
+			<div style="flex-basis:380px;">
+				<h3>
+					How would you like to continue?
+				</h3>
 			</div>
 		</div>
 	</div>
+	
+	
 	<div class="row clearfix">
 		<div class="col-md-12 column">
 			<h2>lalala</h2>
+			
 		</div>
 	</div>
 	
@@ -122,6 +97,6 @@
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
 <script type="text/javascript" src="./js/jquery.min.js"></script>
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-<script src="./js/bootstrap.js"></script>
+<script src="./js/bootstrap.min.js"></script>
 </body>
 </html>
