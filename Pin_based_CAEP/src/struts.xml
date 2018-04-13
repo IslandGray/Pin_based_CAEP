@@ -14,9 +14,6 @@
 	      	<result name="NOPERSON">/WEB-INF/pages/no-person.jsp</result>
 	     </action>
 	     
-	     <action name="RegSwitch">
-	      	<result>/WEB-INF/pages/Register/RegSwitch.jsp</result>
-	     </action>
 	     <action name="RegDev">
 	      	<result>/WEB-INF/pages/Register/Developer.jsp</result>
 	     </action>
@@ -34,6 +31,10 @@
 	      	<result name="ERROR">/WEB-INF/pages/Register/Needer.jsp</result>
 	     </action>
 	     -->
+	     
+	     <action name="RegSwitch">
+	      	<result>/WEB-INF/pages/Register/RegSwitch.jsp</result>
+	     </action>
 	     
     </package>
    

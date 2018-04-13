@@ -8,20 +8,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Home</title>
 	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-	<link rel="stylesheet" href="https://bootswatch.com/4/yeti/bootstrap.min.css">
-
-	<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
-	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="./css/bootstrap.css">
 	
-	<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-	<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-	<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!--  
+	<link href="./css/bootstrap-glyphicons.css" rel="stylesheet">
+	-->
+	
+	<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+	<link rel="stylesheet" href="./css/bootstrap-theme.css">
+	
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Navbar</a>
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+<div class="container">
+  <a class="navbar-brand" href="#">CAEP</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -41,13 +42,29 @@
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
+    
+    <ul class="nav navbar-nav navbar-right"> 
+            <li class="nav-item">
+            	<a class="nav-link" href="RegSwitch.action">Sign Up</a>
+            </li> 
+            <li class="nav-item">
+            	<a class="nav-link" href="#">Log In</a>
+            </li> 
+    </ul>
+    
+    <!-- 
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search">
       <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
     </form>
+     -->
   </div>
+</div>
 </nav>
 
-    
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script type="text/javascript" src="./js/jquery.min.js"></script>
+<!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+<script src="./js/bootstrap.js"></script>
 </body>
 </html>
