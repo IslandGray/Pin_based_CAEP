@@ -35,6 +35,11 @@
 	     <action name="RegSwitch">
 	      	<result>/WEB-INF/pages/Register/RegSwitch.jsp</result>
 	     </action>
+	     <action name="RegSubmitTest" class="register.RegTest" method="register">
+	      	<result name="SUCCESS">XXXX.jsp</result>
+	      	<result name="REGISTED">/WEB-INF/pages/Register/XXXX.jsp</result>
+	      	<result name="ERROR">/WEB-INF/pages/Register/XXXX.jsp</result>
+	     </action>
 	     
     </package>
    

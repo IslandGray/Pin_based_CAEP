@@ -25,6 +25,9 @@
 		.navbar li {
 		    float:left;
 		}
+		h5{
+			text-align:center;
+		}
 	</style>
 	
 	
@@ -53,40 +56,57 @@
 
 <div class="container">
 	<div class="row clearfix">
-		
 		<div style="display:flex;justify-content:center;padding:20px 10px;width:100%;">
-			<div style="flex-basis:380px;">
-				<h3>
-					How would you like to continue?
-				</h3>
+			<div style="justify-content:center;align-items:center;flex-basis:380px;">
+				<div>
+					<h5>How would you like to continue?</h5>
+				</div>
+				<button type="button" class="btn btn-outline-dark" style="display:flex;box-sizing:border-box;justify-content:center;align-items:center;width:100%">
+				Continue with 统一身份认证
+				</button>
+				<div style="display:flex;flex-direction:row;flex-basis:50px">
+					<HR width=100%>
+				</div>
+				<h5>OR</h5>
+				<form action="RegSubmitTest.action" method="post" enctype="multipart/form-data">
+					<fieldset>
+						<div class="card border-dark mb-3" style="">
+						<div class="card-body">
+							<label for="InputEmail">Your E-mail:</label>
+							<input class="form-control" id="InputEmail" placeholder="Enter email" type="email">
+							<div style="height:20px"></div>
+							<button type="submit" class="btn btn-dark" style="display:flex;box-sizing:border-box;justify-content:center;align-items:center;width:100%">Submit</button>
+						</div>
+						</div>
+					</fieldset>
+				</form>
 			</div>
 		</div>
 	</div>
 	
 	
-	<div class="row clearfix">
-		<div class="col-md-12 column">
-			<h2>lalala</h2>
-			
-		</div>
-	</div>
+	
 	
 	<footer id="footer">
 		<div class="row">
 			<div class="col-lg-12">
-				<ul class="list-unstyled">
-			        <li class="float-lg-right"><a href="https://bootswatch.com/yeti/#top">Back to top</a></li>
-			        <li><a href="http://blog.bootswatch.com/" onclick="pageTracker._link(this.href); return false;">Blog</a></li>
-			        <li><a href="https://feeds.feedburner.com/bootswatch">RSS</a></li>
-			        <li><a href="https://twitter.com/bootswatch">Twitter</a></li>
-			        <li><a href="https://github.com/thomaspark/bootswatch/">GitHub</a></li>
-			        <li><a href="https://bootswatch.com/help/#api">API</a></li>
-			        <li><a href="https://bootswatch.com/help/#donate">Donate</a></li>
+				<div style="height:40%"></div>
+				<HR style="width:100%">
+				<div class="float-lg-right"><a href="https://bootswatch.com/yeti/#top">Back to top</a></div>
+				
+				<ul class="list-unstyled" style="display:flex;flex-direction:row;justify-content:flex-start;">
+			        <li style="flex-basis:55px;"><a href="http://blog.bootswatch.com/" onclick="pageTracker._link(this.href); return false;">Blog</a></li>
+			        <li style="flex-basis:55px;"><a href="https://feeds.feedburner.com/bootswatch">RSS</a></li>
+			        <li style="flex-basis:75px;"><a href="https://twitter.com/bootswatch">Twitter</a></li>
+			        <li style="flex-basis:75px;"><a href="https://github.com/thomaspark/bootswatch/">GitHub</a></li>
+			        <li style="flex-basis:55px;"><a href="https://bootswatch.com/help/#api">API</a></li>
+			        <li style="flex-basis:55px;"><a href="https://bootswatch.com/help/#donate">Donate</a></li>
 			    </ul>
-			      <p>Made by <a href="http://thomaspark.co/">Thomas Park</a>.</p>
-			      <p>Code released under the <a href="https://github.com/thomaspark/bootswatch/blob/master/LICENSE">MIT License</a>.</p>
-			      <p>Based on <a href="https://getbootstrap.com/" rel="nofollow">Bootstrap</a>. Icons from <a href="http://fontawesome.io/" rel="nofollow">Font Awesome</a>. Web fonts from <a href="https://fonts.google.com/" rel="nofollow">Google</a>.</p>
-
+			    <ul class="list-unstyled" style="display:flex;flex-direction:column;justify-content:flex-start;">
+			      <li>Made by <a href="http://thomaspark.co/">Thomas Park</a>.</li>
+			      <li>Code released under the <a href="https://github.com/thomaspark/bootswatch/blob/master/LICENSE">MIT License</a>.</li>
+			      <li>Based on <a href="https://getbootstrap.com/" rel="nofollow">Bootstrap</a>. Icons from <a href="http://fontawesome.io/" rel="nofollow">Font Awesome</a>. Web fonts from <a href="https://fonts.google.com/" rel="nofollow">Google</a>.</li>
+				</ul>
 	        </div>
 	    </div>
 	</footer>
