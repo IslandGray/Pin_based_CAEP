@@ -50,7 +50,7 @@
             	<a class="nav-link" href="RegSwitch.action">Sign Up</a>
             </li> 
             <li class="nav-item">
-            	<a class="nav-link" href="#">Log In</a>
+            	<a class="nav-link" href="GotoLogin.action">Log In</a>
             </li> 
     </ul>
          

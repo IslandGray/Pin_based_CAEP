@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>注册</title>
+	<title>登录</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
@@ -12,9 +12,6 @@
 	
 	<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
 	<link rel="stylesheet" href="./css/bootstrap-theme.min.css">
-	<!--  
-	<link rel="stylesheet" href="./css/bootstrap-glyphicons.css">
-	-->
 	 
 	<style type="text/css">
         .navbar {
@@ -48,11 +45,11 @@
   <div class="collapse navbar-collapse" id="navbarColor02">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Sign Up</a>
+        <a class="nav-link" href="#">Log In</a>
       </li>
     </ul>
     
-       
+         
   </div>
 </div>
 </nav>
@@ -71,30 +68,16 @@
 					<HR width=100%>
 				</div>
 				<h5>OR</h5>
-				<form action="RegSubmitTest.action" method="post" enctype="multipart/form-data">
+				<form action="Login.action" method="post" enctype="multipart/form-data">
 					<fieldset>
 						<div class="card border-dark mb-3" style="">
 						<div class="card-body">
 							<label for="InputEmail">Your E-mail:</label>
 							<input class="form-control" name="inputEmail" id="inputEmail" placeholder="Enter email" type="email">
-							
-							<span id="errorMsg"></span>
-							<script type="text/javascript">
-								function valid(){
-								    //获取name为123对应的input输入框中的值
-								    var val = document.getElementById("inputEmail").value;
-								    if(val == ""){
-								        //如果val为空或者空格，将错误消息显示在对应span
-								        document.getElementById("errorMsg").html("不能为空");
-								        //让span显示出来
-								        return;
-								    }
-								}
-							</script>
-							
+							<label for="InputPassword">Password:</label>
+							<input class="form-control" name="inputPassword" placeholder="Password" type="password">
 							<div style="height:20px"></div>
-							<button type="submit" class="btn btn-dark" onclick="valid()" style="display:flex;box-sizing:border-box;justify-content:center;align-items:center;width:100%">Submit</button>
-							
+							<button type="submit" class="btn btn-dark" style="display:flex;box-sizing:border-box;justify-content:center;align-items:center;width:100%">Submit</button>
 						</div>
 						</div>
 					</fieldset>
@@ -102,8 +85,6 @@
 			</div>
 		</div>
 	</div>
-	
-	
 	
 	
 	<footer id="footer">
@@ -137,5 +118,36 @@
 <script type="text/javascript" src="./js/jquery.min.js"></script>
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script src="./js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	 	function getObject(objectId) {
+		    if (document.getElementById && document.getElementById(objectId)) {
+		        return document.getElementById(objectId);
+		    } else if (document.all && document.all(objectId)) {
+		        return document.all(objectId);
+		    } else if (document.layers && document.layers[objectId]) {
+		        return document.layers[objectId];
+		    } else {
+		        return false;
+		    }
+		}
+		function get(p){
+			//var url=location.search;
+			var url= document.URL.toString();
+			var tmpStr=p+"=";
+			var tmp_reg=eval("/[\?&]"+tmpStr+"/i");
+			if(url.search(tmp_reg)==-1)return null;
+			else{
+			    var a=url.split(/[\?&]/);
+			    for(var i=0;i<a.length;i++)
+			         if(a[i].search(eval("/^"+tmpStr+"/i"))!=-1)return a[i].substring(tmpStr.length);
+			}
+		}
+		window.onload=function (){
+
+		getObject("inputEmail").value = get("user");  
+		//key作为input里的name名，接收到的值就是浏览器里的k参数
+		//k是浏览器里的参数名
+		}
+</script>
 </body>
 </html>

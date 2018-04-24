@@ -14,33 +14,29 @@
 	      	<result name="NOPERSON">/WEB-INF/pages/no-person.jsp</result>
 	     </action>
 	     
-	     <action name="RegDev">
-	      	<result>/WEB-INF/pages/Register/Developer.jsp</result>
-	     </action>
-	     <action name="RegNeed">
-	      	<result>/WEB-INF/pages/Register/Needer.jsp</result>
-	     </action>
-	     <action name="RegDevSubmit" class="register.RegDeveloper" method="register">
-	      	<result name="SUCCESS">index.jsp</result>
-	      	<result name="REGISTED">/WEB-INF/pages/Register/Developer.jsp</result>
-	      	<result name="ERROR">/WEB-INF/pages/Register/Developer.jsp</result>
-	     </action>
-	     <action name="RegNeedSubmit" class="register.RegNeeder" method="register">
-	      	<result name="SUCCESS">index.jsp</result>
-	      	<result name="REGISTED">/WEB-INF/pages/Register/Needer.jsp</result>
-	      	<result name="ERROR">/WEB-INF/pages/Register/Needer.jsp</result>
-	     </action>
 	     -->
 	     
 	     <action name="RegSwitch">
 	      	<result>/WEB-INF/pages/Register/RegSwitch.jsp</result>
 	     </action>
-	     <action name="RegSubmitTest" class="register.RegTest" method="register">
-	      	<result name="SUCCESS">XXXX.jsp</result>
-	      	<result name="REGISTED">/WEB-INF/pages/Register/XXXX.jsp</result>
-	      	<result name="ERROR">/WEB-INF/pages/Register/XXXX.jsp</result>
+	     <action name="RegSubmitTest" class="com.wcp.project.register.RegTest" method="registerTest">
+	      	<result name="REGISTED" type="redirectAction">GotoLogin?user=${inputEmail}</result>
+	      	<result name="SUCCESS"  type="redirectAction">Regist?user=${inputEmail}</result>
+	      	<result name="ERROR">/WEB-INF/pages/Register/RegSwitch.jsp</result>
+	     </action>
+	     <action name="Regist">
+	      	<result>/WEB-INF/pages/Register/Regist.jsp</result>
 	     </action>
 	     
+    </package>
+    <package name="LOGIN" extends="struts-default">
+    	<action name="GotoLogin">
+    		<result>/WEB-INF/pages/Login/Login.jsp</result>
+    	</action>
+    	<action name="Login" class="com.wcp.project.login.Login" method="login">
+    		<result name="SUCCESS"></result>
+    		<result name="ERROR" type="redirect">GotoLogin</result>
+    	</action>
     </package>
    
 </struts>
