@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-4-25 22:02:11 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.wcp.DAO.User" table="USER">
+        <id name="ID" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="Account" type="java.lang.String">
+            <column name="ACCOUNT" />
+        </property>
+        <property name="Name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <property name="School" type="java.lang.String">
+            <column name="SCHOOL" />
+        </property>
+        <property name="StudentID" type="java.lang.String">
+            <column name="STUDENTID" />
+        </property>
+        <property name="Phone" type="java.lang.String">
+            <column name="PHONE" />
+        </property>
+        <property name="Role" type="java.lang.String">
+            <column name="ROLE" />
+        </property>
+        <property name="Passwd" type="java.lang.String">
+            <column name="PASSWD" />
+        </property>
+    </class>
+</hibernate-mapping>

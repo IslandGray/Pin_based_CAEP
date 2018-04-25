@@ -27,6 +27,10 @@
 	     <action name="Regist">
 	      	<result>/WEB-INF/pages/Register/Regist.jsp</result>
 	     </action>
+	     <action name="finishReg" class="com.wcp.project.register.FinishReg" method="finishReg">
+	     	<result name="SUCCESS" type="redirectAction">GotoLogin?user=${inputEmail}</result>
+	     	<result name="FAILED"></result>
+	     </action>
 	     
     </package>
     <package name="LOGIN" extends="struts-default">

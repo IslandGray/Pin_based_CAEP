@@ -111,20 +111,20 @@
 			<div class="col-lg-12">
 				<div style="height:40%"></div>
 				<HR style="width:100%">
-				<div class="float-lg-right"><a href="https://bootswatch.com/yeti/#top">Back to top</a></div>
+				<div class="float-lg-right"><a href="#">Back to top</a></div>
 				
 				<ul class="list-unstyled" style="display:flex;flex-direction:row;justify-content:flex-start;">
-			        <li style="flex-basis:55px;"><a href="http://blog.bootswatch.com/" onclick="pageTracker._link(this.href); return false;">Blog</a></li>
-			        <li style="flex-basis:55px;"><a href="https://feeds.feedburner.com/bootswatch">RSS</a></li>
-			        <li style="flex-basis:75px;"><a href="https://twitter.com/bootswatch">Twitter</a></li>
-			        <li style="flex-basis:75px;"><a href="https://github.com/thomaspark/bootswatch/">GitHub</a></li>
-			        <li style="flex-basis:55px;"><a href="https://bootswatch.com/help/#api">API</a></li>
-			        <li style="flex-basis:55px;"><a href="https://bootswatch.com/help/#donate">Donate</a></li>
+			        <li style="flex-basis:55px;"><a href="#" onclick="pageTracker._link(this.href); return false;">Blog</a></li>
+			        <li style="flex-basis:55px;"><a href="#">RSS</a></li>
+			        <li style="flex-basis:75px;"><a href="#">Twitter</a></li>
+			        <li style="flex-basis:75px;"><a href="#">GitHub</a></li>
+			        <li style="flex-basis:55px;"><a href="#">API</a></li>
+			        <li style="flex-basis:55px;"><a href="#">Donate</a></li>
 			    </ul>
 			    <ul class="list-unstyled" style="display:flex;flex-direction:column;justify-content:flex-start;">
-			      <li>Made by <a href="http://thomaspark.co/">Thomas Park</a>.</li>
-			      <li>Code released under the <a href="https://github.com/thomaspark/bootswatch/blob/master/LICENSE">MIT License</a>.</li>
-			      <li>Based on <a href="https://getbootstrap.com/" rel="nofollow">Bootstrap</a>. Icons from <a href="http://fontawesome.io/" rel="nofollow">Font Awesome</a>. Web fonts from <a href="https://fonts.google.com/" rel="nofollow">Google</a>.</li>
+			      <li>Made by <a href="#">Chunpei Wang</a>.</li>
+			      <li>Code released under the <a href="#">MIT License</a>.</li>
+			      <li>Based on <a href="https://getbootstrap.com/" rel="nofollow">Bootstrap</a>. Web fonts from <a href="https://fonts.google.com/" rel="nofollow">Google</a>.</li>
 				</ul>
 	        </div>
 	    </div>
