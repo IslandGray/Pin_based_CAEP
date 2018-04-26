@@ -71,12 +71,15 @@ public class FinishReg {
 	        session.getTransaction().commit();
 	        session.close();
 	        sessionFactory.close();
+	        
+		    System.out.println(inputEmail+" sign up successfully");
 	        return "SUCCESS";
 		}catch(Exception e) {
 			System.out.println(toString());
 			System.out.println(u.toString());
 			e.printStackTrace();
 		}
+		System.out.println(inputEmail+" sign up failed");
 		return "FAILED";
 		
 	}

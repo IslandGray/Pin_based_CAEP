@@ -21,12 +21,23 @@
 
 <script src="./pageSources/navbar.js"></script>
 
+<div class="container">
+	<div class="row clearfix">	
+		<div style="display:flex;justify-content:center;padding:20px 10px;width:100%;">		
+			<div style="justify-content:center;align-items:center;flex-basis:380px;">
+				<h1><s:property value="#session.USER"/></h1>
+			</div>
+		</div>
+	</div>
+	
+	
+	<script src="./pageSources/footer.js"></script>
+</div>
 
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
 <script src="./js/jquery.min.js"></script>
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script src="./js/bootstrap.min.js"></script>
-
 <script type="text/javascript">
 window.onload=function (){
 	var myUser="<%=session.getAttribute("USER")%>";

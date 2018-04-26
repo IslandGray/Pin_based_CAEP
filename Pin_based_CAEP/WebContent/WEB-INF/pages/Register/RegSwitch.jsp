@@ -64,8 +64,8 @@
 				<div>
 					<h5>How would you like to continue?</h5>
 				</div>
-				<button type="button" class="btn btn-outline-dark" style="display:flex;box-sizing:border-box;justify-content:center;align-items:center;width:100%">
-				Continue with 统一身份认证
+				<button type="button" disabled="disabled" class="btn btn-outline-dark" style="display:flex;box-sizing:border-box;justify-content:center;align-items:center;width:100%">
+				Continue with 统一身份认证  (暂未开放)
 				</button>
 				<div style="display:flex;flex-direction:row;flex-basis:50px">
 					<HR width=100%>
@@ -106,29 +106,7 @@
 	
 	
 	
-	<footer id="footer">
-		<div class="row">
-			<div class="col-lg-12">
-				<div style="height:40%"></div>
-				<HR style="width:100%">
-				<div class="float-lg-right"><a href="#">Back to top</a></div>
-				
-				<ul class="list-unstyled" style="display:flex;flex-direction:row;justify-content:flex-start;">
-			        <li style="flex-basis:55px;"><a href="#" onclick="pageTracker._link(this.href); return false;">Blog</a></li>
-			        <li style="flex-basis:55px;"><a href="#">RSS</a></li>
-			        <li style="flex-basis:75px;"><a href="#">Twitter</a></li>
-			        <li style="flex-basis:75px;"><a href="#">GitHub</a></li>
-			        <li style="flex-basis:55px;"><a href="#">API</a></li>
-			        <li style="flex-basis:55px;"><a href="#">Donate</a></li>
-			    </ul>
-			    <ul class="list-unstyled" style="display:flex;flex-direction:column;justify-content:flex-start;">
-			      <li>Made by <a href="#">Chunpei Wang</a>.</li>
-			      <li>Code released under the <a href="#">MIT License</a>.</li>
-			      <li>Based on <a href="https://getbootstrap.com/" rel="nofollow">Bootstrap</a>. Web fonts from <a href="https://fonts.google.com/" rel="nofollow">Google</a>.</li>
-				</ul>
-	        </div>
-	    </div>
-	</footer>
+	<script src="./pageSources/footer.js"></script>
 </div>
 
 

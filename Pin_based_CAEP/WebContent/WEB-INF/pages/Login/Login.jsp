@@ -55,19 +55,28 @@
 </nav>
 
 <div class="container">
-	<div class="row clearfix">
-		<div style="display:flex;justify-content:center;padding:20px 10px;width:100%;">
+	<div class="row clearfix">	
+		<div style="display:flex;justify-content:center;padding:20px 10px;width:100%;">		
 			<div style="justify-content:center;align-items:center;flex-basis:380px;">
 				<div>
 					<h5>How would you like to continue?</h5>
 				</div>
-				<button type="button" class="btn btn-outline-dark" style="display:flex;box-sizing:border-box;justify-content:center;align-items:center;width:100%">
-				Continue with 统一身份认证
+				<button type="button" disabled="disabled" class="btn btn-outline-dark" style="display:flex;box-sizing:border-box;justify-content:center;align-items:center;width:100%">
+				Continue with 统一身份认证   (暂未开放)
 				</button>
 				<div style="display:flex;flex-direction:row;flex-basis:50px">
 					<HR width=100%>
 				</div>
 				<h5>OR</h5>
+				<div class="alert alert-dismissible alert-light" id="regsuccessAlert" style="display:none">
+					  <button type="button" class="close" data-dismiss="alert">&times;</button>
+					  <strong id="strong">Well done!</strong> You have already signed up successfully.Now you can Log In and continue:
+				</div>
+				<div class="alert alert-dismissible alert-dark" id="errorAlert" style="display:none">
+				  <button type="button" class="close" data-dismiss="alert">&times;</button>
+				  <strong>Login failed!</strong>  Correct your input and try submitting again.
+				</div>
+			
 				<form action="Login.action" method="post" enctype="multipart/form-data">
 					<fieldset>
 						<div class="card border-dark mb-3" style="">
@@ -87,29 +96,7 @@
 	</div>
 	
 	
-	<footer id="footer">
-		<div class="row">
-			<div class="col-lg-12">
-				<div style="height:40%"></div>
-				<HR style="width:100%">
-				<div class="float-lg-right"><a href="#">Back to top</a></div>
-				
-				<ul class="list-unstyled" style="display:flex;flex-direction:row;justify-content:flex-start;">
-			        <li style="flex-basis:55px;"><a href="#" onclick="pageTracker._link(this.href); return false;">Blog</a></li>
-			        <li style="flex-basis:55px;"><a href="#">RSS</a></li>
-			        <li style="flex-basis:75px;"><a href="#">Twitter</a></li>
-			        <li style="flex-basis:75px;"><a href="#">GitHub</a></li>
-			        <li style="flex-basis:55px;"><a href="#">API</a></li>
-			        <li style="flex-basis:55px;"><a href="#">Donate</a></li>
-			    </ul>
-			    <ul class="list-unstyled" style="display:flex;flex-direction:column;justify-content:flex-start;">
-			      <li>Made by <a href="#">Chunpei Wang</a>.</li>
-			      <li>Code released under the <a href="#">MIT License</a>.</li>
-			      <li>Based on <a href="https://getbootstrap.com/" rel="nofollow">Bootstrap</a>. Web fonts from <a href="https://fonts.google.com/" rel="nofollow">Google</a>.</li>
-				</ul>
-	        </div>
-	    </div>
-	</footer>
+	<script src="./pageSources/footer.js"></script>
 </div>
 
 
@@ -144,9 +131,21 @@
 		}
 		window.onload=function (){
 
-		getObject("inputEmail").value = get("user");  
-		//key作为input里的name名，接收到的值就是浏览器里的k参数
-		//k是浏览器里的参数名
+			getObject("inputEmail").value = get("user");  
+			//key作为input里的name名，接收到的值就是浏览器里的k参数
+			//k是浏览器里的参数名
+			if(get("user")!=null){
+				$("#strong").text("Well done! "+get("user")+",");
+				document.getElementById("regsuccessAlert").style.display="block";
+			}else{
+				document.getElementById("regsuccessAlert").style.display="none";
+			}
+			
+			if(get("errcode")=="-1"){
+				document.getElementById("errorAlert").style.display="block";
+			}else{
+				document.getElementById("errorAlert").style.display="none";
+			}
 		}
 </script>
 </body>

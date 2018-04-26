@@ -9,7 +9,6 @@ public class RegTest {
 	private String inputEmail;
 	
 	public String registerTest() throws Exception{
-	     System.out.println(inputEmail);
 	     if(inputEmail.isEmpty()) {
 	    	 return "ERROR";
 	     }

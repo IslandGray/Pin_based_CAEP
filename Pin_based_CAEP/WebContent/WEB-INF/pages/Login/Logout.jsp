@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+	session.invalidate();
+%>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>注册</title>
+	<title>注销</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
@@ -48,7 +51,7 @@
   <div class="collapse navbar-collapse" id="navbarColor02">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Sign Up</a>
+        <a class="nav-link" href="#">Log Out</a>
       </li>
     </ul>
     
@@ -62,7 +65,7 @@
 		<div style="display:flex;justify-content:center;padding:20px 10px;width:100%;">
 			<div style="justify-content:center;align-items:center;flex-basis:380px;">
 				<div>
-					<h5>注册失败，点击CAEP返回主页</h5>
+					<h5>已注销，点击CAEP返回主页</h5>
 				</div>
 
 			</div>

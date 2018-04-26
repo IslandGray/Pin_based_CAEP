@@ -1,15 +1,23 @@
 package com.wcp.project.login;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Map;
 
-public class Login {
+import com.opensymphony.xwork2.ActionContext;   
+import com.opensymphony.xwork2.ActionSupport;
+
+public class Login  extends ActionSupport{
 	private String inputEmail;
 	private String inputPassword;
 	
-	public String login() throws Exception{
+	
+	public String login() 
+			throws Exception{
 	     System.out.println(inputEmail);
 	     try {
 		      Class.forName("com.mysql.jdbc.Driver");     //加载MYSQL JDBC驱动程序   
@@ -25,14 +33,18 @@ public class Login {
 			          "jdbc:mysql://localhost:3306/pin_based_caep","root","wcp19970221");
 		      System.out.println("Success connect Mysql server!");
 		      Statement stmt = connect.createStatement();
-		      ResultSet rs = stmt.executeQuery("select * from user where Account='"+inputEmail+"' and Password='"+inputPassword+"'");
+		      ResultSet rs = stmt.executeQuery("select * from user where Account='"+inputEmail+"' and Passwd='"+inputPassword+"'");
 		      if(rs.next()){
 		    	  System.out.print(inputEmail+" Login!");
+		    	  
+		    	  ActionContext actionContext = ActionContext.getContext();    	  
+		          Map<String, Object> session = actionContext.getSession();   
+		          session.put("USER", inputEmail);
+		          
 		    	  return "SUCCESS";
 		      }
 	     }catch(Exception e) {
 	    	 e.printStackTrace();
-		      return "ERROR";
 	     }
    	  	 System.out.print(inputEmail+" Login Failed");
 	     return "ERROR";

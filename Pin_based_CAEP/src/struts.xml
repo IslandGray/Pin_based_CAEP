@@ -13,9 +13,7 @@
 	      	<result name="SUCCESS">/WEB-INF/pages/list.jsp</result>
 	      	<result name="NOPERSON">/WEB-INF/pages/no-person.jsp</result>
 	     </action>
-	     
 	     -->
-	     
 	     <action name="RegSwitch">
 	      	<result>/WEB-INF/pages/Register/RegSwitch.jsp</result>
 	     </action>
@@ -29,17 +27,23 @@
 	     </action>
 	     <action name="finishReg" class="com.wcp.project.register.FinishReg" method="finishReg">
 	     	<result name="SUCCESS" type="redirectAction">GotoLogin?user=${inputEmail}</result>
-	     	<result name="FAILED"></result>
+	     	<result name="FAILED" type="redirectAction">failedReg</result>
 	     </action>
-	     
+	     <action name="failedReg">
+	     	<result>/WEB-INF/pages/Register/RegFail.jsp</result>
+	     </action>
     </package>
+    
     <package name="LOGIN" extends="struts-default">
     	<action name="GotoLogin">
     		<result>/WEB-INF/pages/Login/Login.jsp</result>
     	</action>
     	<action name="Login" class="com.wcp.project.login.Login" method="login">
-    		<result name="SUCCESS"></result>
-    		<result name="ERROR" type="redirect">GotoLogin</result>
+    		<result name="SUCCESS">/WEB-INF/pages/Home/HomePage.jsp</result>
+    		<result name="ERROR" type="redirectAction">GotoLogin?errcode=-1&amp;user=${inputEmail}</result>
+    	</action>
+    	<action name="loginExit">
+    		<result>/WEB-INF/pages/Login/Logout.jsp</result>
     	</action>
     </package>
    
