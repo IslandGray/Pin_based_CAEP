@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Home</title>
+	<title>Experiments</title>
 	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
 	<link rel="stylesheet" href="./css/bootstrap.min.css">
 	
@@ -16,17 +16,55 @@
 	<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
 	<link rel="stylesheet" href="./css/bootstrap-theme.min.css">
 	
+	<style type="text/css">
+		.list-group-item {
+		  background-color:rgb(255,255,255);
+		}
+	</style>
+	
 </head>
 <body>
 
 <script src="./pageSources/navbar.js"></script>
 
-<div class="container">
+<div class="container" style="margin-top:50px">
 	<div class="row clearfix">	
-		<div style="display:flex;justify-content:center;padding:20px 10px;width:100%;">		
-			<div style="justify-content:center;align-items:center;flex-basis:380px;">
-				<h1><s:property value="#session.USER"/></h1>
+		<div style="display:flex;justify-content:center;padding:20px 10px;width:100%;">	
+			<div class="col-md-12 column">	
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<h2 id="ExpeTitle">Experiment x</h2>
+					<p id="ExpeSummary">Here is the summary of the experiment.</p>
+				</div>
 			</div>
+			<div class="row clearfix">
+				<div class="col-md-2 column">
+					<div class="list-group">
+					    <a href="#" class="list-group-item list-group-item-action active">
+					    	Summary
+					    </a>
+					    <a href="#" class="list-group-item list-group-item-action">
+					    	Experiment Guide
+					    </a>
+					    <a href="#" class="list-group-item list-group-item-action">
+					    	Resources
+					    </a>
+					    <a href="#" class="list-group-item list-group-item-action disabled">
+					    	Submit and Excute
+					    </a>
+					    <a href="#" class="list-group-item list-group-item-action disabled">
+					    	Report
+					    </a>
+					</div>
+				</div>
+				<div class="col-md-7 column">
+				
+				</div>
+				<div class="col-md-3 column">
+				
+				</div>
+			</div>
+		</div>
 		</div>
 	</div>
 	
@@ -49,6 +87,7 @@ window.onload=function (){
 		document.getElementById("noLog").style.display="inline-box";
 		document.getElementById("hasLog").style.display="none";
 	}
+	document.getElementById("navbar-experiment").setAttribute("class","nav-item dropdown active");
 }
 </script>
 </body>

@@ -39,11 +39,21 @@
     		<result>/WEB-INF/pages/Login/Login.jsp</result>
     	</action>
     	<action name="Login" class="com.wcp.project.login.Login" method="login">
-    		<result name="SUCCESS">/WEB-INF/pages/Home/HomePage.jsp</result>
-    		<result name="ERROR" type="redirectAction">GotoLogin?errcode=-1&amp;user=${inputEmail}</result>
+    		<result name="SUCCESS" type="redirectAction">GotoHomepage</result>
+    		<result name="ERROR" type="redirectAction">GotoLogin?errcode=-1&amp;user=${inputEmail}&amp;name=${inputName}</result>
     	</action>
     	<action name="loginExit">
     		<result>/WEB-INF/pages/Login/Logout.jsp</result>
+    	</action>
+    </package>
+    <package name="HOMEPAGE" extends="struts-default">
+    	<action name="GotoHomepage" class="com.wcp.project.homepage.GotoHome" method="gohome">
+    		<result name="stuLOGGED">/WEB-INF/pages/Student/HomePage.jsp</result>
+    		<result name="teaLOGGED"></result>
+    		<result name="taLOGGED"></result>
+    		<result name="adLOGGED"></result>
+    		<result name="suLOGGED"></result>
+    		<result name="FAILED" type="redirectAction">GotoLogin</result>
     	</action>
     </package>
    

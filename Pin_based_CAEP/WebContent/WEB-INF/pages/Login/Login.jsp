@@ -134,7 +134,7 @@
 			getObject("inputEmail").value = get("user");  
 			//key作为input里的name名，接收到的值就是浏览器里的k参数
 			//k是浏览器里的参数名
-			if(get("user")!=null){
+			if(get("user")!=null &&get("name")!=""){
 				$("#strong").text("Well done! "+get("user")+",");
 				document.getElementById("regsuccessAlert").style.display="block";
 			}else{

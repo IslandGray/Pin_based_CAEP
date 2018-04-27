@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Map;
 
+import javax.persistence.criteria.CriteriaBuilder.Case;
+
 import com.opensymphony.xwork2.ActionContext;   
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -35,13 +37,27 @@ public class Login  extends ActionSupport{
 		      Statement stmt = connect.createStatement();
 		      ResultSet rs = stmt.executeQuery("select * from user where Account='"+inputEmail+"' and Passwd='"+inputPassword+"'");
 		      if(rs.next()){
-		    	  System.out.print(inputEmail+" Login!");
+		    	  String username=rs.getString("Name");
+		    	  System.out.println(inputEmail+" Login! Welcome "+username);
 		    	  
 		    	  ActionContext actionContext = ActionContext.getContext();    	  
 		          Map<String, Object> session = actionContext.getSession();   
 		          session.put("USER", inputEmail);
+		          session.put("username", username);
 		          
-		    	  return "SUCCESS";
+		          String role=rs.getString("Role");
+		          switch(role) {
+		          case "student":
+		          case "teacher":
+		          case "TA":
+		          case "admin":
+		          case "SuperAdmin":{
+		        	  session.put("role", role);
+		        	  return "SUCCESS";
+		          }
+		          default:return "ERROR";
+		          }
+		          
 		      }
 	     }catch(Exception e) {
 	    	 e.printStackTrace();

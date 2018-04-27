@@ -7,22 +7,22 @@
 	
 		<div class="collapse navbar-collapse" id="navbarColor02">
 	    	<ul class="navbar-nav">
-	      		<li class="nav-item">
-		        	<a class="nav-link" href="#">Home</a>
+	      		<li class="nav-item" id="navbar-home">
+		        	<a class="nav-link" href="GotoHomepage.action">Home</a>
 		      	</li>
-		      	<li class="nav-item dropdown">
-				    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" id="experiment" data-target="#" aria-haspopup="true" aria-expanded="false">Experiment</a>
-				    <div class="dropdown-menu" role="menu" aria-labelledby="experiment" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 41px, 0px); top: 0px; left: 0px; will-change: transform;">
+		      	<li class="nav-item dropdown" id="navbar-experiment">
+				    <a class="nav-link dropdown-toggle" data-toggle="dropdown" onmouseover="expDrop()" onmouseout="set()" href="#" role="button" id="experiment" data-target="#" aria-haspopup="true" aria-expanded="false">Experiment</a>
+				    <div class="dropdown-menu" role="menu" id="expDropmenu" aria-labelledby="experiment" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 41px, 0px); top: 0px; left: 0px; will-change: transform;">
 				        <a class="dropdown-item" href="#">1</a>
 				        <a class="dropdown-item" href="#">2</a>
 				        <a class="dropdown-item" href="#">3333</a>
 						<a class="dropdown-item" href="#">44444444</a>
 				    </div>
 			  	</li>
-		        <li class="nav-item">
+		        <li class="nav-item" id="navbar-achievement">
 		        	<a class="nav-link" href="#">Achievement</a>
 		        </li>
-		        <li class="nav-item">
+		        <li class="nav-item" id="navbar-contact">
 		        	<a class="nav-link" href="#">Contact</a>
 		        </li>
 		    </ul>
@@ -59,5 +59,17 @@
 		}else{
 			dropdown.setAttribute("class","dropdown-menu");
 		}
+	}
+	function expDrop() {
+		var dropdown=document.getElementById("expDropmenu");
+		var class2=dropdown.getAttribute("class");
+		if(class2=="dropdown-menu"){
+			dropdown.setAttribute("class","dropdown-menu show");
+		}else{
+			dropdown.setAttribute("class","dropdown-menu");
+		}
+	}
+	function set() {
+		setTimeout("expDrop()", 3000);
 	}
 </script>
