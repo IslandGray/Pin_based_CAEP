@@ -10,7 +10,7 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class LabUpload extends ActionSupport{
+public class Lab1Upload extends ActionSupport{
 	private File lab01file;
 	private File lab02file;
 	private String lab01fileFileName;
@@ -18,7 +18,7 @@ public class LabUpload extends ActionSupport{
 	private String lab01fileContentType;
 	private String lab02fileContentType;
 	
-	public String upload0() throws Exception{
+	public String upload() throws Exception{
 		String id;
 		try {
 			ActionContext actionContext = ActionContext.getContext();    	  
@@ -45,9 +45,9 @@ public class LabUpload extends ActionSupport{
 			//FileUtils.copyFile(myfile, new File(file,myfileFileName));
 			
 			//剪切：把临时文件剪切指定的位置，并且给他重命名。 注意：临时文件没有了
-			File newFile=new File(file,id+"_lab0-1.cpp");
+			File newFile=new File(file,id+"_CacheModel.h");
 			lab01file.renameTo(newFile);
-			lab02file.renameTo(new File(file,id+"_lab0-2.cpp"));
+			lab02file.renameTo(new File(file,id+"_testCache.cpp"));
 			
 			System.out.println(newFile.getPath());
 

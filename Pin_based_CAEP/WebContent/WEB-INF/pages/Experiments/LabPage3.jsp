@@ -97,7 +97,7 @@
 						    	<a href="download.action?fileName=insdiscount.cpp" class="card-link">ins-discount</a>
 						    	</p>
 						    	<p>实验报告模板:
-						    	<a href="download.action?fileName=report0.docx" class="card-link">report0.docx</a>
+						    	<a href="download.action?fileName=report0.doc" class="card-link">report0.doc</a>
 						    	</p>
 						    </div>
 						</div>
@@ -153,7 +153,7 @@
 						    <div class="card-header">提交你的报告</div>
 						    <div class="card-body">
 						    	<h5>实验报告：<small class="text-muted"> （仅接受.pdf）</small></h5>
-								<input class="form-control-file" id="lab0report" name="lab01report" aria-describedby="fileHelp" type="file">
+								<input class="form-control-file" id="lab01report" name="lab01report" aria-describedby="fileHelp" type="file">
 								<p></p>
 								<button type="submit" class="btn btn-primary btn-lg btn-block">上传</button>
 						    </div>
