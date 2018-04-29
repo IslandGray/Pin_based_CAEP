@@ -11,12 +11,13 @@
 		        	<a class="nav-link" href="GotoHomepage.action">Home</a>
 		      	</li>
 		      	<li class="nav-item dropdown" id="navbar-experiment">
-				    <a class="nav-link dropdown-toggle" data-toggle="dropdown" onmouseover="expDrop()" onmouseout="set()" href="#" role="button" id="experiment" data-target="#" aria-haspopup="true" aria-expanded="false">Experiment</a>
-				    <div class="dropdown-menu" role="menu" id="expDropmenu" aria-labelledby="experiment" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 41px, 0px); top: 0px; left: 0px; will-change: transform;">
-				        <a class="dropdown-item" href="#">1</a>
-				        <a class="dropdown-item" href="#">2</a>
-				        <a class="dropdown-item" href="#">3333</a>
-						<a class="dropdown-item" href="#">44444444</a>
+				    <a class="nav-link dropdown-toggle" data-toggle="dropdown" onmouseover="expDrop(0)" onmouseout="set()" href="#" role="button" id="experiment" data-target="#" aria-haspopup="true" aria-expanded="false">Laboratory</a>
+				    <div class="dropdown-menu dropdown-menu-left" role="menu" id="expDropmenu" aria-labelledby="experiment" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 41px, 0px); top: 0px; left: 0px; will-change: transform;">
+				        <a class="dropdown-item" name="lab0" href="GotoLab.action">Lab0 Pin入门与指令依赖距离分析</a>
+				        <a class="dropdown-item" name="lab1" href="GotoLab1.action">Lab1 内存缓存的设计与性能分析</a>
+				        <a class="dropdown-item" name="lab2" href="GotoLab2.action">Lab2 分支预测的算法与实践</a>
+						<a class="dropdown-item" name="lab3" href="GotoLab3.action">Lab3 高速缓存一致性协议</a>
+						<a class="dropdown-item disabled" name="lab4" href="#">Lab4 多核处理器的多级缓存探索</a>
 				    </div>
 			  	</li>
 		        <li class="nav-item" id="navbar-achievement">
@@ -60,16 +61,16 @@
 			dropdown.setAttribute("class","dropdown-menu");
 		}
 	}
-	function expDrop() {
+	function expDrop(x) {
 		var dropdown=document.getElementById("expDropmenu");
 		var class2=dropdown.getAttribute("class");
-		if(class2=="dropdown-menu"){
+		if(x==0){
 			dropdown.setAttribute("class","dropdown-menu show");
 		}else{
 			dropdown.setAttribute("class","dropdown-menu");
 		}
 	}
 	function set() {
-		setTimeout("expDrop()", 3000);
+		setTimeout("expDrop(1)", 3000);
 	}
 </script>

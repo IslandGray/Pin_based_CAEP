@@ -6,6 +6,8 @@
 	
 <struts>
     <include file="struts-default.xml"/>
+    
+    <constant name="struts.multipart.maxSize" value="4097152" />
       
     <package name="REG" extends="struts-default">
     	<!-- 
@@ -54,6 +56,51 @@
     		<result name="adLOGGED"></result>
     		<result name="suLOGGED"></result>
     		<result name="FAILED" type="redirectAction">GotoLogin</result>
+    	</action>
+    </package>
+    <package name="LAB" extends="struts-default">
+    	<action name="GotoLab" class="com.wcp.project.lab.GotoLab" method="gotolab">
+    		<result name="stuLOGGED">/WEB-INF/pages/Experiments/LabPage.jsp</result>
+    		<result name="teaLOGGED"></result>
+    		<result name="taLOGGED"></result>
+    		<result name="adLOGGED"></result>
+    		<result name="suLOGGED"></result>
+    		<result name="FAILED" type="redirectAction">GotoLogin</result>
+    	</action>
+    	<action name="GotoLab1" class="com.wcp.project.lab.GotoLab" method="gotolab">
+    		<result name="stuLOGGED"></result>
+    		<result name="teaLOGGED"></result>
+    		<result name="taLOGGED"></result>
+    		<result name="adLOGGED"></result>
+    		<result name="suLOGGED"></result>
+    		<result name="FAILED" type="redirectAction">GotoLogin</result>
+    	</action>
+    	<action name="GotoLab2" class="com.wcp.project.lab.GotoLab" method="gotolab">
+    		<result name="stuLOGGED"></result>
+    		<result name="teaLOGGED"></result>
+    		<result name="taLOGGED"></result>
+    		<result name="adLOGGED"></result>
+    		<result name="suLOGGED"></result>
+    		<result name="FAILED" type="redirectAction">GotoLogin</result>
+    	</action>
+    	<action name="GotoLab3" class="com.wcp.project.lab.GotoLab" method="gotolab">
+    		<result name="stuLOGGED"></result>
+    		<result name="teaLOGGED"></result>
+    		<result name="taLOGGED"></result>
+    		<result name="adLOGGED"></result>
+    		<result name="suLOGGED"></result>
+    		<result name="FAILED" type="redirectAction">GotoLogin</result>
+    	</action>
+    	
+    	<action name="Lab0Upload" class="com.wcp.project.lab.LabUpload" method="upload0">
+    		<interceptor-ref name="defaultStack">
+ 	        <!-- 限制上传文件的扩展名。如果有多个，使用逗号分隔
+ 	        <param name="fileUpload.allowedExtensions">cpp</param>-->
+	        <!-- 限制上传文件的MIME类型。 如果有多个，使用逗号分隔--> 
+            <param name="fileUpload.allowedTypes">text/plain</param>
+	        </interceptor-ref>
+	        <result name="SUCCESS" type="redirectAction">GotoLab?tag=1</result>
+	        <result name="FAILED" type="redirectAction">GotoLab?tag=2</result>
     	</action>
     </package>
    

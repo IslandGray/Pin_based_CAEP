@@ -38,12 +38,14 @@ public class Login  extends ActionSupport{
 		      ResultSet rs = stmt.executeQuery("select * from user where Account='"+inputEmail+"' and Passwd='"+inputPassword+"'");
 		      if(rs.next()){
 		    	  String username=rs.getString("Name");
+		    	  int id=rs.getInt("ID");
 		    	  System.out.println(inputEmail+" Login! Welcome "+username);
 		    	  
 		    	  ActionContext actionContext = ActionContext.getContext();    	  
 		          Map<String, Object> session = actionContext.getSession();   
 		          session.put("USER", inputEmail);
 		          session.put("username", username);
+		          session.put("ID", id);
 		          
 		          String role=rs.getString("Role");
 		          switch(role) {
