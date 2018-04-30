@@ -10,7 +10,7 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class LabUpload extends ActionSupport{
+public class Lab0Upload extends ActionSupport{
 	private File lab01file;
 	private File lab02file;
 	private String lab01fileFileName;
@@ -31,9 +31,9 @@ public class LabUpload extends ActionSupport{
 		}
 		try {
 			//1.拿到ServletContext
-			ServletContext servletContext = ServletActionContext.getServletContext();
+			//ServletContext servletContext = ServletActionContext.getServletContext();
 			//2.调用realPath方法，获取根据一个虚拟目录得到的真实目录	
-			String realPath = servletContext.getRealPath("/WEB-INF/UserFiles/cpp"+"/"+id);
+			//String realPath = servletContext.getRealPath("/WEB-INF/UserFiles/cpp"+"/"+id);
 			//3.如果这个真实的目录不存在，需要创建
 			//File file = new File(realPath );
 			File file = new File("D:\\others\\"+id );

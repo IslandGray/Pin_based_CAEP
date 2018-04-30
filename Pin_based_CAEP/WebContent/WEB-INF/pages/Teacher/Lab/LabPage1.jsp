@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Laboratory 0</title>
+	<title>Laboratory 1</title>
 	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
 	<link rel="stylesheet" href="./css/bootstrap.min.css">
 	
@@ -33,8 +33,8 @@
 			<div class="col-md-12 column">	
 			<div class="row clearfix">
 				<div class="col-md-12 column">
-					<h2 id="ExpeTitle">Laboratory 0</h2>
-					<p id="ExpeSummary">Pin入门与指令依赖距离分析</p>
+					<h2 id="ExpeTitle">Laboratory 1</h2>
+					<p id="ExpeSummary">内存缓存的设计与性能分析</p>
 				</div>
 			</div>
 			<div class="row clearfix">
@@ -61,18 +61,17 @@
 					<div id="0c">
 						<div class="card  " style="">
 						    <div class="card-body">
-						    	<h4 class="card-title">Pin入门与指令依赖距离分析</h4>
+						    	<h4 class="card-title">内存缓存的设计与性能分析</h4>
 							    <h6 class="card-subtitle mb-2 text-muted">Cost:1 Week</h6>
 							    <p class="card-text">依赖于：Pin，Linux</p>
 							    <ul class="list-group list-group-flush">
 								    <li class="list-group-item"><h6>Part 1</h6></li>
-								    <li class="list-group-item"><h7>在本实验的第一部分中，你
-										将开发一个简单的Pin工具来计算应用程序执行的指令数量。</h7></li>
+								    <li class="list-group-item"><h7>在</h7></li>
 								    <li class="list-group-item"><h6>Part 2</h6></li>
-								    <li class="list-group-item"><h7>在第二部分，我们要求开发出一款可以分析出可执行程序中的指令依赖距离的工具。</h7></li>
+								    <li class="list-group-item"><h7>在第二部分</h7></li>
 								</ul>
 								<p> </p>
-								<p class="card-text">目的：这个实验是计算机体系结构的第一个实验，也是与Pin的第一次接触，由于后面还会利用Pin进行进一步的实验，因此，熟悉Pin的程序结构特点、如何编写Pintool以及运行Pin来做一次实际的插桩就是本次实验的重点。</p>
+								<p class="card-text">目的：</p>
 						    </div>
 						</div>
 					</div>
@@ -80,8 +79,8 @@
 						<div class="card border-dark mb-3" style="">
 						    <div class="card-header">Guide</div>
 						    <div class="card-body">
-						    	<object data="./PDFsrc/Lab0.pdf" type="application/pdf" width="100%" height="1000">      
-								alt : <a href="./PDFsrc/Lab0.pdf">test.pdf</a>      
+						    	<object data="./PDFsrc/Lab1.pdf" type="application/pdf" width="100%" height="1000">      
+								alt : <a href="./PDFsrc/Lab1.pdf">test.pdf</a>      
 								</object> 
 						    </div>
 						</div>
@@ -90,14 +89,14 @@
 						<div class="card border-dark mb-3" style="">
 						    <div class="card-header">Resources and Downloads</div>
 						    <div class="card-body">
-						    	<p>Part1:
-						    	<a href="download.action?fileName=inscount.cpp" class="card-link">ins-count</a>
+						    	<p>src1:
+						    	<a href="download1.action?fileName=CacheModel.h" class="card-link">CacheModel.h</a>
 						    	</p>
-						    	<p>Part2:
-						    	<a href="download.action?fileName=insdiscount.cpp" class="card-link">ins-discount</a>
+						    	<p>src2:
+						    	<a href="download1.action?fileName=testCache.cpp" class="card-link">testCache.cpp</a>
 						    	</p>
 						    	<p>实验报告模板:
-						    	<a href="download.action?fileName=report0.docx" class="card-link">report0.docx</a>
+						    	<a href="download1.action?fileName=report1.docx" class="card-link">report1.docx</a>
 						    	</p>
 						    </div>
 						</div>
@@ -106,18 +105,18 @@
 						<div class="card border-dark mb-3" id="border" style="">
 							<div class="card-header">提交你的代码</div>
 						    <div class="card-body">
-						    	<p class="card-text">开始时间：<h6 id="starttime">${starttime}</h6></p>
-						    	<p class="card-text">截止时间：<h6 id="endtime">${endtime}</h6></p>
+						    	<p class="card-text">开始时间：<h6 id="starttime">yyyy-mm-dd hh:mm</h6></p>
+						    	<p class="card-text">截止时间：<h6 id="endtime">yyyy-mm-dd hh:mm</h6></p>
 						    </div>
-						    <form action="Lab0Upload.action" method="post" enctype="multipart/form-data">
+						    <form action="Lab1Upload.action" method="post" enctype="multipart/form-data">
 							    <fieldset>
 								    <ul class="list-group list-group-flush">
 									    <li class="list-group-item">
-									    	<h5>Part 1：<small class="text-muted"> 上传1个你完成的Pintool（.cpp）</small></h5>
+									    	<h5>src 1：<small class="text-muted"> 上传CacheModel.h</small></h5>
 									    	<input class="form-control-file" id="lab01file" name="lab01file" aria-describedby="fileHelp" type="file">
 									    </li>
 									    <li class="list-group-item">
-									    	<h5>Part 2：<small class="text-muted"> 上传1个你完成的Pintool（.cpp）</small></h5>
+									    	<h5>src 2：<small class="text-muted"> 上传testCache.cpp</small></h5>
 									    	<input class="form-control-file" id="lab02file" name="lab02file" aria-describedby="fileHelp" type="file">
 									    </li>
 									</ul>
@@ -138,12 +137,8 @@
 						    </div>
 						     <ul class="list-group list-group-flush">
 							    <li class="list-group-item">
-							    	<h5>Part 1</h5>
-							    	<p id="result1">还未上传文件</p>
-							    </li>
-							    <li class="list-group-item">
-							    	<h5>Part 2</h5>
-							    	<p id="result2">还未上传文件</p>
+							    	<h5>src 1、2</h5>
+							    	<p id="result">还未上传文件</p>
 							    </li>
 							</ul>
 						</div>
@@ -153,7 +148,7 @@
 						    <div class="card-header">提交你的报告</div>
 						    <div class="card-body">
 						    	<h5>实验报告：<small class="text-muted"> （仅接受.pdf）</small></h5>
-								<input class="form-control-file" id="lab0report" name="lab01report" aria-describedby="fileHelp" type="file">
+								<input class="form-control-file" id="lab1report" name="lab01report" aria-describedby="fileHelp" type="file">
 								<p></p>
 								<button type="submit" class="btn btn-primary btn-lg btn-block">上传</button>
 						    </div>

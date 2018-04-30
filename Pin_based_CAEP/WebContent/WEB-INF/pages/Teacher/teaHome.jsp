@@ -37,7 +37,7 @@
 			<div class="row clearfix">
 				<div class="col-md-12 column">
 					<h2 id="HomeTitle">Computer Architecture Experiment Platform</h2>
-					<p id="HomeSummary">Welcome back,</p>
+					<p id="HomeSummary">Welcome back,教师/助教 </p>
 				</div>
 			</div>
 			<div class="row clearfix">
@@ -270,7 +270,7 @@ window.onload=function (){
 	document.getElementById("navbar-home").setAttribute("class","nav-item active");
 	
 	var userName="<%=session.getAttribute("username")%>";
-	document.getElementById("HomeSummary").innerHTML="Welcome back, "+userName+"!";
+	document.getElementById("HomeSummary").innerHTML="Welcome back,教师/助教  "+userName+"!";
 }
 
 </script>

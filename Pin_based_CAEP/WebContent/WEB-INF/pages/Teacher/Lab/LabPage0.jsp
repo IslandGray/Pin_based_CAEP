@@ -50,10 +50,10 @@
 					    	Resources
 					    </a>
 					    <a href="#" id="3Btn" onclick="click3()" class="list-group-item list-group-item-action disabled">
-					    	Submit and Excute
+					    	Check Students' Work
 					    </a>
 					    <a href="#" id="4Btn" onclick="click4()" class="list-group-item list-group-item-action disabled">
-					    	Report
+					    	Check Reports
 					    </a>
 					</div>
 				</div>
@@ -83,6 +83,8 @@
 						    	<object data="./PDFsrc/Lab0.pdf" type="application/pdf" width="100%" height="1000">      
 								alt : <a href="./PDFsrc/Lab0.pdf">test.pdf</a>      
 								</object> 
+								<p></p>
+								<a class="card-link" href="#">Upload A New One</a>
 						    </div>
 						</div>
 					</div>
@@ -104,58 +106,20 @@
 					</div>
 					<div id="3c" style="display:none">
 						<div class="card border-dark mb-3" id="border" style="">
-							<div class="card-header">提交你的代码</div>
+							<div class="card-header">Check Students' Work</div>
 						    <div class="card-body">
 						    	<p class="card-text">开始时间：<h6 id="starttime">${starttime}</h6></p>
 						    	<p class="card-text">截止时间：<h6 id="endtime">${endtime}</h6></p>
 						    </div>
-						    <form action="Lab0Upload.action" method="post" enctype="multipart/form-data">
-							    <fieldset>
-								    <ul class="list-group list-group-flush">
-									    <li class="list-group-item">
-									    	<h5>Part 1：<small class="text-muted"> 上传1个你完成的Pintool（.cpp）</small></h5>
-									    	<input class="form-control-file" id="lab01file" name="lab01file" aria-describedby="fileHelp" type="file">
-									    </li>
-									    <li class="list-group-item">
-									    	<h5>Part 2：<small class="text-muted"> 上传1个你完成的Pintool（.cpp）</small></h5>
-									    	<input class="form-control-file" id="lab02file" name="lab02file" aria-describedby="fileHelp" type="file">
-									    </li>
-									</ul>
-									<div class="card-body">
-										<button type="submit" class="btn btn-primary btn-lg btn-block">上传</button>
-								    	<small class="card-text text-muted">提交后，你可以稍后回来或刷新查看程序评测结果</small>
-								    </div>
-							    </fieldset>
-						    </form>
-						     <ul class="list-group list-group-flush">
-							    <li class="list-group-item">
-							    	<h4>状态：</h4>
-							    	<p id="status">未启动</p>
-							    </li>
-							</ul>
-						    <div class="card-body">
-						    	<h4 class="card-title">执行结果：</h4>
-						    </div>
-						     <ul class="list-group list-group-flush">
-							    <li class="list-group-item">
-							    	<h5>Part 1</h5>
-							    	<p id="result1">还未上传文件</p>
-							    </li>
-							    <li class="list-group-item">
-							    	<h5>Part 2</h5>
-							    	<p id="result2">还未上传文件</p>
-							    </li>
-							</ul>
+						    
 						</div>
 					</div>
 					<div id="4c" style="display:none">
 						<div class="card border-dark mb-3" style="">
-						    <div class="card-header">提交你的报告</div>
+						    <div class="card-header">Check Reports</div>
 						    <div class="card-body">
 						    	<h5>实验报告：<small class="text-muted"> （仅接受.pdf）</small></h5>
-								<input class="form-control-file" id="lab0report" name="lab01report" aria-describedby="fileHelp" type="file">
-								<p></p>
-								<button type="submit" class="btn btn-primary btn-lg btn-block">上传</button>
+								
 						    </div>
 						</div>
 					</div>

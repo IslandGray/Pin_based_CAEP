@@ -19,6 +19,7 @@
         
         <!-- 配置hibernate的映射文件所在的位置 -->
         <mapping resource="com\wcp\DAO\User.hbm.xml" />
+        <mapping resource="com\wcp\DAO\Lab.hbm.xml" />
         
     </session-factory>
 </hibernate-configuration>
