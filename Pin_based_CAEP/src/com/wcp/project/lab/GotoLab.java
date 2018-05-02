@@ -1,5 +1,7 @@
 package com.wcp.project.lab;
 import com.wcp.DAO.Lab;
+import com.wcp.DAO.Excute;
+import com.wcp.DAO.LoadQuery;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -13,28 +15,31 @@ import org.hibernate.query.Query;
 
 import com.opensymphony.xwork2.ActionContext;
 
-
-
 public class GotoLab {
 	private Date starttime;
 	private Date endtime;
+	private String result1;
+	private String result2;
+	private String status;
+	
+	public String useracc=null;
 	
 	public String gotolab() throws Exception {
 		try {
 			ActionContext actionContext = ActionContext.getContext();    	  
 	        Map<String, Object> session = actionContext.getSession();   
 	        String query=(String)session.get("USER");
+	        useracc=query;
 	        if(query!=null && query!="") {
 	        	String role=(String)session.get("role");
 	        	System.out.println("Go to "+query+"'s lab0 AS "+role);
 	        	
 	        	loadTime();		//加载开始、结束时间	
 	        	
-		        
 	        	switch(role) {
 	        	case "student":{
-	        		loadStatus();
 	        		loadResult();
+	        		loadStatus();
 		        	return "stuLOGGED";
 		        }
 		        case "teacher":{
@@ -80,10 +85,47 @@ public class GotoLab {
 		}
 	}
 	public void loadStatus() {
-		
+		if(result1=="No File" && result2=="No File") {
+			status="未启动";
+		}else if(result1.substring(0, 6).equals("Finish") && result2.substring(0, 6).equals("Finish")) {
+			status="执行完毕";
+		}else {
+			status="出错";
+		}
 	}
-	public void loadResult() {
-		
+	public void loadResult() throws Exception{
+		LoadQuery loadQuery=new LoadQuery();
+		try {
+			List<Object> list=loadQuery.query("Excute", "account", useracc, "number", "0-1");
+			if(list.isEmpty()) {
+				result1="No File";
+				Excute excute=new Excute();
+				excute.setAccount(useracc);
+				excute.setNumber("0-1");
+				excute.setInfo(result1);
+				loadQuery.savein(excute);
+			}
+			else {
+				Excute excute=(Excute) list.get(0);
+				result1=excute.getInfo();
+			}
+			
+			list=loadQuery.query("Excute", "account", useracc, "number", "0-2");
+			if(list.isEmpty()) {
+				result2="No File";
+				Excute excute=new Excute();
+				excute.setAccount(useracc);
+				excute.setNumber("0-2");
+				excute.setInfo(result2);
+				loadQuery.savein(excute);
+			}
+			else {
+				Excute excute=(Excute) list.get(0);
+				result2=excute.getInfo();
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public Date getStarttime() {
@@ -100,6 +142,30 @@ public class GotoLab {
 
 	public void setEndtime(Date endtime) {
 		this.endtime = endtime;
+	}
+
+	public String getResult1() {
+		return result1;
+	}
+
+	public void setResult1(String result1) {
+		this.result1 = result1;
+	}
+
+	public String getResult2() {
+		return result2;
+	}
+
+	public void setResult2(String result2) {
+		this.result2 = result2;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	

@@ -130,7 +130,7 @@
 						     <ul class="list-group list-group-flush">
 							    <li class="list-group-item">
 							    	<h4>状态：</h4>
-							    	<p id="status">未启动</p>
+							    	<p id="status">${status}</p>
 							    </li>
 							</ul>
 						    <div class="card-body">
@@ -138,12 +138,12 @@
 						    </div>
 						     <ul class="list-group list-group-flush">
 							    <li class="list-group-item">
-							    	<h5>Part 1</h5>
-							    	<p id="result1">还未上传文件</p>
+							    	<h5>Part 1<small class="text-muted"> (服务器文件名：lab0-1.cpp)</small></h5>
+							    	<p id="result1">${result1}</p>
 							    </li>
 							    <li class="list-group-item">
-							    	<h5>Part 2</h5>
-							    	<p id="result2">还未上传文件</p>
+							    	<h5>Part 2<small class="text-muted"> (服务器文件名：lab0-2.cpp)</small></h5>
+							    	<p id="result2">${result2}</p>
 							    </li>
 							</ul>
 						</div>
@@ -210,7 +210,14 @@ window.onload=function (){
 		click3();
 		alert("Upload Failed!");
 	}
-	
+	/*
+	if(get("resultstr1")!=""){
+		document.getElementById("result1").innerHTML=unescape(decodeURI(get("resultstr1")));
+	}
+	if(get("resultstr2")!=""){
+		document.getElementById("result2").innerHTML=unescape(decodeURI(get("resultstr2")));
+	}
+	*/
 }
 </script>
 <script src="./PageJS/labpage.js"></script>
