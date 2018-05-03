@@ -152,10 +152,15 @@
 						<div class="card border-dark mb-3" style="">
 						    <div class="card-header">提交你的报告</div>
 						    <div class="card-body">
-						    	<h5>实验报告：<small class="text-muted"> （仅接受.pdf）</small></h5>
-								<input class="form-control-file" id="lab0report" name="lab01report" aria-describedby="fileHelp" type="file">
-								<p></p>
-								<button type="submit" class="btn btn-primary btn-lg btn-block">上传</button>
+						     	<form action="Lab0UploadPDF.action" method="post" enctype="multipart/form-data">
+						     	<fieldset>
+							    	<h5>实验报告：<small class="text-muted"> （仅接受.pdf）</small></h5>
+							    	<p class="text-primary">${reportstatus}</p>
+									<input class="form-control-file" id="lab0report" name="lab0report" aria-describedby="fileHelp" type="file">
+									<p></p>
+									<button type="submit" class="btn btn-primary btn-lg btn-block">上传</button>
+								</fieldset>
+								</form>
 						    </div>
 						</div>
 					</div>
@@ -206,9 +211,22 @@ window.onload=function (){
 	if(get("tag")==1){
 		click3();
 		alert("Upload Success!");
-	}else if(get("tag"==2)){
+	}else if(get("tag")==2){
 		click3();
 		alert("Upload Failed!");
+	}else if(get("tag")==3){
+		click4();
+		alert("Upload PDF Success!");
+	}else if(get("tag")==4){
+		click4();
+		alert("Upload PDF Failed!");
+	}else if(get("tag")==5){
+		click3();
+		alert("Edit Success!");
+	}
+	else if(get("tag")==6){
+		click3();
+		alert("Edit Failed!");
 	}
 	/*
 	if(get("resultstr1")!=""){

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="com.wcp.DAO.*,java.util.List" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,19 +10,29 @@
 	<title>Laboratory 0</title>
 	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
 	<link rel="stylesheet" href="./css/bootstrap.min.css">
-	
-	<!--  
-	<link href="./css/bootstrap-glyphicons.css" rel="stylesheet">
-	-->
 	<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
 	<link rel="stylesheet" href="./css/bootstrap-theme.min.css">
+	
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker({
+    	dateFormat: "yy-mm-dd"
+    });
+    $( "#datepicker2" ).datepicker({
+    	dateFormat: "yy-mm-dd"
+    });
+  } );
+  </script>
 	
 	<style type="text/css">
 		.list-group-item {
 		  background-color:rgb(255,255,255);
 		}
 	</style>
-	
 </head>
 <body>
 
@@ -81,10 +92,16 @@
 						    <div class="card-header">Guide</div>
 						    <div class="card-body">
 						    	<object data="./PDFsrc/Lab0.pdf" type="application/pdf" width="100%" height="1000">      
-								alt : <a href="./PDFsrc/Lab0.pdf">test.pdf</a>      
+								alt : <a href="./PDFsrc/Lab0.pdf">Lab0.pdf</a>      
 								</object> 
 								<p></p>
-								<a class="card-link" href="#">Upload A New One</a>
+								<form action="tealab0uploadPDF.action?upPath=/PDFsrc/Lab0.pdf" method="post" enctype="multipart/form-data">
+						     	<fieldset>
+									<input class="form-control-file" id="labguide" name="labguide" aria-describedby="fileHelp" type="file">
+									<p></p>
+									<button type="submit" class="btn btn-primary">Upload A New One</button>
+								</fieldset>
+								</form>
 						    </div>
 						</div>
 					</div>
@@ -108,17 +125,99 @@
 						<div class="card border-dark mb-3" id="border" style="">
 							<div class="card-header">Check Students' Work</div>
 						    <div class="card-body">
-						    	<p class="card-text">开始时间：<h6 id="starttime">${starttime}</h6></p>
-						    	<p class="card-text">截止时间：<h6 id="endtime">${endtime}</h6></p>
+						    	<form action="editTime.action" method="post" enctype="multipart/form-data">
+							    	<p class="card-text">开始时间：(点击设定时间)
+								    	<h6 id="starttime">${starttime}</h6>
+								    	<div id="t1" style="display:none">
+								    		<input type="text" id="datepicker" name="startT">00:00
+								    	</div>
+							    	</p>
+							    	<p class="card-text">截止时间：
+							    		<h6 id="endtime">${endtime}</h6>
+										<div id="t2" style="display:none">
+											<input type="text" id="datepicker2" name="endT">00:00
+										</div>
+							    	</p>
+							    	<button type="button" class="btn btn-outline-dark" id="set" onclick="setTime()">设定时间</button>
+							    	<button type="submit" class="btn btn-outline-dark" id="enter" style="display:none">提交</button>
+							    	<button type="button" class="btn btn-outline-dark" id="cancel" onclick="cancelsetTime()" style="display:none">取消</button>
+						    	
+						    	</form>
+						    	<!--  
+						    	<div class="modal" id="setTimeDia" aria-hidden="true">
+								  <div class="modal-dialog" role="document">
+								    <div class="modal-content">
+								      <div class="modal-header">
+								        <h5 class="modal-title">设定任务时间</h5>
+								        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								          <span aria-hidden="true">&times;</span>
+								        </button>
+								      </div>
+								      <form id="fm" action="editTime.action" method="post" enctype="multipart/form-data"></form>
+								      <fieldset>
+									      <div class="modal-body">
+									        <p>将该任务的开始与结束时间修改为：</p>
+									        <p>Start:
+								        	    <input type="text" id="datepicker" name="startT">
+                            					00:00
+									        </p>
+									        <p>End :
+									        	<input type="text" id="datepicker2" name="endT">
+									        	00:00
+									        </p>
+									      </div>
+									      <div class="modal-footer">
+									        <button type="button" class="btn btn-primary" id="sb">Save changes</button>
+									        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+									      </div>
+									  </fieldset>
+								      </form>
+								    </div>
+								  </div>
+								</div>
+								-->
 						    </div>
-						    
+						    <div class="card-body">
+						    	<table class="table table-hover">
+						    		<thead>
+									    <tr>
+									      <th scope="col">学号</th>
+									      <th scope="col">姓名</th>
+									      <th scope="col">文件</th>
+									      <th scope="col">运行得分</th>
+									    </tr>
+									</thead>
+									<tbody>
+									<%
+								 		LoadQuery ld=new LoadQuery();
+								 		X0 x=new X0();
+								 		List<Object> list=ld.query("X0");
+								 		for(Object i:list){
+								 			String acc=((X0)i).getAccount();
+								 			User us=(User)ld.queryRTN("User", "account", acc, "");
+								 			int id=us.getID();
+								 	%>
+										<tr>
+									      <td><%=us.getStudentID() %></td>
+									      <td><%=us.getName() %></td>
+									      <td><a href="devDownload.action?fileName=<%=id%>_lab0-1.cpp&filePath=/usr/services/pin-3.5/source/tools/ManualExamples/<%=id%>">part1</a>
+									      		/<a href="devDownload.action?fileName=<%=id%>_lab0-2.cpp&filePath=/usr/services/pin-3.5/source/tools/ManualExamples/<%=id%>">part2</a></td>
+									      <td><a href="#" onclick="showDialog('<%=us.getAccount() %>')"><%=((X0)i).getExcute() %></a></td>
+									    </tr>
+								   <%
+							 			}
+							    	%>  
+									</tbody>
+  
+						    	</table>
+						    </div>
 						</div>
 					</div>
 					<div id="4c" style="display:none">
 						<div class="card border-dark mb-3" style="">
 						    <div class="card-header">Check Reports</div>
 						    <div class="card-body">
-						    	<h5>实验报告：<small class="text-muted"> （仅接受.pdf）</small></h5>
+						    	<h5>实验报告：<small class="text-muted"> （仅.pdf）</small></h5>
 								
 						    </div>
 						</div>
@@ -137,8 +236,9 @@
 	<script src="./pageSources/footer.js"></script>
 </div>
 
+
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-<script src="./js/jquery.min.js"></script>
+
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script src="./js/bootstrap.min.js"></script>
 <script type="text/javascript">
@@ -155,6 +255,35 @@ function get(p){
 	}
 }
 
+	function showDialog(val) {
+		var name=prompt("要修改的数值:","");  
+		if(name)//如果返回的有内容
+		{
+			;
+			location.href="editExcute.action?acc="+val+"&to="+name;
+		}
+	}
+	function setTime() {
+		document.getElementById("t1").style.display="block";
+		document.getElementById("t2").style.display="block";
+		document.getElementById("enter").style.display="inline";
+		document.getElementById("cancel").style.display="inline";
+		
+		document.getElementById("set").style.display="none";
+		document.getElementById("starttime").style.display="none";
+		document.getElementById("endtime").style.display="none";
+	}
+	function cancelsetTime() {
+		document.getElementById("t1").style.display="none";
+		document.getElementById("t2").style.display="none";
+		document.getElementById("enter").style.display="none";
+		document.getElementById("cancel").style.display="none";
+		
+		document.getElementById("set").style.display="block";
+		document.getElementById("starttime").style.display="block";
+		document.getElementById("endtime").style.display="block";
+	}
+
 window.onload=function (){
 	var myUser="<%=session.getAttribute("USER")%>";
 	if(myUser!="null" && myUser!=""){
@@ -170,10 +299,24 @@ window.onload=function (){
 	if(get("tag")==1){
 		click3();
 		alert("Upload Success!");
-	}else if(get("tag"==2)){
+	}else if(get("tag")==2){
 		click3();
 		alert("Upload Failed!");
+	}else if(get("tag")==3){
+		click1();
+		alert("Upload PDF Success!");
+	}else if(get("tag")==4){
+		click1();
+		alert("Upload PDF Failed!");
+	}else if(get("tag")==5){
+		click3();
+		alert("Edit Success!");
 	}
+	else if(get("tag")==6){
+		click3();
+		alert("Edit Failed!");
+	}
+	
 	
 }
 </script>

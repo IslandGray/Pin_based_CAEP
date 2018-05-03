@@ -114,7 +114,17 @@
 		        <!-- 指定文件下载时，浏览器处理文件的方式 -->  
 		        <param name="contentDisposition">attachment;filename="${fileName}"</param>  
 		    </result>  
-		</action> 
+		</action>
+		<action name="Lab0UploadPDF" class="com.wcp.project.lab.Lab0Upload" method="uploadPDF">
+    		<interceptor-ref name="defaultStack">
+ 	        <!-- 限制上传文件的扩展名。如果有多个，使用逗号分隔
+ 	        <param name="fileUpload.allowedExtensions">cpp</param>-->
+	        <!-- 限制上传文件的MIME类型。 如果有多个，使用逗号分隔--> 
+            <param name="fileUpload.allowedTypes">application/pdf</param>
+	        </interceptor-ref>
+	        <result name="SUCCESS" type="redirectAction">GotoLab?tag=3</result>
+	        <result name="FAILED" type="redirectAction">GotoLab?tag=4</result>
+    	</action> 
 		
 		<action name="Lab1Upload" class="com.wcp.project.lab.Lab1Upload" method="upload">
     		<interceptor-ref name="defaultStack">
@@ -140,8 +150,8 @@
 		    </result>  
 		</action>
     </package>
-    <!--  
-    <package name="ACHI">
+    <!--  -->
+    <package name="ACHI" extends="struts-default">
     	<action name="GotoAchi" class="com.wcp.project.score.GotoAchi" method="gotoAchi">
     		<result name="stuLOGGED">/WEB-INF/pages/Student/ScorePage.jsp</result>
     		<result name="teaLOGGED"></result>
@@ -151,5 +161,37 @@
     		<result name="FAILED" type="redirectAction">GotoLogin</result>
     	</action>
     </package>
-   -->
+    <package name="TEACHER" extends="struts-default">
+    	<action name="tealab0uploadPDF" class="com.wcp.project.teacher.lab.LabUpload" method="upload0">
+    		<param name="upPath">${path}</param>
+    		<interceptor-ref name="defaultStack">
+	        <!-- 限制上传文件的MIME类型。 如果有多个，使用逗号分隔--> 
+            <param name="fileUpload.allowedTypes">application/pdf,text/plain</param>
+	        </interceptor-ref>
+	        <result name="SUCCESS" type="redirectAction">GotoLab?tag=3</result>
+	        <result name="FAILED" type="redirectAction">GotoLab?tag=4</result>
+    	</action>
+    	<action name="devDownload" class="com.wcp.FILE.DevDownload">
+    		<!-- 服务器端待下载文件的路径   
+		    <param name="filePath">/usr/services/pin-3.5/source/tools/ManualExamples</param>  -->
+		    <!-- 处理文件下载时，一定要将返回result的类型设置为stream -->  
+		    <result name="success" type="stream">  
+		        <!-- 指定下载文件的MIME类型 -->  
+		        <param name="contentType">${contentType}</param>  
+		        <!-- 指定有当前Action 中的哪个方法返回数据流 -->  
+		        <param name="inputName">fileInputStream</param>  
+		        <!-- 指定文件下载时，浏览器处理文件的方式 -->  
+		        <param name="contentDisposition">attachment;filename="${fileName}"</param>  
+		    </result>
+    	</action>
+    	<action name="editExcute" class="com.wcp.project.teacher.lab.EditExcute" method="edit">
+    		<result name="SUCCESS" type="redirectAction">GotoLab?tag=5</result>
+    		<result name="FAILED" type="redirectAction">GotoLab?tag=6</result>
+    	</action>
+    	<action name="editTime" class="com.wcp.project.teacher.lab.EditExcute" method="editTime">
+    		<result name="SUCCESS" type="redirectAction">GotoLab?tag=5</result>
+    		<result name="FAILED" type="redirectAction">GotoLab?tag=6</result>
+    	</action>
+    </package>
+   
 </struts>

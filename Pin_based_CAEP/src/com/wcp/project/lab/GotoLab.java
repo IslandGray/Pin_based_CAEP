@@ -21,6 +21,7 @@ public class GotoLab {
 	private String result1;
 	private String result2;
 	private String status;
+	private String reportstatus;
 	
 	public String useracc=null;
 	
@@ -84,7 +85,7 @@ public class GotoLab {
 			e.printStackTrace();
 		}
 	}
-	public void loadStatus() {
+	public void loadStatus() throws Exception{
 		if(result1=="No File" && result2=="No File") {
 			status="未启动";
 		}else if(result1.substring(0, 6).equals("Finish") && result2.substring(0, 6).equals("Finish")) {
@@ -92,6 +93,14 @@ public class GotoLab {
 		}else {
 			status="出错";
 		}
+		/*
+		try {
+			LoadQuery lQuery=new LoadQuery();
+			lQuery.queryHQL("")
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		*/
 	}
 	public void loadResult() throws Exception{
 		LoadQuery loadQuery=new LoadQuery();
@@ -166,6 +175,14 @@ public class GotoLab {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public String getReportstatus() {
+		return reportstatus;
+	}
+
+	public void setReportstatus(String reportstatus) {
+		this.reportstatus = reportstatus;
 	}
 	
 	

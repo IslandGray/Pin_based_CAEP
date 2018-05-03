@@ -1,14 +1,15 @@
-package com.wcp.project.lab;
+package com.wcp.FILE;
 
-import java.io.File;  
-import java.io.InputStream;  
-  
-import javax.servlet.ServletContext;  
-  
-import org.apache.struts2.ServletActionContext; 
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.servlet.ServletContext;
+
+import org.apache.struts2.ServletActionContext;
+
 import com.opensymphony.xwork2.ActionSupport;
 
-public class LabDownload  extends ActionSupport{
+public class DevDownload extends ActionSupport{
 	
 	 // 文件的Mime类型  
     private String contentType; 
@@ -20,15 +21,27 @@ public class LabDownload  extends ActionSupport{
     private InputStream fileInputStream;  
           
     public InputStream getFileInputStream() {  
-          
+        System.out.println(filePath + "/" + fileName);
+
         // 以及文件的mime类型以及创建流  
         ServletContext context = ServletActionContext.getServletContext();  
-        String mimeType = context.getMimeType(context.getRealPath(filePath + "/" + fileName));  
-        setContentType(mimeType); 
         
-        System.out.println(filePath + "/" + fileName);
-          
-        return context.getResourceAsStream(filePath + "/" + fileName);  
+        //String realpath=context.getRealPath(filePath + "/" + fileName);
+        //System.out.println(realpath);
+        
+        String mimeType = context.getMimeType(filePath + "/" + fileName); 
+        System.out.println(mimeType);
+        setContentType(mimeType); 
+           
+        //return context.getResourceAsStream(filePath + "/" + fileName);  
+        return new InputStream() {
+			
+			@Override
+			public int read() throws IOException {
+				// TODO Auto-generated method stub
+				return 0;
+			}
+		};
     }
 
 	public String getContentType() {
@@ -58,6 +71,5 @@ public class LabDownload  extends ActionSupport{
 	public void setFileInputStream(InputStream fileInputStream) {
 		this.fileInputStream = fileInputStream;
 	} 
-    
     
 }

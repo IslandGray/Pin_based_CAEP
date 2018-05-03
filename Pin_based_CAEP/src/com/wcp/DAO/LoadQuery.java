@@ -45,6 +45,23 @@ public class LoadQuery {
 	     list=(List<Object>)query.list();
 		 return list;
 	 }
+	 public Object queryRTN(String table,String para,String value,String rtnPara){
+		 list = null;
+		 Configuration config=new Configuration().configure();// Hibernate框架加载hibernate.cfg.xml文件
+		 SessionFactory sessionFactory=config.buildSessionFactory();
+		 Session session=sessionFactory.openSession();// 相当于得到一个Connection
+		 // 开启事务
+	     session.beginTransaction();
+	     Query query = session.createQuery("from "+table+" where "+para+" = ?");
+	     query.setParameter(0, value);
+	     list=(List<Object>)query.list();
+	     if(list.isEmpty()) {
+	    	 return null;
+	     }else {
+	    	 Object rtn=list.get(0);
+	    	 return rtn;
+	     }
+	 }
 	 
 	 public List<Object> query(String table,String para1,String value1,String para2,String value2){
 		 list = null;

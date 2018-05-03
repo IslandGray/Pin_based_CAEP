@@ -26,6 +26,10 @@ public class Lab0Upload extends ActionSupport{
 	private String lab01fileContentType;
 	private String lab02fileContentType;
 	
+	private File lab0report;
+	private String lab0reportFileName;
+	private String lab0reportContentType;
+	
 	private String resultstr1;
 	private String resultstr2;
 	//类内变量
@@ -141,10 +145,10 @@ public class Lab0Upload extends ActionSupport{
 				if(liStrings[1].equals("Count")) {
 					int result=Integer.parseInt(liStrings[2]);
 					if(result>=count-10000 && result<=count+10000 ) {
-						resultstr1=resultstr1+" 结果正确，得分：100%";
+						resultstr1=resultstr1+" 结果正确，得分：30/30";
 						lab0excute+=30;
 					}else {
-						resultstr1=resultstr1+" 结果错误，得分：0%";
+						resultstr1=resultstr1+" 结果错误，得分：0/30";
 					}
 				}
 			}
@@ -154,10 +158,10 @@ public class Lab0Upload extends ActionSupport{
 				if(liStrings[1].equals("Count")) {
 					int result=Integer.parseInt(liStrings[2]);
 					if(result>=count-100 && result<=count+100 ) {
-						resultstr2=resultstr2+" 结果正确，得分：100%";
+						resultstr2=resultstr2+" 结果正确，得分：70/70";
 						lab0excute+=70;
 					}else {
-						resultstr2=resultstr2+" 结果错误，得分：0%";
+						resultstr2=resultstr2+" 结果错误，得分：0/70";
 					}
 				}
 			}
@@ -204,6 +208,38 @@ public class Lab0Upload extends ActionSupport{
 			return null;
 		}
 		return resultstr;
+	}
+	
+	public String uploadPDF() {
+		try {				//读取session的登录信息
+			ActionContext actionContext = ActionContext.getContext();    	  
+	        Map<String, Object> session = actionContext.getSession();   
+	        //String user=(String)session.get("USER");
+	        id=String.valueOf( (int)session.get("ID") ); 
+	        acc=(String) session.get("USER");
+		}catch(Exception e) {
+			e.printStackTrace();
+			return "FAILED";
+		}
+		File newPDF=null;
+		try {				//保存文件到指定路径
+			//如果这个真实的目录不存在，需要创建
+			File file = new File(addr+"/"+id );
+			if(!file.exists()){
+				file.mkdirs();
+			}
+			//拷贝：把文件的临时文件复制到指定的位置。注意：临时文件还在
+			//FileUtils.copyFile(myfile, new File(file,myfileFileName));
+			
+			//剪切：把临时文件剪切指定的位置，并且给他重命名。 注意：临时文件没有了
+			newPDF=new File(file,id+"_lab0.pdf");
+			lab0report.renameTo(newPDF);
+			System.out.println(newPDF.getPath()+" has saved.");
+		}catch(Exception e) {
+			e.printStackTrace();
+			return "FAILED";
+		}
+		return "SUCCESS";
 	}
 
 	public File getLab01file() {
@@ -253,5 +289,30 @@ public class Lab0Upload extends ActionSupport{
 	public void setLab02fileContentType(String lab02fileContentType) {
 		this.lab02fileContentType = lab02fileContentType;
 	}
+
+	public File getLab0report() {
+		return lab0report;
+	}
+
+	public void setLab0report(File lab0report) {
+		this.lab0report = lab0report;
+	}
+
+	public String getLab0reportFileName() {
+		return lab0reportFileName;
+	}
+
+	public void setLab0reportFileName(String lab0reportFileName) {
+		this.lab0reportFileName = lab0reportFileName;
+	}
+
+	public String getLab0reportContentType() {
+		return lab0reportContentType;
+	}
+
+	public void setLab0reportContentType(String lab0reportContentType) {
+		this.lab0reportContentType = lab0reportContentType;
+	}
+	
 	
 }
