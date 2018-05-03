@@ -9,7 +9,18 @@ import org.hibernate.query.Query;
 
 public class LoadQuery {
 	 public List<Object> list = null;
-
+	 
+	 public List<Object> queryHQL(String hql){
+		 list = null;
+		 Configuration config=new Configuration().configure();// Hibernate框架加载hibernate.cfg.xml文件
+		 SessionFactory sessionFactory=config.buildSessionFactory();
+		 Session session=sessionFactory.openSession();// 相当于得到一个Connection
+		 // 开启事务
+	     session.beginTransaction();
+	     Query query = session.createQuery(hql);
+	     list=(List<Object>)query.list();
+		 return list;
+	 }
 	 public List<Object> query(String table) {
 		 list = null;
 		 Configuration config=new Configuration().configure();// Hibernate框架加载hibernate.cfg.xml文件

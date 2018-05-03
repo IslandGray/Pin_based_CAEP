@@ -140,5 +140,16 @@
 		    </result>  
 		</action>
     </package>
-   
+    <!--  
+    <package name="ACHI">
+    	<action name="GotoAchi" class="com.wcp.project.score.GotoAchi" method="gotoAchi">
+    		<result name="stuLOGGED">/WEB-INF/pages/Student/ScorePage.jsp</result>
+    		<result name="teaLOGGED"></result>
+    		<result name="taLOGGED"></result>
+    		<result name="adLOGGED"></result>
+    		<result name="suLOGGED"></result>
+    		<result name="FAILED" type="redirectAction">GotoLogin</result>
+    	</action>
+    </package>
+   -->
 </struts>

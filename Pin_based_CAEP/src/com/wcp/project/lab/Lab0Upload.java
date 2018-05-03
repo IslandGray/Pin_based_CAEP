@@ -1,5 +1,6 @@
 package com.wcp.project.lab;
 import com.wcp.DAO.LoadQuery;
+import com.wcp.DAO.X0;
 import com.wcp.FILE.*;
 
 import java.io.BufferedReader;
@@ -29,11 +30,13 @@ public class Lab0Upload extends ActionSupport{
 	private String resultstr2;
 	//类内变量
 	final String addr="/usr/services/pin-3.5/source/tools/ManualExamples";
+	final int count=33671366;
 	String id;
+	String acc;
 	
 	public String upload0() throws Exception{
 		//String id;
-		String acc;
+		//String acc;
 		File newFile1 = null;
 		File newFile2=null;
 		try {				//读取session的登录信息
@@ -94,7 +97,7 @@ public class Lab0Upload extends ActionSupport{
 					resultstr1=resultstr;
 					//resultstr1=java.net.URLEncoder.encode(resultstr, "UTF-8");
 				}else {
-					resultstr1="Finish!		";
+					resultstr1="Finish! ";
 					ReadFile rd=new ReadFile();
 					resultstr1=resultstr1+rd.getOUTline(addr+"/"+id+"/lab0-1.out");
 					System.out.println(resultstr1);
@@ -114,7 +117,7 @@ public class Lab0Upload extends ActionSupport{
 					resultstr2=resultstr;
 					//resultstr2=java.net.URLEncoder.encode(resultstr, "UTF-8");
 				}else {
-					resultstr2="Finish!		";
+					resultstr2="Finish! ";
 					ReadFile rd=new ReadFile();
 					resultstr2=resultstr2+rd.getOUTline(addr+"/"+id+"/lab0-2.out");
 					System.out.println(resultstr2);
@@ -126,10 +129,53 @@ public class Lab0Upload extends ActionSupport{
 			e.printStackTrace();
 			return "FAILED";
 		}
-		try {				//输出信息存储到数据库
+		try {
 			LoadQuery loadQuery=new LoadQuery();
+						
+			int lab0excute=0;
+			if(resultstr1.contains("Finish")) {
+				String[] liStrings=resultstr1.split(" ");
+				for(String i:liStrings) {
+					System.out.print(i+" ");	
+				}
+				if(liStrings[1].equals("Count")) {
+					int result=Integer.parseInt(liStrings[2]);
+					if(result>=count-10000 && result<=count+10000 ) {
+						resultstr1=resultstr1+" 结果正确，得分：100%";
+						lab0excute+=30;
+					}else {
+						resultstr1=resultstr1+" 结果错误，得分：0%";
+					}
+				}
+			}
+			/****************wait to edit****************************/
+			if(resultstr2.contains("Finish")) {
+				String[] liStrings=resultstr2.split(" ");
+				if(liStrings[1].equals("Count")) {
+					int result=Integer.parseInt(liStrings[2]);
+					if(result>=count-100 && result<=count+100 ) {
+						resultstr2=resultstr2+" 结果正确，得分：100%";
+						lab0excute+=70;
+					}else {
+						resultstr2=resultstr2+" 结果错误，得分：0%";
+					}
+				}
+			}
+			/*******************************************************/
+			List<Object> l=loadQuery.queryHQL("from X0 where account = '"+acc+"'");
+			if(l.isEmpty()) {
+				X0 x=new X0();
+				x.setAccount(acc);
+				x.setExcute(lab0excute);
+				//x.setScore(lab0excute);
+				loadQuery.savein(x);
+			}else {
+				loadQuery.update("update X0 x set x.excute = "+lab0excute+" where account = '"+acc+"'");
+			}
+			//保存执行结果
 			loadQuery.update("update Excute e set e.info = '"+resultstr1+"' where account = '"+acc+"' and number = '0-1'");
 			loadQuery.update("update Excute e set e.info = '"+resultstr2+"' where account = '"+acc+"' and number = '0-2'");
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 			return "FAILED";

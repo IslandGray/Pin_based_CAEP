@@ -21,7 +21,7 @@
 				    </div>
 			  	</li>
 		        <li class="nav-item" id="navbar-achievement">
-		        	<a class="nav-link" href="#">Achievement</a>
+		        	<a class="nav-link" href="GotoAchi.action">Achievement</a>
 		        </li>
 		        <li class="nav-item" id="navbar-contact">
 		        	<a class="nav-link" href="#">Contact</a>
