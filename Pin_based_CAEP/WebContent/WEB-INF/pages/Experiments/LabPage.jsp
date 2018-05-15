@@ -49,10 +49,10 @@
 					    <a href="#" id="2Btn" onclick="click2()" class="list-group-item list-group-item-action">
 					    	Resources
 					    </a>
-					    <a href="#" id="3Btn" onclick="click3()" class="list-group-item list-group-item-action disabled">
+					    <a href="#" id="3Btn" onclick="click3()" class="list-group-item list-group-item-action">
 					    	Submit and Excute
 					    </a>
-					    <a href="#" id="4Btn" onclick="click4()" class="list-group-item list-group-item-action disabled">
+					    <a href="#" id="4Btn" onclick="click4()" class="list-group-item list-group-item-action">
 					    	Report
 					    </a>
 					</div>
@@ -122,7 +122,7 @@
 									    </li>
 									</ul>
 									<div class="card-body">
-										<button type="submit" class="btn btn-primary btn-lg btn-block">上传</button>
+										<button type="submit" class="btn btn-primary btn-lg btn-block" id="upBtn">上传</button>
 								    	<small class="card-text text-muted">提交后，你可以稍后回来或刷新查看程序评测结果</small>
 								    </div>
 							    </fieldset>
@@ -236,6 +236,10 @@ window.onload=function (){
 		document.getElementById("result2").innerHTML=unescape(decodeURI(get("resultstr2")));
 	}
 	*/
+	var now=new Date();
+	if(now<starttime || now >endtime){
+		document.getElementById("upBtn").style.display="none";
+	}
 }
 </script>
 <script src="./PageJS/labpage.js"></script>

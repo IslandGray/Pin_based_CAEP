@@ -49,10 +49,10 @@
 					    <a href="#" id="2Btn" onclick="click2()" class="list-group-item list-group-item-action">
 					    	Resources
 					    </a>
-					    <a href="#" id="3Btn" onclick="click3()" class="list-group-item list-group-item-action disabled">
+					    <a href="#" id="3Btn" onclick="click3()" class="list-group-item list-group-item-action">
 					    	Submit and Excute
 					    </a>
-					    <a href="#" id="4Btn" onclick="click4()" class="list-group-item list-group-item-action disabled">
+					    <a href="#" id="4Btn" onclick="click4()" class="list-group-item list-group-item-action">
 					    	Report
 					    </a>
 					</div>
@@ -65,10 +65,10 @@
 							    <h6 class="card-subtitle mb-2 text-muted">Cost:1 Week</h6>
 							    <p class="card-text">依赖于：Pin，Linux</p>
 							    <ul class="list-group list-group-flush">
-								    <li class="list-group-item"><h6>Part 1</h6></li>
+								    <li class="list-group-item"><h6>Goal:</h6></li>
 								    <li class="list-group-item"><h7>在</h7></li>
-								    <li class="list-group-item"><h6>Part 2</h6></li>
-								    <li class="list-group-item"><h7>在第二部分</h7></li>
+								    <li class="list-group-item"><h6>P</h6></li>
+								    <li class="list-group-item"><h7>在第二</h7></li>
 								</ul>
 								<p> </p>
 								<p class="card-text">目的：</p>
@@ -89,14 +89,14 @@
 						<div class="card border-dark mb-3" style="">
 						    <div class="card-header">Resources and Downloads</div>
 						    <div class="card-body">
-						    	<p>src1:
-						    	<a href="download1.action?fileName=CacheModel.h" class="card-link">CacheModel.h</a>
+						    	<p>Part1:
+						    	<a href="download.action?fileName=inscount.cpp" class="card-link">ins-count</a>
 						    	</p>
-						    	<p>src2:
-						    	<a href="download1.action?fileName=testCache.cpp" class="card-link">testCache.cpp</a>
+						    	<p>Part2:
+						    	<a href="download.action?fileName=insdiscount.cpp" class="card-link">ins-discount</a>
 						    	</p>
 						    	<p>实验报告模板:
-						    	<a href="download1.action?fileName=report1.docx" class="card-link">report1.docx</a>
+						    	<a href="download.action?fileName=report0.docx" class="card-link">report0.docx</a>
 						    	</p>
 						    </div>
 						</div>
@@ -105,23 +105,23 @@
 						<div class="card border-dark mb-3" id="border" style="">
 							<div class="card-header">提交你的代码</div>
 						    <div class="card-body">
-						    	<p class="card-text">开始时间：<h6 id="starttime">yyyy-mm-dd hh:mm</h6></p>
-						    	<p class="card-text">截止时间：<h6 id="endtime">yyyy-mm-dd hh:mm</h6></p>
+						    	<p class="card-text">开始时间：<h6 id="starttime">${starttime}</h6></p>
+						    	<p class="card-text">截止时间：<h6 id="endtime">${endtime}</h6></p>
 						    </div>
-						    <form action="Lab1Upload.action" method="post" enctype="multipart/form-data">
+						    <form action="Lab0Upload.action" method="post" enctype="multipart/form-data">
 							    <fieldset>
 								    <ul class="list-group list-group-flush">
 									    <li class="list-group-item">
-									    	<h5>src 1：<small class="text-muted"> 上传CacheModel.h</small></h5>
+									    	<h5>Part 1：<small class="text-muted"> 上传1个你完成的Pintool（.cpp）</small></h5>
 									    	<input class="form-control-file" id="lab01file" name="lab01file" aria-describedby="fileHelp" type="file">
 									    </li>
 									    <li class="list-group-item">
-									    	<h5>src 2：<small class="text-muted"> 上传testCache.cpp</small></h5>
+									    	<h5>Part 2：<small class="text-muted"> 上传1个你完成的Pintool（.cpp）</small></h5>
 									    	<input class="form-control-file" id="lab02file" name="lab02file" aria-describedby="fileHelp" type="file">
 									    </li>
 									</ul>
 									<div class="card-body">
-										<button type="submit" class="btn btn-primary btn-lg btn-block">上传</button>
+										<button type="submit" class="btn btn-primary btn-lg btn-block" id="upBtn">上传</button>
 								    	<small class="card-text text-muted">提交后，你可以稍后回来或刷新查看程序评测结果</small>
 								    </div>
 							    </fieldset>
@@ -129,7 +129,7 @@
 						     <ul class="list-group list-group-flush">
 							    <li class="list-group-item">
 							    	<h4>状态：</h4>
-							    	<p id="status">未启动</p>
+							    	<p id="status">${status}</p>
 							    </li>
 							</ul>
 						    <div class="card-body">
@@ -137,8 +137,12 @@
 						    </div>
 						     <ul class="list-group list-group-flush">
 							    <li class="list-group-item">
-							    	<h5>src 1、2</h5>
-							    	<p id="result">还未上传文件</p>
+							    	<h5>Part 1<small class="text-muted"> (服务器文件名：lab0-1.cpp)</small></h5>
+							    	<p id="result1">${result1}</p>
+							    </li>
+							    <li class="list-group-item">
+							    	<h5>Part 2<small class="text-muted"> (服务器文件名：lab0-2.cpp)</small></h5>
+							    	<p id="result2">${result2}</p>
 							    </li>
 							</ul>
 						</div>
@@ -147,10 +151,15 @@
 						<div class="card border-dark mb-3" style="">
 						    <div class="card-header">提交你的报告</div>
 						    <div class="card-body">
-						    	<h5>实验报告：<small class="text-muted"> （仅接受.pdf）</small></h5>
-								<input class="form-control-file" id="lab1report" name="lab01report" aria-describedby="fileHelp" type="file">
-								<p></p>
-								<button type="submit" class="btn btn-primary btn-lg btn-block">上传</button>
+						     	<form action="Lab0UploadPDF.action" method="post" enctype="multipart/form-data">
+						     	<fieldset>
+							    	<h5>实验报告：<small class="text-muted"> （仅接受.pdf）</small></h5>
+							    	<p class="text-primary">${reportstatus}</p>
+									<input class="form-control-file" id="lab0report" name="lab0report" aria-describedby="fileHelp" type="file">
+									<p></p>
+									<button type="submit" class="btn btn-primary btn-lg btn-block">上传</button>
+								</fieldset>
+								</form>
 						    </div>
 						</div>
 					</div>
@@ -201,11 +210,35 @@ window.onload=function (){
 	if(get("tag")==1){
 		click3();
 		alert("Upload Success!");
-	}else if(get("tag"==2)){
+	}else if(get("tag")==2){
 		click3();
 		alert("Upload Failed!");
+	}else if(get("tag")==3){
+		click4();
+		alert("Upload PDF Success!");
+	}else if(get("tag")==4){
+		click4();
+		alert("Upload PDF Failed!");
+	}else if(get("tag")==5){
+		click3();
+		alert("Edit Success!");
 	}
-	
+	else if(get("tag")==6){
+		click3();
+		alert("Edit Failed!");
+	}
+	/*
+	if(get("resultstr1")!=""){
+		document.getElementById("result1").innerHTML=unescape(decodeURI(get("resultstr1")));
+	}
+	if(get("resultstr2")!=""){
+		document.getElementById("result2").innerHTML=unescape(decodeURI(get("resultstr2")));
+	}
+	*/
+	var now=new Date();
+	if(now<starttime || now >endtime){
+		document.getElementById("upBtn").style.display="none";
+	}
 }
 </script>
 <script src="./PageJS/labpage.js"></script>

@@ -53,6 +53,13 @@ public class Lab0Upload extends ActionSupport{
 			e.printStackTrace();
 			return "FAILED";
 		}
+		
+		try {
+			//添加时间检测逻辑！！！！！！
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 		try {				//保存文件到指定路径
 			//1.拿到ServletContext
 			//ServletContext servletContext = ServletActionContext.getServletContext();
