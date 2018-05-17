@@ -210,6 +210,7 @@ public class Lab0Upload extends ActionSupport{
 			}
 			
 			pro.waitFor();
+			pro.destroy();
 		}catch(Exception e) {
 			e.printStackTrace();
 			return null;

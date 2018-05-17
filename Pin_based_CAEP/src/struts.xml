@@ -60,6 +60,7 @@
     </package>
     <package name="LAB" extends="struts-default">
     	<action name="GotoLab" class="com.wcp.project.lab.GotoLab" method="gotolab">
+    		<param name="LabNum">0</param>
     		<result name="stuLOGGED">/WEB-INF/pages/Experiments/LabPage.jsp</result>
     		<result name="teaLOGGED">/WEB-INF/pages/Teacher/Lab/LabPage0.jsp</result>
     		<result name="taLOGGED"></result>
@@ -68,6 +69,7 @@
     		<result name="FAILED" type="redirectAction">GotoLogin</result>
     	</action>
     	<action name="GotoLab1" class="com.wcp.project.lab.GotoLab" method="gotolab">
+    		<param name="LabNum">1</param>
     		<result name="stuLOGGED">/WEB-INF/pages/Experiments/LabPage1.jsp</result>
     		<result name="teaLOGGED"></result>
     		<result name="taLOGGED"></result>
@@ -76,6 +78,7 @@
     		<result name="FAILED" type="redirectAction">GotoLogin</result>
     	</action>
     	<action name="GotoLab2" class="com.wcp.project.lab.GotoLab" method="gotolab">
+    		<param name="LabNum">2</param>
     		<result name="stuLOGGED">/WEB-INF/pages/Experiments/LabPage2.jsp</result>
     		<result name="teaLOGGED"></result>
     		<result name="taLOGGED"></result>
@@ -84,6 +87,7 @@
     		<result name="FAILED" type="redirectAction">GotoLogin</result>
     	</action>
     	<action name="GotoLab3" class="com.wcp.project.lab.GotoLab" method="gotolab">
+    		<param name="LabNum">3</param>
     		<result name="stuLOGGED">/WEB-INF/pages/Experiments/LabPage3.jsp</result>
     		<result name="teaLOGGED"></result>
     		<result name="taLOGGED"></result>
@@ -92,19 +96,9 @@
     		<result name="FAILED" type="redirectAction">GotoLogin</result>
     	</action>
     	
-    	<action name="Lab0Upload" class="com.wcp.project.lab.Lab0Upload" method="upload0">
-    		<interceptor-ref name="defaultStack">
- 	        <!-- 限制上传文件的扩展名。如果有多个，使用逗号分隔
- 	        <param name="fileUpload.allowedExtensions">cpp</param>-->
-	        <!-- 限制上传文件的MIME类型。 如果有多个，使用逗号分隔--> 
-            <param name="fileUpload.allowedTypes">text/plain</param>
-	        </interceptor-ref>
-	        <result name="SUCCESS" type="redirectAction">GotoLab?tag=1</result>
-	        <result name="FAILED" type="redirectAction">GotoLab?tag=2</result>
-    	</action>
     	<action name="download" class="com.wcp.project.lab.LabDownload">  
 		    <!-- 服务器端待下载文件的路径 -->  
-		    <param name="filePath">/WEB-INF/ServerFiles/0</param>  
+		    <!--  <param name="filePath">/WEB-INF/ServerFiles/0</param>  -->
 		    <!-- 处理文件下载时，一定要将返回result的类型设置为stream -->  
 		    <result name="success" type="stream">  
 		        <!-- 指定下载文件的MIME类型 -->  
@@ -115,6 +109,17 @@
 		        <param name="contentDisposition">attachment;filename="${fileName}"</param>  
 		    </result>  
 		</action>
+		
+    	<action name="Lab0Upload" class="com.wcp.project.lab.Lab0Upload" method="upload0">
+    		<interceptor-ref name="defaultStack">
+ 	        <!-- 限制上传文件的扩展名。如果有多个，使用逗号分隔
+ 	        <param name="fileUpload.allowedExtensions">cpp</param>-->
+	        <!-- 限制上传文件的MIME类型。 如果有多个，使用逗号分隔--> 
+            <param name="fileUpload.allowedTypes">text/plain</param>
+	        </interceptor-ref>
+	        <result name="SUCCESS" type="redirectAction">GotoLab?tag=1</result>
+	        <result name="FAILED" type="redirectAction">GotoLab?tag=2</result>
+    	</action>
 		<action name="Lab0UploadPDF" class="com.wcp.project.lab.Lab0Upload" method="uploadPDF">
     		<interceptor-ref name="defaultStack">
  	        <!-- 限制上传文件的扩展名。如果有多个，使用逗号分隔
@@ -136,19 +141,37 @@
 	        <result name="SUCCESS" type="redirectAction">GotoLab1?tag=1</result>
 	        <result name="FAILED" type="redirectAction">GotoLab1?tag=2</result>
     	</action>
-    	<action name="download1" class="com.wcp.project.lab.LabDownload">  
-		    <!-- 服务器端待下载文件的路径 -->  
-		    <param name="filePath">/WEB-INF/ServerFiles/1</param>  
-		    <!-- 处理文件下载时，一定要将返回result的类型设置为stream -->  
-		    <result name="success" type="stream">  
-		        <!-- 指定下载文件的MIME类型 -->  
-		        <param name="contentType">${contentType}</param>  
-		        <!-- 指定有当前Action 中的哪个方法返回数据流 -->  
-		        <param name="inputName">fileInputStream</param>  
-		        <!-- 指定文件下载时，浏览器处理文件的方式 -->  
-		        <param name="contentDisposition">attachment;filename="${fileName}"</param>  
-		    </result>  
-		</action>
+    	<action name="Lab1UploadPDF" class="com.wcp.project.lab.Lab1Upload" method="uploadPDF">
+    		<interceptor-ref name="defaultStack">
+ 	        <!-- 限制上传文件的扩展名。如果有多个，使用逗号分隔
+ 	        <param name="fileUpload.allowedExtensions">cpp</param>-->
+	        <!-- 限制上传文件的MIME类型。 如果有多个，使用逗号分隔--> 
+            <param name="fileUpload.allowedTypes">application/pdf</param>
+	        </interceptor-ref>
+	        <result name="SUCCESS" type="redirectAction">GotoLab1?tag=3</result>
+	        <result name="FAILED" type="redirectAction">GotoLab1?tag=4</result>
+    	</action>
+    	
+    	<action name="Lab2Upload" class="com.wcp.project.lab.Lab2Upload" method="upload">
+    		<interceptor-ref name="defaultStack">
+ 	        <!-- 限制上传文件的扩展名。如果有多个，使用逗号分隔
+ 	        <param name="fileUpload.allowedExtensions">cpp</param>-->
+	        <!-- 限制上传文件的MIME类型。 如果有多个，使用逗号分隔--> 
+            <param name="fileUpload.allowedTypes">text/plain</param>
+	        </interceptor-ref>
+	        <result name="SUCCESS" type="redirectAction">GotoLab2?tag=1</result>
+	        <result name="FAILED" type="redirectAction">GotoLab2?tag=2</result>
+    	</action>
+    	<action name="Lab2UploadPDF" class="com.wcp.project.lab.Lab2Upload" method="uploadPDF">
+    		<interceptor-ref name="defaultStack">
+ 	        <!-- 限制上传文件的扩展名。如果有多个，使用逗号分隔
+ 	        <param name="fileUpload.allowedExtensions">cpp</param>-->
+	        <!-- 限制上传文件的MIME类型。 如果有多个，使用逗号分隔--> 
+            <param name="fileUpload.allowedTypes">application/pdf</param>
+	        </interceptor-ref>
+	        <result name="SUCCESS" type="redirectAction">GotoLab2?tag=3</result>
+	        <result name="FAILED" type="redirectAction">GotoLab2?tag=4</result>
+    	</action>
     </package>
     <!--  -->
     <package name="ACHI" extends="struts-default">

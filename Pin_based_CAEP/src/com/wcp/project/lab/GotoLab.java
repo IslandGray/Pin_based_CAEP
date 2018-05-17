@@ -22,6 +22,7 @@ public class GotoLab {
 	private String result2;
 	private String status;
 	private String reportstatus;
+	private String LabNum;
 	
 	public String useracc=null;
 	
@@ -33,14 +34,29 @@ public class GotoLab {
 	        useracc=query;
 	        if(query!=null && query!="") {
 	        	String role=(String)session.get("role");
-	        	System.out.println("Go to "+query+"'s lab0 AS "+role);
+	        	System.out.println("Go to "+query+"'s lab"+LabNum+" AS "+role);
 	        	
 	        	loadTime();		//加载开始、结束时间	
 	        	
 	        	switch(role) {
 	        	case "student":{
-	        		loadResult();
-	        		loadStatus();
+	        		switch (LabNum) {
+					case "0":
+						loadResult0();
+		        		loadStatus0();
+						break;
+					case "1":
+						loadResult("1");
+		        		loadStatus();
+						break;
+					case "2":
+						loadResult("2");
+		        		loadStatus();
+						break;
+					default:
+						break;
+					}
+	        		
 		        	return "stuLOGGED";
 		        }
 		        case "teacher":{
@@ -72,7 +88,8 @@ public class GotoLab {
 			// 开启事务
 	        session2.beginTransaction();
 	        Query query2 = session2.createQuery("from Lab where number = ?");
-	        query2.setInteger(0, 0);
+	        //query2.setInteger(0, 0);
+	        query2.setParameter(0, LabNum);
 	        List<Lab> list=query2.list();
 	        for(Lab lab:list) {
 	        	starttime=lab.getBegin();
@@ -85,24 +102,25 @@ public class GotoLab {
 			e.printStackTrace();
 		}
 	}
-	public void loadStatus() throws Exception{
-		if(result1=="No File" && result2=="No File") {
+	public void loadStatus0() throws Exception{
+		if(result1.equals("No File") && result2.equals("No File")) {
 			status="未启动";
 		}else if(result1.substring(0, 6).equals("Finish") && result2.substring(0, 6).equals("Finish")) {
 			status="执行完毕";
 		}else {
 			status="出错";
 		}
-		/*
-		try {
-			LoadQuery lQuery=new LoadQuery();
-			lQuery.queryHQL("")
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		*/
 	}
-	public void loadResult() throws Exception{
+	public void loadStatus() throws Exception{
+		if(result1.equals("No File")) {
+			status="未启动";
+		}else if(result1.substring(0, 6).equals("Finish")) {
+			status="执行完毕";
+		}else {
+			status="出错";
+		}
+	}
+	public void loadResult0() throws Exception{
 		LoadQuery loadQuery=new LoadQuery();
 		try {
 			List<Object> list=loadQuery.query("Excute", "account", useracc, "number", "0-1");
@@ -136,6 +154,27 @@ public class GotoLab {
 			e.printStackTrace();
 		}
 	}
+	public void loadResult(String num) throws Exception{
+		LoadQuery loadQuery=new LoadQuery();
+		try {
+			List<Object> list=loadQuery.query("Excute", "account", useracc, "number", num);
+			if(list.isEmpty()) {
+				result1="No File";
+				Excute excute=new Excute();
+				excute.setAccount(useracc);
+				excute.setNumber(num);
+				excute.setInfo(result1);
+				loadQuery.savein(excute);
+			}
+			else {
+				Excute excute=(Excute) list.get(0);
+				result1=excute.getInfo();
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 
 	public Date getStarttime() {
 		return starttime;
@@ -183,6 +222,14 @@ public class GotoLab {
 
 	public void setReportstatus(String reportstatus) {
 		this.reportstatus = reportstatus;
+	}
+
+	public String getLabNum() {
+		return LabNum;
+	}
+
+	public void setLabNum(String labNum) {
+		LabNum = labNum;
 	}
 	
 	

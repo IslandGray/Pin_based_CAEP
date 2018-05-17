@@ -1,6 +1,6 @@
 package com.wcp.project.lab;
 import com.wcp.DAO.LoadQuery;
-import com.wcp.DAO.X1;
+import com.wcp.DAO.X2;
 import com.wcp.FILE.*;
 import com.wcp.tools.*;
 
@@ -20,15 +20,15 @@ import org.apache.commons.io.FileUtils;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class Lab1Upload extends ActionSupport{
+public class Lab2Upload extends ActionSupport{
 	//输入输出jsp相关变量
-	private File lab1file;
-	private String lab1fileFileName;
-	private String lab1fileContentType;
+	private File lab2file;
+	private String lab2fileFileName;
+	private String lab2fileContentType;
 	
-	private File lab1report;
-	private String lab1reportFileName;
-	private String lab1reportContentType;
+	private File lab2report;
+	private String lab2reportFileName;
+	private String lab2reportContentType;
 	
 	private String resultstr1;
 	//类内变量
@@ -65,15 +65,15 @@ public class Lab1Upload extends ActionSupport{
 			}
 			
 			//剪切：把临时文件剪切指定的位置，并且给他重命名。 注意：临时文件没有了
-			newFile1=new File(file,"CacheModel.h");
-			lab1file.renameTo(newFile1);
+			newFile1=new File(file,"BranchPredictor.h");
+			lab2file.renameTo(newFile1);
 			System.out.println(newFile1.getPath()+" has saved.");
 			
 			File fileLAB=new File(addr+"/"+id);
 			if(!file.exists()){
 				file.mkdirs();
 			}
-			FileUtils.copyFile(new File(addr+"/lab1.cpp"), new File(file,id+"_lab1.cpp"));
+			FileUtils.copyFile(new File(addr+"/lab2.cpp"), new File(file,id+"_lab2.cpp"));
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -88,12 +88,13 @@ public class Lab1Upload extends ActionSupport{
 				file.mkdirs();
 			}
 			//尝试make
-			if((resultstr=excuteLinux("make TEST_TOOL_ROOTS="+id+"/"+id+"_lab1", addr ,"错误"))!=null) {
+			UsualTools tool=new UsualTools();
+			if((resultstr=tool.excuteLinux("make TEST_TOOL_ROOTS="+id+"/"+id+"_lab2", addr ,"错误"))!=null) {
 				System.out.println("Find Error: "+resultstr);
 				resultstr1=resultstr;
 			}else {//尝试运行
-				resultstr=excuteLinux("../../../pin -t obj-intel64/"+id+"/"+id+"_lab1.so "
-						+ "-o "+id+"/lab1.out -- "+testBin, addr ,"错误");
+				resultstr=tool.excuteLinux("../../../pin -t obj-intel64/"+id+"/"+id+"_lab2.so "
+						+ "-o "+id+"/lab2.out -- "+testBin, addr ,"错误");
 				if(resultstr!=null) {
 					System.out.println("Find Error: "+resultstr);
 					resultstr1=resultstr;
@@ -101,7 +102,7 @@ public class Lab1Upload extends ActionSupport{
 				}else {
 					resultstr1="Finish! ";
 					ReadFile rd=new ReadFile();
-					resultstr1=resultstr1+rd.getOUTline(addr+"/"+id+"/lab1.out");
+					resultstr1=resultstr1+rd.getOUTline(addr+"/"+id+"/lab2.out");
 					System.out.println(resultstr1);
 				}
 			}
@@ -114,7 +115,7 @@ public class Lab1Upload extends ActionSupport{
 		try {
 			LoadQuery loadQuery=new LoadQuery();
 						
-			int lab1excute=0;
+			int lab2excute=0;
 			if(resultstr1.contains("Finish")) {
 				String[] liStrings=resultstr1.split(" ");
 				for(String i:liStrings) {
@@ -124,21 +125,21 @@ public class Lab1Upload extends ActionSupport{
 				
 		        UsualTools tools=new UsualTools();
 		        String grade=tools.getStringFrom(liStrings[1]).get(0);
-				lab1excute=Integer.parseInt(grade.substring(0, grade.length()-1));
+				lab2excute=Integer.parseInt(grade.substring(0, grade.length()-1));
 				/************************/
 			}
 			
-			List<Object> l=loadQuery.queryHQL("from X1 where account = '"+acc+"'");
+			List<Object> l=loadQuery.queryHQL("from X2 where account = '"+acc+"'");
 			if(l.isEmpty()) {
-				X1 x=new X1();
+				X2 x=new X2();
 				x.setAccount(acc);
-				x.setExcute(lab1excute);
+				x.setExcute(lab2excute);
 				loadQuery.savein(x);
 			}else {
-				loadQuery.update("update X1 x set x.excute = "+lab1excute+" where account = '"+acc+"'");
+				loadQuery.update("update X2 x set x.excute = "+lab2excute+" where account = '"+acc+"'");
 			}
 			//保存执行结果
-			loadQuery.update("update Excute e set e.info = '"+resultstr1+"' where account = '"+acc+"' and number = '1'");
+			loadQuery.update("update Excute e set e.info = '"+resultstr1+"' where account = '"+acc+"' and number = '2'");
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -146,31 +147,7 @@ public class Lab1Upload extends ActionSupport{
 		}
 		return "SUCCESS";
 	}
-	
-	private String excuteLinux(String cmd,String ADDR,String find) throws Exception {
-		String line=null;
-		String resultstr=null;
-		try {
-			Process pro=Runtime.getRuntime().exec(cmd, null, new File(ADDR));
-			InputStream ret=pro.getErrorStream();
-			BufferedReader br=new BufferedReader(new InputStreamReader(ret, "UTF-8"));
-			while((line=br.readLine())!=null) {
-				System.out.println(line);
-				if(line.contains(find)) {
-					resultstr=line;
-					break;
-				}
-			}
-			
-			pro.waitFor();
-			pro.destroy();
-		}catch(Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-		return resultstr;
-	}
-	
+		
 	public String uploadPDF() {
 		try {				//读取session的登录信息
 			ActionContext actionContext = ActionContext.getContext();    	  
@@ -193,8 +170,8 @@ public class Lab1Upload extends ActionSupport{
 			//FileUtils.copyFile(myfile, new File(file,myfileFileName));
 			
 			//剪切：把临时文件剪切指定的位置，并且给他重命名。 注意：临时文件没有了
-			newPDF=new File(file,id+"_lab1.pdf");
-			lab1report.renameTo(newPDF);
+			newPDF=new File(file,id+"_lab2.pdf");
+			lab2report.renameTo(newPDF);
 			System.out.println(newPDF.getPath()+" has saved.");
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -203,52 +180,52 @@ public class Lab1Upload extends ActionSupport{
 		return "SUCCESS";
 	}
 
-	public File getLab1file() {
-		return lab1file;
+	public File getLab2file() {
+		return lab2file;
 	}
 
-	public void setLab1file(File lab1file) {
-		this.lab1file = lab1file;
+	public void setLab2file(File lab2file) {
+		this.lab2file = lab2file;
 	}
 
-	public String getLab1fileFileName() {
-		return lab1fileFileName;
+	public String getLab2fileFileName() {
+		return lab2fileFileName;
 	}
 
-	public void setLab1fileFileName(String lab1fileFileName) {
-		this.lab1fileFileName = lab1fileFileName;
+	public void setLab2fileFileName(String lab2fileFileName) {
+		this.lab2fileFileName = lab2fileFileName;
 	}
 
-	public String getLab1fileContentType() {
-		return lab1fileContentType;
+	public String getLab2fileContentType() {
+		return lab2fileContentType;
 	}
 
-	public void setLab1fileContentType(String lab1fileContentType) {
-		this.lab1fileContentType = lab1fileContentType;
+	public void setLab2fileContentType(String lab2fileContentType) {
+		this.lab2fileContentType = lab2fileContentType;
 	}
 
-	public File getLab1report() {
-		return lab1report;
+	public File getLab2report() {
+		return lab2report;
 	}
 
-	public void setLab1report(File lab1report) {
-		this.lab1report = lab1report;
+	public void setLab2report(File lab2report) {
+		this.lab2report = lab2report;
 	}
 
-	public String getLab1reportFileName() {
-		return lab1reportFileName;
+	public String getLab2reportFileName() {
+		return lab2reportFileName;
 	}
 
-	public void setLab1reportFileName(String lab1reportFileName) {
-		this.lab1reportFileName = lab1reportFileName;
+	public void setLab2reportFileName(String lab2reportFileName) {
+		this.lab2reportFileName = lab2reportFileName;
 	}
 
-	public String getLab1reportContentType() {
-		return lab1reportContentType;
+	public String getLab2reportContentType() {
+		return lab2reportContentType;
 	}
 
-	public void setLab1reportContentType(String lab1reportContentType) {
-		this.lab1reportContentType = lab1reportContentType;
+	public void setLab2reportContentType(String lab2reportContentType) {
+		this.lab2reportContentType = lab2reportContentType;
 	}
 
 	public String getResultstr1() {
@@ -258,6 +235,8 @@ public class Lab1Upload extends ActionSupport{
 	public void setResultstr1(String resultstr1) {
 		this.resultstr1 = resultstr1;
 	}
+
+	
 
 	
 	

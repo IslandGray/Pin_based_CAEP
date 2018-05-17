@@ -89,14 +89,14 @@
 						<div class="card border-dark mb-3" style="">
 						    <div class="card-header">Resources and Downloads</div>
 						    <div class="card-body">
-						    	<p>Part1:
-						    	<a href="download.action?fileName=inscount.cpp" class="card-link">ins-count</a>
+						    	<p>待补全的模板CacheModel类:
+						    	<a href="download.action?fileName=CacheModel.h&filePath=/WEB-INF/ServerFiles/1" class="card-link">CacheModel.h</a>
 						    	</p>
-						    	<p>Part2:
-						    	<a href="download.action?fileName=insdiscount.cpp" class="card-link">ins-discount</a>
+						    	<p>Pintool:
+						    	<a href="download.action?fileName=testCache.cpp&filePath=/WEB-INF/ServerFiles/1" class="card-link">testCache.cpp</a>
 						    	</p>
 						    	<p>实验报告模板:
-						    	<a href="download.action?fileName=report0.docx" class="card-link">report0.docx</a>
+						    	<a href="download.action?fileName=report1.docx&filePath=/WEB-INF/ServerFiles/1" class="card-link">report1.docx</a>
 						    	</p>
 						    </div>
 						</div>
@@ -108,17 +108,14 @@
 						    	<p class="card-text">开始时间：<h6 id="starttime">${starttime}</h6></p>
 						    	<p class="card-text">截止时间：<h6 id="endtime">${endtime}</h6></p>
 						    </div>
-						    <form action="Lab0Upload.action" method="post" enctype="multipart/form-data">
+						    <form action="Lab1Upload.action" method="post" enctype="multipart/form-data">
 							    <fieldset>
 								    <ul class="list-group list-group-flush">
 									    <li class="list-group-item">
-									    	<h5>Part 1：<small class="text-muted"> 上传1个你完成的Pintool（.cpp）</small></h5>
-									    	<input class="form-control-file" id="lab01file" name="lab01file" aria-describedby="fileHelp" type="file">
+									    	<h5>Part 1：<small class="text-muted"> 上传1个你完成的缓存模型（.h）</small></h5>
+									    	<input class="form-control-file" id="lab1file" name="lab1file" aria-describedby="fileHelp" type="file">
 									    </li>
-									    <li class="list-group-item">
-									    	<h5>Part 2：<small class="text-muted"> 上传1个你完成的Pintool（.cpp）</small></h5>
-									    	<input class="form-control-file" id="lab02file" name="lab02file" aria-describedby="fileHelp" type="file">
-									    </li>
+									   
 									</ul>
 									<div class="card-body">
 										<button type="submit" class="btn btn-primary btn-lg btn-block" id="upBtn">上传</button>
@@ -137,13 +134,10 @@
 						    </div>
 						     <ul class="list-group list-group-flush">
 							    <li class="list-group-item">
-							    	<h5>Part 1<small class="text-muted"> (服务器文件名：lab0-1.cpp)</small></h5>
+							    	<h5>CacheModel<small class="text-muted"> (服务器文件名：lab1.cpp)</small></h5>
 							    	<p id="result1">${result1}</p>
 							    </li>
-							    <li class="list-group-item">
-							    	<h5>Part 2<small class="text-muted"> (服务器文件名：lab0-2.cpp)</small></h5>
-							    	<p id="result2">${result2}</p>
-							    </li>
+							   
 							</ul>
 						</div>
 					</div>
@@ -151,11 +145,11 @@
 						<div class="card border-dark mb-3" style="">
 						    <div class="card-header">提交你的报告</div>
 						    <div class="card-body">
-						     	<form action="Lab0UploadPDF.action" method="post" enctype="multipart/form-data">
+						     	<form action="Lab1UploadPDF.action" method="post" enctype="multipart/form-data">
 						     	<fieldset>
 							    	<h5>实验报告：<small class="text-muted"> （仅接受.pdf）</small></h5>
 							    	<p class="text-primary">${reportstatus}</p>
-									<input class="form-control-file" id="lab0report" name="lab0report" aria-describedby="fileHelp" type="file">
+									<input class="form-control-file" id="lab1report" name="lab1report" aria-describedby="fileHelp" type="file">
 									<p></p>
 									<button type="submit" class="btn btn-primary btn-lg btn-block">上传</button>
 								</fieldset>

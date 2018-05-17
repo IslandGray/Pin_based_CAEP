@@ -110,13 +110,13 @@
 						    <div class="card-header">Resources and Downloads</div>
 						    <div class="card-body">
 						    	<p>Part1:
-						    	<a href="download.action?fileName=inscount.cpp" class="card-link">ins-count</a>
+						    	<a href="download.action?fileName=inscount.cpp&filePath=/WEB-INF/ServerFiles/0" class="card-link">ins-count</a>
 						    	</p>
 						    	<p>Part2:
-						    	<a href="download.action?fileName=insdiscount.cpp" class="card-link">ins-discount</a>
+						    	<a href="download.action?fileName=insdiscount.cpp&filePath=/WEB-INF/ServerFiles/0" class="card-link">ins-discount</a>
 						    	</p>
 						    	<p>实验报告模板:
-						    	<a href="download.action?fileName=report0.docx" class="card-link">report0.docx</a>
+						    	<a href="download.action?fileName=report0.docx&filePath=/WEB-INF/ServerFiles/0" class="card-link">report0.docx</a>
 						    	</p>
 						    </div>
 						</div>
