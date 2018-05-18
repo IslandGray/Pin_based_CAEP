@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-5-16 14:45:35 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.wcp.DAO.X3" table="x3">
+        <id name="account" type="java.lang.String">
+            <column name="ACCOUNT" />
+            <generator class="assigned" />
+        </id>
+        <property name="excute" type="int">
+            <column name="EXCUTE" />
+        </property>
+        <property name="report" type="int">
+            <column name="REPORT" />
+        </property>
+        <property name="another" type="int">
+            <column name="ANOTHER" />
+        </property>
+        <property name="score" type="int">
+            <column name="SCORE" />
+        </property>
+        <property name="addon" type="java.lang.String">
+            <column name="ADDON" />
+        </property>
+    </class>
+</hibernate-mapping>

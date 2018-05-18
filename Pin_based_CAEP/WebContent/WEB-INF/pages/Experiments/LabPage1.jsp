@@ -119,6 +119,7 @@
 									</ul>
 									<div class="card-body">
 										<button type="submit" class="btn btn-primary btn-lg btn-block" id="upBtn">上传</button>
+										<button type="button" class="btn btn-primary btn-lg btn-block disabled" id="upBtnDis" style="display:none">上传</button>
 								    	<small class="card-text text-muted">提交后，你可以稍后回来或刷新查看程序评测结果</small>
 								    </div>
 							    </fieldset>
@@ -230,8 +231,11 @@ window.onload=function (){
 	}
 	*/
 	var now=new Date();
-	if(now<starttime || now >endtime){
+	var s=new Date(document.getElementById("starttime").innerHTML);
+	var e=new Date(document.getElementById("endtime").innerHTML);
+	if(now<s || now >e){
 		document.getElementById("upBtn").style.display="none";
+		document.getElementById("upBtnDis").style.display="block";
 	}
 }
 </script>

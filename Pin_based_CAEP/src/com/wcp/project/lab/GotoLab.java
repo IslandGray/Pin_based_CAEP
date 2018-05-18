@@ -53,6 +53,10 @@ public class GotoLab {
 						loadResult("2");
 		        		loadStatus();
 						break;
+					case "3":
+						loadResult("3");
+		        		loadStatus();
+						break;
 					default:
 						break;
 					}

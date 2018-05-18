@@ -172,6 +172,27 @@
 	        <result name="SUCCESS" type="redirectAction">GotoLab2?tag=3</result>
 	        <result name="FAILED" type="redirectAction">GotoLab2?tag=4</result>
     	</action>
+    	
+    	<action name="Lab3Upload" class="com.wcp.project.lab.Lab3Upload" method="upload">
+    		<interceptor-ref name="defaultStack">
+ 	        <!-- 限制上传文件的扩展名。如果有多个，使用逗号分隔-->
+ 	        <param name="fileUpload.allowedExtensions">m</param>
+	        <!-- 限制上传文件的MIME类型。 如果有多个，使用逗号分隔
+            <param name="fileUpload.allowedTypes">text/plain</param>--> 
+	        </interceptor-ref>
+	        <result name="SUCCESS" type="redirectAction">GotoLab3?tag=1</result>
+	        <result name="FAILED" type="redirectAction">GotoLab3?tag=2</result>
+    	</action>
+    	<action name="Lab3UploadPDF" class="com.wcp.project.lab.Lab3Upload" method="uploadPDF">
+    		<interceptor-ref name="defaultStack">
+ 	        <!-- 限制上传文件的扩展名。如果有多个，使用逗号分隔
+ 	        <param name="fileUpload.allowedExtensions">cpp</param>-->
+	        <!-- 限制上传文件的MIME类型。 如果有多个，使用逗号分隔--> 
+            <param name="fileUpload.allowedTypes">application/pdf</param>
+	        </interceptor-ref>
+	        <result name="SUCCESS" type="redirectAction">GotoLab3?tag=3</result>
+	        <result name="FAILED" type="redirectAction">GotoLab3?tag=4</result>
+    	</action>
     </package>
     <!--  -->
     <package name="ACHI" extends="struts-default">

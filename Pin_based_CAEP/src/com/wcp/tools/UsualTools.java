@@ -44,4 +44,52 @@ public class UsualTools {
 		}
 		return resultstr;
 	}
+	
+	public String excuteLinuxReverse(String cmd,String ADDR,String find) throws Exception {
+		String line=null;
+		String resultstr=null;
+		try {
+			Process pro=Runtime.getRuntime().exec(cmd, null, new File(ADDR));
+			InputStream ret=pro.getInputStream();
+			BufferedReader br=new BufferedReader(new InputStreamReader(ret, "UTF-8"));
+			while((line=br.readLine())!=null) {
+				System.out.println(line);
+				resultstr=line;
+				if(line.contains(find)) {
+					resultstr=null;
+					break;
+				}
+			}
+			
+			pro.waitFor();
+			pro.destroy();
+		}catch(Exception e) {
+			e.printStackTrace();
+			return "Error";
+		}
+		return resultstr;
+	}
+	public String excuteLinuxOutLog(String cmd,String ADDR,String find) throws Exception {
+		String line=null;
+		String resultstr=null;
+		try {
+			Process pro=Runtime.getRuntime().exec(cmd, null, new File(ADDR));
+			InputStream ret=pro.getInputStream();
+			BufferedReader br=new BufferedReader(new InputStreamReader(ret, "UTF-8"));
+			while((line=br.readLine())!=null) {
+				System.out.println(line);
+				if(line.contains(find)) {
+					resultstr=line;
+					break;
+				}
+			}
+			
+			pro.waitFor();
+			pro.destroy();
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return resultstr;
+	}
 }
