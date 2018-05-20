@@ -94,58 +94,58 @@
 						</div>
 					</div>
 					<div id="1c" style="display:none">
-						<div class="card border-success mb-3" style="">
+						<div class="card border-success mb-3" style="" id="lab0border">
 						  <div class="card-header">Lab0</div>
 						  <div class="card-body">
 						    <h4 class="card-title">Pin入门与指令依赖距离分析</h4>
-						    <p class="card-text">即将开始</p>
-						    <div><div style="float: left;">xx</div><div style="float: right">yy</div><div style="clear: both;"></div></div>
+						    <p class="card-text" id="lab0status">即将开始</p>
+						    <div><div id="st0" style="float: left;">${st[0] }</div><div id="et0" style="float: right">${et[0] }</div><div style="clear: both;"></div></div>
 						    <div class="progress">
-							  <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 100%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+							  <div class="progress-bar progress-bar-striped bg-success" id="lab0pro" role="progressbar" style="width: 100%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
 							</div>
 						  </div>
 						</div>
-						<div class="card border-success mb-3" style="">
+						<div class="card border-success mb-3" style="" id="lab1border">
 						  <div class="card-header">Lab1</div>
 						  <div class="card-body">
 						    <h4 class="card-title">内存缓存的设计与性能分析</h4>
-						    <p class="card-text">即将开始</p>
-						    <div><div style="float: left;">xx</div><div style="float: right">yy</div><div style="clear: both;"></div></div>
+						    <p class="card-text" id="lab1status">即将开始</p>
+						    <div><div id="st1" style="float: left;">${st[1] }</div><div id="et1" style="float: right">${et[1] }</div><div style="clear: both;"></div></div>
 						    <div class="progress">
-							  <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 100%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+							  <div class="progress-bar progress-bar-striped bg-success" id="lab1pro" role="progressbar" style="width: 100%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
 							</div>
 						  </div>
 						</div>
-						<div class="card border-primary mb-3" style="">
+						<div class="card border-primary mb-3" style="" id="lab2border">
 						  <div class="card-header">Lab2</div>
 						  <div class="card-body">
 						    <h4 class="card-title">分支预测的算法与实践</h4>
-						    <p class="card-text">即将开始</p>
-						    <div><div style="float: left;">xx</div><div style="float: right">yy</div><div style="clear: both;"></div></div>
+						    <p class="card-text" id="lab2status">即将开始</p>
+						    <div><div id="st2" style="float: left;">${st[2] }</div><div id="et2" style="float: right">${et[2] }</div><div style="clear: both;"></div></div>
 						    <div class="progress">
-							  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+							  <div class="progress-bar progress-bar-striped progress-bar-animated" id="lab2pro" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
 							</div>
 						  </div>
 						</div>
-						<div class="card border-danger mb-3" style="">
+						<div class="card border-danger mb-3" style="" id="lab3border">
 						  <div class="card-header">Lab3</div>
 						  <div class="card-body">
 						    <h4 class="card-title">高速缓存一致性协议</h4>
-						    <p class="card-text">即将开始</p>
-						    <div><div style="float: left;">xx</div><div style="float: right">yy</div><div style="clear: both;"></div></div>
+						    <p class="card-text" id="lab3status">即将开始</p>
+						    <div><div id="st3" style="float: left;">${st[3] }</div><div id="et3" style="float: right">${et[3] }</div><div style="clear: both;"></div></div>
 						    <div class="progress">
-							  <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 20%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+							  <div class="progress-bar progress-bar-striped bg-danger" id="lab3pro" role="progressbar" style="width: 20%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
 							</div>
 						  </div>
 						</div>
-						<div class="card border-warning mb-3" style="">
+						<div class="card border-warning mb-3" style="" id="lab4border">
 						  <div class="card-header">Lab4</div>
 						  <div class="card-body">
 						    <h4 class="card-title">多核处理器的多级缓存探索</h4>
-						    <p class="card-text">尚未开放</p>
+						    <p class="card-text" id="lab4status">尚未开放</p>
 						    <div><div style="float: left;"></div>	<div style="float: right">	</div><div style="clear: both;"></div></div>
 						    <div class="progress">
-							  <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 1%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+							  <div class="progress-bar progress-bar-striped bg-warning" id="lab4pro" role="progressbar" style="width: 1%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
 							</div>
 						  </div>
 						</div>
@@ -271,6 +271,123 @@ window.onload=function (){
 	
 	var userName="<%=session.getAttribute("username")%>";
 	document.getElementById("HomeSummary").innerHTML="Welcome back,教师/助教  "+userName+"!";
+	
+	var now=new Date();
+	var st0=new Date(document.getElementById("st0").innerHTML);
+	var et0=new Date(document.getElementById("et0").innerHTML);
+	var st1=new Date(document.getElementById("st1").innerHTML);
+	var et1=new Date(document.getElementById("et1").innerHTML);
+	var st2=new Date(document.getElementById("st2").innerHTML);
+	var et2=new Date(document.getElementById("et2").innerHTML);
+	var st3=new Date(document.getElementById("st3").innerHTML);
+	var et3=new Date(document.getElementById("et3").innerHTML);
+	if(now>st0 && now<et0){
+		var all=(et0-st0)/(1000*60*60*24);
+		var lasttime=(et0-now)/(1000*60*60*24);
+		var lastpercent=100-lasttime*100/all;
+		if(lasttime <=1){
+			document.getElementById("lab0status").innerHTML="即将结束";
+			document.getElementById("lab0border").setAttribute("class","card border-danger mb-3");
+			document.getElementById("lab0pro").setAttribute("class","progress-bar progress-bar-striped bg-danger");
+			document.getElementById("lab0pro").style.width=lastpercent+"%";
+		}else{
+			document.getElementById("lab0status").innerHTML="正在进行";
+			document.getElementById("lab0border").setAttribute("class","card border-primary mb-3");
+			document.getElementById("lab0pro").setAttribute("class","progress-bar progress-bar-striped progress-bar-animated");
+			document.getElementById("lab0pro").style.width=lastpercent+"%";
+		}
+	}else if(st0>now){
+		document.getElementById("lab0status").innerHTML="尚未开始";
+		document.getElementById("lab0border").setAttribute("class","card border-warning mb-3");
+		document.getElementById("lab0pro").setAttribute("class","progress-bar progress-bar-striped bg-warning");
+		document.getElementById("lab0pro").style.width="1%";
+	}else if(now>et0){
+		document.getElementById("lab0status").innerHTML="已结束";
+		document.getElementById("lab0border").setAttribute("class","card border-success mb-3");
+		document.getElementById("lab0pro").setAttribute("class","progress-bar progress-bar-striped bg-success");
+		document.getElementById("lab0pro").style.width="100%";
+	}
+	
+	if(now>st1 && now<et1){
+		var all=(et1-st1)/(1000*60*60*24);
+		var lasttime=(et1-now)/(1000*60*60*24);
+		var lastpercent=100-lasttime*100/all;
+		if(lasttime <=1){
+			document.getElementById("lab1status").innerHTML="即将结束";
+			document.getElementById("lab1border").setAttribute("class","card border-danger mb-3");
+			document.getElementById("lab1pro").setAttribute("class","progress-bar progress-bar-striped bg-danger");
+			document.getElementById("lab1pro").style.width=lastpercent+"%";
+		}else{
+			document.getElementById("lab1status").innerHTML="正在进行";
+			document.getElementById("lab1border").setAttribute("class","card border-primary mb-3");
+			document.getElementById("lab1pro").setAttribute("class","progress-bar progress-bar-striped progress-bar-animated");
+			document.getElementById("lab1pro").style.width=lastpercent+"%";
+		}
+	}else if(st1>now){
+		document.getElementById("lab1status").innerHTML="尚未开始";
+		document.getElementById("lab1border").setAttribute("class","card border-warning mb-3");
+		document.getElementById("lab1pro").setAttribute("class","progress-bar progress-bar-striped bg-warning");
+		document.getElementById("lab1pro").style.width="1%";
+	}else if(now>et1){
+		document.getElementById("lab1status").innerHTML="已结束";
+		document.getElementById("lab1border").setAttribute("class","card border-success mb-3");
+		document.getElementById("lab1pro").setAttribute("class","progress-bar progress-bar-striped bg-success");
+		document.getElementById("lab1pro").style.width="100%";
+	}
+	
+	if(now>st2 && now<et2){
+		var all=(et2-st2)/(1000*60*60*24);
+		var lasttime=(et2-now)/(1000*60*60*24);
+		var lastpercent=100-lasttime*100/all;
+		if(lasttime <=1){
+			document.getElementById("lab2status").innerHTML="即将结束";
+			document.getElementById("lab2border").setAttribute("class","card border-danger mb-3");
+			document.getElementById("lab2pro").setAttribute("class","progress-bar progress-bar-striped bg-danger");
+			document.getElementById("lab2pro").style.width=lastpercent+"%";
+		}else{
+			document.getElementById("lab2status").innerHTML="正在进行";
+			document.getElementById("lab2border").setAttribute("class","card border-primary mb-3");
+			document.getElementById("lab2pro").setAttribute("class","progress-bar progress-bar-striped progress-bar-animated");
+			document.getElementById("lab2pro").style.width=lastpercent+"%";
+		}
+	}else if(st2>now){
+		document.getElementById("lab2status").innerHTML="尚未开始";
+		document.getElementById("lab2border").setAttribute("class","card border-warning mb-3");
+		document.getElementById("lab2pro").setAttribute("class","progress-bar progress-bar-striped bg-warning");
+		document.getElementById("lab2pro").style.width="1%";
+	}else if(now>et2){
+		document.getElementById("lab2status").innerHTML="已结束";
+		document.getElementById("lab2border").setAttribute("class","card border-success mb-3");
+		document.getElementById("lab2pro").setAttribute("class","progress-bar progress-bar-striped bg-success");
+		document.getElementById("lab2pro").style.width="100%";
+	}
+	
+	if(now>st3 && now<et3){
+		var all=(et3-st3)/(1000*60*60*24);
+		var lasttime=(et3-now)/(1000*60*60*24);
+		var lastpercent=100-lasttime*100/all;
+		if(lasttime <=1){
+			document.getElementById("lab3status").innerHTML="即将结束";
+			document.getElementById("lab3border").setAttribute("class","card border-danger mb-3");
+			document.getElementById("lab3pro").setAttribute("class","progress-bar progress-bar-striped bg-danger");
+			document.getElementById("lab3pro").style.width=lastpercent+"%";
+		}else{
+			document.getElementById("lab3status").innerHTML="正在进行";
+			document.getElementById("lab3border").setAttribute("class","card border-primary mb-3");
+			document.getElementById("lab3pro").setAttribute("class","progress-bar progress-bar-striped progress-bar-animated");
+			document.getElementById("lab3pro").style.width=lastpercent+"%";
+		}
+	}else if(st3>now){
+		document.getElementById("lab3status").innerHTML="尚未开始";
+		document.getElementById("lab3border").setAttribute("class","card border-warning mb-3");
+		document.getElementById("lab3pro").setAttribute("class","progress-bar progress-bar-striped bg-warning");
+		document.getElementById("lab3pro").style.width="1%";
+	}else if(now>et3){
+		document.getElementById("lab3status").innerHTML="已结束";
+		document.getElementById("lab3border").setAttribute("class","card border-success mb-3");
+		document.getElementById("lab3pro").setAttribute("class","progress-bar progress-bar-striped bg-success");
+		document.getElementById("lab3pro").style.width="100%";
+	}
 }
 
 </script>
