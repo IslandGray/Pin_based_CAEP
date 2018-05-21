@@ -1,5 +1,6 @@
 package com.wcp.DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -19,6 +20,8 @@ public class LoadQuery {
 	     session.beginTransaction();
 	     Query query = session.createQuery(hql);
 	     list=(List<Object>)query.list();
+	     session.close();
+         sessionFactory.close();
 		 return list;
 	 }
 	 public List<Object> query(String table) {
@@ -30,6 +33,8 @@ public class LoadQuery {
 	     session.beginTransaction();
 	     Query query = session.createQuery("from "+table);
 	     list=(List<Object>)query.list();
+	     session.close();
+         sessionFactory.close();
 		 return list;
 	 }
 	 
@@ -42,8 +47,16 @@ public class LoadQuery {
 	     session.beginTransaction();
 	     Query query = session.createQuery("from "+table+" where "+para+" = ?");
 	     query.setParameter(0, value);
-	     list=(List<Object>)query.list();
-		 return list;
+	     try {
+		     list=(List<Object>)query.list();
+		     System.out.println(list.toString());
+	     }catch(Exception e) {
+	    	 e.printStackTrace();
+	    	 list=new ArrayList<Object>();
+	     }
+	     session.close();
+         sessionFactory.close();
+    	 return list;
 	 }
 	 public Object queryRTN(String table,String para,String value,String rtnPara){
 		 list = null;
@@ -55,6 +68,8 @@ public class LoadQuery {
 	     Query query = session.createQuery("from "+table+" where "+para+" = ?");
 	     query.setParameter(0, value);
 	     list=(List<Object>)query.list();
+	     session.close();
+         sessionFactory.close();
 	     if(list.isEmpty()) {
 	    	 return null;
 	     }else {

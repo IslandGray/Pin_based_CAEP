@@ -1,6 +1,10 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="com.wcp.DAO.*,java.util.List" %>
+<%
+	String user=(String)session.getAttribute("USER");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -143,69 +147,61 @@
 							    	<button type="button" class="btn btn-outline-dark" id="cancel" onclick="cancelsetTime()" style="display:none">取消</button>
 						    	
 						    	</form>
-						    	<!--  
-						    	<div class="modal" id="setTimeDia" aria-hidden="true">
-								  <div class="modal-dialog" role="document">
-								    <div class="modal-content">
-								      <div class="modal-header">
-								        <h5 class="modal-title">设定任务时间</h5>
-								        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								          <span aria-hidden="true">&times;</span>
-								        </button>
-								      </div>
-								      <form id="fm" action="editTime.action" method="post" enctype="multipart/form-data"></form>
-								      <fieldset>
-									      <div class="modal-body">
-									        <p>将该任务的开始与结束时间修改为：</p>
-									        <p>Start:
-								        	    <input type="text" id="datepicker" name="startT">
-                            					00:00
-									        </p>
-									        <p>End :
-									        	<input type="text" id="datepicker2" name="endT">
-									        	00:00
-									        </p>
-									      </div>
-									      <div class="modal-footer">
-									        <button type="button" class="btn btn-primary" id="sb">Save changes</button>
-									        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-									      </div>
-									  </fieldset>
-								      </form>
-								    </div>
-								  </div>
-								</div>
-								-->
+						    	
 						    </div>
 						    <div class="card-body">
-						    	<table class="table table-hover">
+						    	<div class="form-group">
+								    <select class="custom-select" id="classselect" onchange="freshTable()">
+								      <option selected="">选择一个班号</option>
+								    <%
+								    	LoadQuery ld=new LoadQuery();
+								    	List<Object> myClass=ld.queryHQL("from Group g where account='"+user+"' order by g.group");
+								    	List<String> groupList=new ArrayList();
+								    	for(Object i:myClass){
+								    		groupList.add(((Group)i).getGroup());
+								    %>
+						    			<option value="<%=((Group)i).getGroup()%>"><%=((Group)i).getGroup()%></option>
+								    <%
+								    	}
+								    %> 
+
+								    </select>
+								</div>
+						    	<table class="table table-hover" id="tableId">
 						    		<thead>
 									    <tr>
 									      <th scope="col">学号</th>
 									      <th scope="col">姓名</th>
+									      <th scope="col">班号</th>
 									      <th scope="col">文件</th>
 									      <th scope="col">运行得分</th>
 									    </tr>
 									</thead>
 									<tbody>
 									<%
-								 		LoadQuery ld=new LoadQuery();
+								 		ld=new LoadQuery();
 								 		X0 x=new X0();
 								 		List<Object> list=ld.query("X0");
+								 		List<User> u=new ArrayList();
 								 		for(Object i:list){
 								 			String acc=((X0)i).getAccount();
 								 			User us=(User)ld.queryRTN("User", "account", acc, "");
+								 			u.add(us);
 								 			int id=us.getID();
+								 			String group=us.getGroup();
+								 			if(groupList.contains(group)){
 								 	%>
-										<tr>
+										<tr style="display:none;">
 									      <td><%=us.getStudentID() %></td>
 									      <td><%=us.getName() %></td>
+									      <td><%=us.getGroup() %></td>
 									      <td><a href="devDownload.action?fileName=<%=id%>_lab0-1.cpp&filePath=/usr/services/pin-3.5/source/tools/ManualExamples/<%=id%>">part1</a>
 									      		/<a href="devDownload.action?fileName=<%=id%>_lab0-2.cpp&filePath=/usr/services/pin-3.5/source/tools/ManualExamples/<%=id%>">part2</a></td>
 									      <td><a href="#" onclick="showDialog('<%=us.getAccount() %>')"><%=((X0)i).getExcute() %></a></td>
 									    </tr>
 								   <%
-							 			}
+								 			}
+								 		}
 							    	%>  
 									</tbody>
   
@@ -218,7 +214,43 @@
 						    <div class="card-header">Check Reports</div>
 						    <div class="card-body">
 						    	<h5>实验报告：<small class="text-muted"> （仅.pdf）</small></h5>
-								
+						    	<div class="form-group">
+								    <select class="custom-select" id="classselect" onchange="">
+								      <option selected="">选择一个班号</option>
+									<%
+									for(String i:groupList){
+									%>
+										<option value="<%=i%>"><%=i%></option>
+									<%
+									}
+									%>
+									</select>
+								</div>
+								<table class="table table-hover" id="tableId">
+						    		<thead>
+									    <tr>
+									      <th scope="col">学号</th>
+									      <th scope="col">姓名</th>
+									      <th scope="col">班号</th>
+									      <th scope="col">文件</th>
+									    </tr>
+									</thead>
+									<tbody>
+									<%
+								 		for(User i:u){
+
+								 	%>
+										<tr style="display:none;">
+									      <td><%=i.getStudentID() %></td>
+									      <td><%=i.getName() %></td>
+									      <td><%=i.getGroup() %></td>
+									      <td><a href="#">查看PDF</a></td>
+									    </tr>
+								   <%
+								 		}
+							    	%>  
+									</tbody>
+						    	</table>
 						    </div>
 						</div>
 					</div>
@@ -242,18 +274,18 @@
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script src="./js/bootstrap.min.js"></script>
 <script type="text/javascript">
-function get(p){
-	//var url=location.search;
-	var url= document.URL.toString();
-	var tmpStr=p+"=";
-	var tmp_reg=eval("/[\?&]"+tmpStr+"/i");
-	if(url.search(tmp_reg)==-1)return null;
-	else{
-	    var a=url.split(/[\?&]/);
-	    for(var i=0;i<a.length;i++)
-	         if(a[i].search(eval("/^"+tmpStr+"/i"))!=-1)return a[i].substring(tmpStr.length);
+	function get(p){
+		//var url=location.search;
+		var url= document.URL.toString();
+		var tmpStr=p+"=";
+		var tmp_reg=eval("/[\?&]"+tmpStr+"/i");
+		if(url.search(tmp_reg)==-1)return null;
+		else{
+		    var a=url.split(/[\?&]/);
+		    for(var i=0;i<a.length;i++)
+		         if(a[i].search(eval("/^"+tmpStr+"/i"))!=-1)return a[i].substring(tmpStr.length);
+		}
 	}
-}
 
 	function showDialog(val) {
 		var name=prompt("要修改的数值:","");  
@@ -282,6 +314,23 @@ function get(p){
 		document.getElementById("set").style.display="block";
 		document.getElementById("starttime").style.display="block";
 		document.getElementById("endtime").style.display="block";
+	}
+	
+	function freshTable() {
+		var obj=document.getElementById("classselect");
+		var index=obj.selectedIndex;
+		var value = obj.options[index].value;
+		
+		var tab=document.getElementById("tableId");    //获取table对像
+		var trs=tab.getElementsByTagName("tr");
+		for(var i=1;i<trs.length;i++){
+	        var tds=trs[i].getElementsByTagName("td");
+	        if(tds[3].innerHTML==value || tds[2].innerHTML==value){
+	        	trs[i].style.display='table-row';
+	        }else{
+	        	trs[i].style.display='none';
+	        }
+	    }
 	}
 
 window.onload=function (){

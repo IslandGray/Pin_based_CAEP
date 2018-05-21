@@ -115,13 +115,13 @@
 							       -->
 							    </div>
 							    <div class="form-group" id="stuForm">
-							      <label id="labelid" for="inputStuID">Student ID<a style="color:red">*</a></label>
+							      <label id="labelid" for="inputStuID">Student ID(学号)<a style="color:red">*</a></label>
 							      <input class="form-control" id="inputStuID" name="inputStuID" aria-describedby="stuidHelp" placeholder="Enter Student ID" type="text">
 							    </div>
 							    
 							    <div class="form-group">
-							      <label for="inputPhone">Phone</label>
-							      <input class="form-control" id="inputPhone" name="inputPhone" aria-describedby="phoneHelp" placeholder="Enter Phone" type="text">
+							      <label for="inputPhone">Class No(班号)<a style="color:red">*</a></label>
+							      <input class="form-control" id="inputPhone" name="inputPhone" aria-describedby="phoneHelp" placeholder="Enter Class No." type="text">
 							    </div>
 							    
 							    <div class="form-group" style="display:none">
@@ -249,9 +249,18 @@
 		if(select=="0"){
 			document.getElementById('inputStuID').placeholder="Enter Student ID";
 			document.getElementById('labelid').innerHTML="Student ID<font color=red>*<font>";
+			document.getElementById('inputPhone').readOnly=false;
+			document.getElementById('inputPhone').value="";
 		}else if(select=="1" || select=="2"){
 			document.getElementById('inputStuID').placeholder="Enter ID";
 			document.getElementById('labelid').innerHTML="ID<font color=red>*<font>";
+			document.getElementById('inputPhone').readOnly=true;
+			if(select=="1"){
+				document.getElementById('inputPhone').value="teacher";
+			}
+			else if (select=="2") {
+				document.getElementById('inputPhone').value="ta";
+			}
 		}
 	}
 </script>
@@ -270,7 +279,8 @@
 		var name=document.getElementById('inputName');
 		var passwd=document.getElementById('inputPassword');
 		var id=document.getElementById('inputStuID');
-		if(email.value=="" || name.value==""||passwd.value==""||id.value==""){
+		var group=document.getElementById('inputPhone');
+		if(email.value=="" || name.value==""||passwd.value==""||id.value=="" || group.value==""){
 			document.getElementById('alertEmpty').style.display="block";
 			return false;
 		}

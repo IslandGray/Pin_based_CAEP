@@ -28,7 +28,6 @@ public class FinishReg {
 			u.setAccount(inputEmail);
 			u.setName(inputName);
 			u.setPasswd(inputPassword);
-			u.setPhone(inputPhone);
 			switch(inputSchool) {
 			case "0":{
 				u.setSchool("哈尔滨工业大学");break;
@@ -43,17 +42,21 @@ public class FinishReg {
 			switch(inputRole) {
 			case "0":{
 				u.setRole("student");
+				u.setGroup(inputPhone);
 				break;
 			}
 			case "1":{
 				u.setRole("teacher");
+				u.setGroup("teacher");
 				break;
 			}
 			case "2":{
 				u.setRole("ta");
+				u.setGroup("ta");
 				break;
 			}
 			default:u.setRole("student");
+					u.setGroup(inputPhone);
 			}
 		}catch(Exception e) {
 			System.out.println(toString());

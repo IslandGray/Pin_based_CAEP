@@ -25,5 +25,6 @@
         <mapping resource="./com/wcp/DAO/X1.hbm.xml" />
         <mapping resource="./com/wcp/DAO/X2.hbm.xml" />
         <mapping resource="./com/wcp/DAO/X3.hbm.xml" />
+        <mapping resource="./com/wcp/DAO/Group.hbm.xml" />
     </session-factory>
 </hibernate-configuration>

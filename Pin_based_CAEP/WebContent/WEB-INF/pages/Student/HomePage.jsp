@@ -43,11 +43,11 @@
 			<div class="row clearfix">
 				<div class="col-md-2 column">
 					<div class="list-group">
-					    <a href="#" id="0Btn" onclick="click0()" class="list-group-item list-group-item-action" style="box-pack:end;">
+					    <a href="#" id="0Btn" onclick="click0()" class="list-group-item list-group-item-action active" style="box-pack:end;">
 					    	To-Do List
 					    	<span class="badge badge-light badge-pill">###</span>
 					    </a>
-					    <a href="#" id="1Btn" onclick="click1()" class="list-group-item list-group-item-action active">
+					    <a href="#" id="1Btn" onclick="click1()" class="list-group-item list-group-item-action">
 					    	Schedule
 					    </a>
 					    <a href="#" id="2Btn" onclick="click2()" class="list-group-item list-group-item-action">

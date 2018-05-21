@@ -174,7 +174,7 @@ window.onload=function (){
 		document.getElementById("noLog").style.display="inline-box";
 		document.getElementById("hasLog").style.display="none";
 	}
-	document.getElementById("navbar-home").setAttribute("class","nav-item active");
+	document.getElementById("navbar-achievement").setAttribute("class","nav-item active");
 	
 	var userName="<%=session.getAttribute("username")%>";
 	document.getElementById("HomeSummary").innerHTML=userName+"'s score";

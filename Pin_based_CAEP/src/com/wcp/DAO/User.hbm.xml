@@ -4,12 +4,12 @@
 <!-- Generated 2018-5-16 14:45:35 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="com.wcp.DAO.User" table="user">
-        <id name="ID" type="int">
-            <column name="ID" />
+        <id name="Account" type="java.lang.String">
+            <column name="ACCOUNT" />
             <generator class="assigned" />
         </id>
-        <property name="Account" type="java.lang.String">
-            <column name="ACCOUNT" />
+        <property name="ID" type="int">
+            <column name="ID" />
         </property>
         <property name="Name" type="java.lang.String">
             <column name="NAME" />
@@ -20,8 +20,8 @@
         <property name="StudentID" type="java.lang.String">
             <column name="STUDENTID" />
         </property>
-        <property name="Phone" type="java.lang.String">
-            <column name="PHONE" />
+        <property name="Group" type="java.lang.String">
+            <column name="GROUP" />
         </property>
         <property name="Role" type="java.lang.String">
             <column name="ROLE" />

@@ -6,7 +6,7 @@ public class User {
 	private String Name;
 	private String School;
 	private String StudentID;
-	private String Phone;
+	private String Group;
 	private String Role;
 	private String Passwd;
 	
@@ -41,11 +41,11 @@ public class User {
 	public void setStudentID(String studentID) {
 		StudentID = studentID;
 	}
-	public String getPhone() {
-		return Phone;
+	public String getGroup() {
+		return Group;
 	}
-	public void setPhone(String phone) {
-		Phone = phone;
+	public void setGroup(String group) {
+		Group = group;
 	}
 	public String getPasswd() {
 		return Passwd;
@@ -62,7 +62,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [Account=" + Account + ", ID=" + ID + ", Name=" + Name + ", School=" + School + ", StudentID="
-				+ StudentID + ", Phone=" + Phone + ", Role=" + Role + ", Passwd=" + Passwd + "]";
+				+ StudentID + ", Group=" + Group + ", Role=" + Role + ", Passwd=" + Passwd + "]";
 	}	
 	
 	
