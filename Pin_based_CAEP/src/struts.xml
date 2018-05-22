@@ -52,7 +52,7 @@
     	<action name="GotoHomepage" class="com.wcp.project.homepage.GotoHome" method="gohome">
     		<result name="stuLOGGED">/WEB-INF/pages/Student/HomePage.jsp</result>
     		<result name="teaLOGGED">/WEB-INF/pages/Teacher/teaHome.jsp</result>
-    		<result name="taLOGGED"></result>
+    		<result name="taLOGGED">/WEB-INF/pages/Teacher/teaHome.jsp</result>
     		<result name="adLOGGED"></result>
     		<result name="suLOGGED"></result>
     		<result name="FAILED" type="redirectAction">GotoLogin</result>
@@ -63,7 +63,7 @@
     		<param name="LabNum">0</param>
     		<result name="stuLOGGED">/WEB-INF/pages/Experiments/LabPage.jsp</result>
     		<result name="teaLOGGED">/WEB-INF/pages/Teacher/Lab/LabPage0.jsp</result>
-    		<result name="taLOGGED"></result>
+    		<result name="taLOGGED">/WEB-INF/pages/Teacher/Lab/LabPage0.jsp</result>
     		<result name="adLOGGED"></result>
     		<result name="suLOGGED"></result>
     		<result name="FAILED" type="redirectAction">GotoLogin</result>
@@ -235,6 +235,16 @@
     	<action name="editTime" class="com.wcp.project.teacher.lab.EditExcute" method="editTime">
     		<result name="SUCCESS" type="redirectAction">GotoLab?tag=5</result>
     		<result name="FAILED" type="redirectAction">GotoLab?tag=6</result>
+    	</action>
+    	<action name="checkStuPDF" class="com.wcp.project.teacher.lab.CheckPDF" method="check">
+    		<result name="SUCCESS">/WEB-INF/pages/Teacher/Lab/CheckPDF.jsp</result>
+    		<result name="FAILED"></result>
+    		<result name="NOFILE"></result>
+    		<result name="NOLOGIN" type="redirectAction">GotoLogin</result>
+    	</action>
+    	<action name="editPDF" class="com.wcp.project.teacher.lab.EditExcute" method="editPDF">
+    		<result name="SUCCESS" type="redirectAction">GotoLab?tag=7</result>
+    		<result name="FAILED" type="redirectAction">GotoLab?tag=8</result>
     	</action>
     </package>
    

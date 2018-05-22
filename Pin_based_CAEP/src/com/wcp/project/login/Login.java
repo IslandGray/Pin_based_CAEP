@@ -30,11 +30,13 @@ public class Login  extends ActionSupport{
 		      e.printStackTrace();
 		      return "ERROR";
 		    }
+	     Connection connect=null;
+	     Statement stmt=null;
 	     try {
-	    	 Connection connect = DriverManager.getConnection(
+	    	  connect = DriverManager.getConnection(
 			          "jdbc:mysql://localhost:3306/pin_based_caep","root","wcp19970221");
 		      System.out.println("Success connect Mysql server!");
-		      Statement stmt = connect.createStatement();
+		      stmt = connect.createStatement();
 		      ResultSet rs = stmt.executeQuery("select * from user where Account='"+inputEmail+"' and Passwd='"+inputPassword+"'");
 		      if(rs.next()){
 		    	  String username=rs.getString("Name");
@@ -55,9 +57,10 @@ public class Login  extends ActionSupport{
 		          case "admin":
 		          case "SuperAdmin":{
 		        	  session.put("role", role);
+		        	  stmt.close();
+		        	  connect.close();
 		        	  return "SUCCESS";
 		          }
-		          default:return "ERROR";
 		          }
 		          
 		      }
@@ -65,6 +68,8 @@ public class Login  extends ActionSupport{
 	    	 e.printStackTrace();
 	     }
    	  	 System.out.print(inputEmail+" Login Failed");
+   	  	 stmt.close();
+   	  	 connect.close();
 	     return "ERROR";
 	}
 

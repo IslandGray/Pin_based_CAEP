@@ -215,7 +215,7 @@
 						    <div class="card-body">
 						    	<h5>实验报告：<small class="text-muted"> （仅.pdf）</small></h5>
 						    	<div class="form-group">
-								    <select class="custom-select" id="classselect" onchange="">
+								    <select class="custom-select" id="pdfselect" onchange="freshPDFtable()">
 								      <option selected="">选择一个班号</option>
 									<%
 									for(String i:groupList){
@@ -226,27 +226,45 @@
 									%>
 									</select>
 								</div>
-								<table class="table table-hover" id="tableId">
+								<table class="table table-hover" id="pdftableId">
 						    		<thead>
 									    <tr>
 									      <th scope="col">学号</th>
 									      <th scope="col">姓名</th>
 									      <th scope="col">班号</th>
 									      <th scope="col">文件</th>
+									      <th scope="col">得分</th>
 									    </tr>
 									</thead>
 									<tbody>
 									<%
 								 		for(User i:u){
-
+								 			if(groupList.contains(i.getGroup())){
+								 				List<Object> ex=ld.query("Excute", "account", i.getAccount(), "number","lab0");
+								 				X0 xx=(X0)(ld.queryRTN("X0", "account", i.getAccount(),""));
+								 				String report=null;
+								 				String h1=null;String h2=null;
+								 				String c1=null;
+								 				if(!ex.isEmpty()){
+								 					report=String.valueOf(xx.getReport());
+								 					h1="checkStuPDF.action?id="+i.getID()+"&filename="+i.getID()+"_lab0.pdf";
+								 					h2="查看PDF";
+								 					c1="showPDFDialog('"+i.getAccount()+"')";
+								 				}else{
+								 					report="未上传文件";
+								 					h1="#";h2="尚未上传PDF";
+								 					c1="alert('未上传文件！')";
+								 				}
 								 	%>
 										<tr style="display:none;">
 									      <td><%=i.getStudentID() %></td>
 									      <td><%=i.getName() %></td>
 									      <td><%=i.getGroup() %></td>
-									      <td><a href="#">查看PDF</a></td>
+									      <td><a id="showpdf" target="_blank" href="<%=h1 %>"><%=h2 %></a></td>
+									      <td><a id="pdfscore" href="#" onclick="<%=c1 %>"><%=report %></a></td>
 									    </tr>
 								   <%
+								 			}
 								 		}
 							    	%>  
 									</tbody>
@@ -295,6 +313,15 @@
 			location.href="editExcute.action?acc="+val+"&to="+name;
 		}
 	}
+	function showPDFDialog(val) {
+		var name=prompt("报告得分:","");  
+		if(name)//如果返回的有内容
+		{
+			;
+			location.href="editPDF.action?acc="+val+"&to="+name;
+		}
+	}
+	
 	function setTime() {
 		document.getElementById("t1").style.display="block";
 		document.getElementById("t2").style.display="block";
@@ -322,6 +349,22 @@
 		var value = obj.options[index].value;
 		
 		var tab=document.getElementById("tableId");    //获取table对像
+		var trs=tab.getElementsByTagName("tr");
+		for(var i=1;i<trs.length;i++){
+	        var tds=trs[i].getElementsByTagName("td");
+	        if(tds[3].innerHTML==value || tds[2].innerHTML==value){
+	        	trs[i].style.display='table-row';
+	        }else{
+	        	trs[i].style.display='none';
+	        }
+	    }
+	}
+	function freshPDFtable() {
+		var obj=document.getElementById("pdfselect");
+		var index=obj.selectedIndex;
+		var value = obj.options[index].value;
+		
+		var tab=document.getElementById("pdftableId");    //获取table对像
 		var trs=tab.getElementsByTagName("tr");
 		for(var i=1;i<trs.length;i++){
 	        var tds=trs[i].getElementsByTagName("td");
@@ -363,6 +406,13 @@ window.onload=function (){
 	}
 	else if(get("tag")==6){
 		click3();
+		alert("Edit Failed!");
+	}else if(get("tag")==7){
+		click4();
+		alert("Edit Success!");
+	}
+	else if(get("tag")==8){
+		click4();
 		alert("Edit Failed!");
 	}
 	

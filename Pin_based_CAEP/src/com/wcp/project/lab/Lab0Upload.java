@@ -1,4 +1,5 @@
 package com.wcp.project.lab;
+import com.wcp.DAO.Excute;
 import com.wcp.DAO.LoadQuery;
 import com.wcp.DAO.X0;
 import com.wcp.FILE.*;
@@ -16,6 +17,7 @@ import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.sun.org.apache.xpath.internal.objects.XObject;
 
 public class Lab0Upload extends ActionSupport{
 	//输入输出jsp相关变量
@@ -243,6 +245,12 @@ public class Lab0Upload extends ActionSupport{
 			newPDF=new File(file,id+"_lab0.pdf");
 			lab0report.renameTo(newPDF);
 			System.out.println(newPDF.getPath()+" has saved.");
+			LoadQuery ld=new LoadQuery();
+			Excute excute=new Excute();
+			excute.setAccount(acc);
+			excute.setNumber("lab0");
+			excute.setInfo("true");
+			ld.savein(excute);
 		}catch(Exception e) {
 			e.printStackTrace();
 			return "FAILED";

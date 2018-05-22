@@ -21,20 +21,28 @@ public class RegTest {
 		      e.printStackTrace();
 		      return "ERROR";
 		    }
+	     Connection connect=null;
+	     Statement stmt=null;
 	     try {
-	    	 Connection connect = DriverManager.getConnection(
+	    	  connect = DriverManager.getConnection(
 			          "jdbc:mysql://localhost:3306/pin_based_caep","root","wcp19970221");
 		      System.out.println("Success connect Mysql server!");
-		      Statement stmt = connect.createStatement();
+		      stmt = connect.createStatement();
 		      ResultSet rs = stmt.executeQuery("select * from user where Account='"+inputEmail+"'");
 		      if(rs.next()){
 		    	  System.out.print("Already Registed!");
+	        	  stmt.close();
+	        	  connect.close();
 		    	  return "REGISTED";
 		      }
 	     }catch(Exception e) {
 	    	 e.printStackTrace();
-		      return "ERROR";
+	    	 stmt.close();
+       	  	 connect.close();
+		     return "ERROR";
 	     }
+	     stmt.close();
+   	  	 connect.close();
 	     return "SUCCESS";
 	}
 

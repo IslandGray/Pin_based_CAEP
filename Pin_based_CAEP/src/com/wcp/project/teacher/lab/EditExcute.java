@@ -35,6 +35,18 @@ public class EditExcute {
 		
 		return "SUCCESS";
 	}
+	public String editPDF() throws Exception{
+		try {
+			LoadQuery loadQuery=new LoadQuery();
+			loadQuery.update("update X0 x set x.report='"+to+"' where account = '"+acc+"'");
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			return "FAILED";
+		}
+		
+		return "SUCCESS";
+	}
 
 	public String getAcc() {
 		return acc;
