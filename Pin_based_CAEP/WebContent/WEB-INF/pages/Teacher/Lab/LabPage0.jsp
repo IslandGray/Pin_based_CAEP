@@ -208,6 +208,15 @@
 						    	</table>
 						    </div>
 						</div>
+						<div class="card border-dark mb-3" id="border" style="">
+							<div class="card-header">Duplicate check</div>
+						    <div class="card-body">
+						    	<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+								  <button type="button" class="btn btn-outline-danger" onclick="checkDup()">查重</button>
+								  
+								</div>
+						    </div>
+					    </div>
 					</div>
 					<div id="4c" style="display:none">
 						<div class="card border-dark mb-3" style="">
@@ -320,6 +329,9 @@
 			;
 			location.href="editPDF.action?acc="+val+"&to="+name;
 		}
+	}
+	function checkDup(){
+		location.href="CheckDup.action";
 	}
 	
 	function setTime() {

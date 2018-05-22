@@ -246,6 +246,10 @@
     		<result name="SUCCESS" type="redirectAction">GotoLab?tag=7</result>
     		<result name="FAILED" type="redirectAction">GotoLab?tag=8</result>
     	</action>
+    	<action name="CheckDup" class="com.wcp.project.teacher.lab.CheckDup" method="check">
+    		<result name="SUCCESS" type="redirectAction">GotoLab?tag=5</result>
+    		<result name="FAILED" type="redirectAction">GotoLab?tag=6</result>
+    	</action>
     </package>
    
 </struts>
