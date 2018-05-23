@@ -62,16 +62,16 @@
 						<div class="card  " style="">
 						    <div class="card-body">
 						    	<h4 class="card-title">高速缓存一致性协议</h4>
-							    <h6 class="card-subtitle mb-2 text-muted">Cost:1 Week</h6>
+							    <h6 class="card-subtitle mb-2 text-muted">Cost:4 Week</h6>
 							    <p class="card-text">依赖于：Linux，CMurphi</p>
 							    <ul class="list-group list-group-flush">
-								    <li class="list-group-item"><h6>Goal:</h6></li>
-								    <li class="list-group-item"><h7>在</h7></li>
-								    <li class="list-group-item"><h6>P</h6></li>
-								    <li class="list-group-item"><h7>在第二</h7></li>
+								    <li class="list-group-item"><h6>许多现代多核计算机系统都支持硬件共享内存</h6></li>
+								    <li class="list-group-item"><h6>每个处理器内核可以读取和写入单个共享地址空间</h6></li>
+								    <li class="list-group-item"><h6>需要管理各种高速缓存中数据的读写权限</h6></li>
+								    <li class="list-group-item"><h6>保证多核系统共享高速缓存正确运行</h6></li>
 								</ul>
 								<p> </p>
-								<p class="card-text">目的：</p>
+								<p class="card-text">目的：我们将设计和验证一个多核系统的缓存一致性协议。</p>
 						    </div>
 						</div>
 					</div>
@@ -80,7 +80,7 @@
 						    <div class="card-header">Guide</div>
 						    <div class="card-body">
 						    	<object data="./PDFsrc/Lab3.pdf" type="application/pdf" width="100%" height="1000">      
-								alt : <a href="./PDFsrc/Lab3.pdf">test.pdf</a>      
+								alt : <a href="./PDFsrc/Lab3.pdf">Lab3.pdf</a>      
 								</object> 
 						    </div>
 						</div>
@@ -149,7 +149,8 @@
 							    	<p class="text-primary">${reportstatus}</p>
 									<input class="form-control-file" id="lab3report" name="lab3report" aria-describedby="fileHelp" type="file">
 									<p></p>
-									<button type="submit" class="btn btn-primary btn-lg btn-block">上传</button>
+									<button type="submit" class="btn btn-primary btn-lg btn-block" id="upPDFbtn">上传</button>
+									<button type="button" class="btn btn-primary btn-lg btn-block disabled" id="upPDFbtnDis" style="display:none">上传</button>
 								</fieldset>
 								</form>
 						    </div>
@@ -204,7 +205,7 @@ window.onload=function (){
 		alert("Upload Success!");
 	}else if(get("tag")==2){
 		click3();
-		alert("Upload Failed!");
+		alert("Upload Failed or Not Time!");
 	}else if(get("tag")==3){
 		click4();
 		alert("Upload PDF Success!");
@@ -233,6 +234,8 @@ window.onload=function (){
 	if(now<s || now >e){
 		document.getElementById("upBtn").style.display="none";
 		document.getElementById("upBtnDis").style.display="block";
+		document.getElementById("upPDFbtn").style.display="none";
+		document.getElementById("upPDFbtnDis").style.display="block";
 	}
 }
 </script>

@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -42,12 +43,12 @@
 			</div>
 			<div class="row clearfix">
 				<div class="col-md-2 column">
-					<div class="list-group">
-					    <a href="#" id="0Btn" onclick="click0()" class="list-group-item list-group-item-action active" style="box-pack:end;">
+					<div class="list-group">  
+					    <a href="#" id="0Btn" onclick="click0()" class="list-group-item list-group-item-action active" style="box-pack:end;display:none">
 					    	To-Do List
 					    	<span class="badge badge-light badge-pill">###</span>
 					    </a>
-					    <a href="#" id="1Btn" onclick="click1()" class="list-group-item list-group-item-action">
+					    <a href="#" id="1Btn" onclick="click1()" class="list-group-item list-group-item-action active">
 					    	Schedule
 					    </a>
 					    <a href="#" id="2Btn" onclick="click2()" class="list-group-item list-group-item-action">
@@ -59,7 +60,7 @@
 					</div>
 				</div>
 				<div class="col-md-8 column">
-					<div id="0c">
+					<div id="0c" style="display:none">
 						<div class="card mb-3">
 							  <h3 class="card-header">Card header</h3>
 							  <div class="card-body">
@@ -93,7 +94,7 @@
 							  </div>
 						</div>
 					</div>
-					<div id="1c" style="display:none">
+					<div id="1c" >
 						<div class="card border-success mb-3" style="" id="lab0border">
 						  <div class="card-header">Lab0</div>
 						  <div class="card-body">
@@ -142,7 +143,7 @@
 						  <div class="card-header">Lab4</div>
 						  <div class="card-body">
 						    <h4 class="card-title">多核处理器的多级缓存探索</h4>
-						    <p class="card-text" id="lab4status">尚未开放</p>
+						    <p class="card-text" id="lab4status">未开放</p>
 						    <div><div style="float: left;"></div>	<div style="float: right">	</div><div style="clear: both;"></div></div>
 						    <div class="progress">
 							  <div class="progress-bar progress-bar-striped bg-warning" id="lab4pro" role="progressbar" style="width: 1%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
@@ -156,12 +157,26 @@
 						  <thead>
 						    <tr>
 						      <th scope="col">Type</th>
-						      <th scope="col">Column heading</th>
-						      <th scope="col">Column heading</th>
-						      <th scope="col">Column heading</th>
+						      <th scope="col">Name</th>
+						      <th scope="col">Link</th>
+						      <th scope="col"></th>
 						    </tr>
 						  </thead>
 						  <tbody>
+						  	<tr class="table-light">
+						      <th scope="row">Guide</th>
+						      <td>Pin 3.2 User Guide</td>
+						      <td><a target="_blank" href="https://software.intel.com/sites/landingpage/pintool/docs/81205/Pin/html/">link to</a></td>
+						      <td></td>
+						    </tr>
+						    <tr class="table-light">
+						      <th scope="row">Guide</th>
+						      <td>Intel Pin简介</td>
+						      <td><a target="_blank" href="http://terenceli.github.io/%E6%8A%80%E6%9C%AF/2014/01/02/intro-to-pin">link to</a></td>
+						      <td></td>
+						    </tr>
+						    
+					    <!--  
 						    <tr class="table-active">
 						      <th scope="row">Active</th>
 						      <td>Column content</td>
@@ -210,18 +225,13 @@
 						      <td>Column content</td>
 						      <td>Column content</td>
 						    </tr>
-						    <tr class="table-light">
-						      <th scope="row">Light</th>
-						      <td>Column content</td>
-						      <td>Column content</td>
-						      <td>Column content</td>
-						    </tr>
 						    <tr class="table-dark">
 						      <th scope="row">Dark</th>
 						      <td>Column content</td>
 						      <td>Column content</td>
 						      <td>Column content</td>
 						    </tr>
+					    -->
 						  </tbody>
 						</table> 
 					</div>
@@ -233,13 +243,13 @@
 					<div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
 						  <div class="card-header">Quickstart</div>
 						  <div class="card-body">
-						    <h4 class="card-title">Dark card title</h4>
-						    <p class="card-text">Some quick</p>
+						    <h4 class="card-title">当前时间:</h4>
+						    <p class="card-text"><%=(new Date()).toString() %></p>
 						  </div>
 						  <ul class="list-group list-group-flush">
-							    <li class="list-group-item text-white bg-dark mb-3">Cras justo odio</li>
-							    <li class="list-group-item text-white bg-dark mb-3">Dapibus ac facilisis in</li>
-							    <li class="list-group-item text-white bg-dark mb-3">Vestibulum at eros</li>
+							    <li class="list-group-item text-white bg-dark mb-3">请按时提交你的作业</li>
+							    <li class="list-group-item text-white bg-dark mb-3">不同作业间会进行查重</li>
+							    <li class="list-group-item text-white bg-dark mb-3">在Achievement查看你的各项成绩</li>
 						  </ul>
 					</div>
 				</div>

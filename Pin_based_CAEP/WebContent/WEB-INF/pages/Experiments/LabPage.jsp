@@ -159,7 +159,8 @@
 							    	<p class="text-primary">${reportstatus}</p>
 									<input class="form-control-file" id="lab0report" name="lab0report" aria-describedby="fileHelp" type="file">
 									<p></p>
-									<button type="submit" class="btn btn-primary btn-lg btn-block">上传</button>
+									<button type="submit" class="btn btn-primary btn-lg btn-block" id="upPDFbtn">上传</button>
+									<button type="button" class="btn btn-primary btn-lg btn-block disabled" id="upPDFbtnDis" style="display:none">上传</button>
 								</fieldset>
 								</form>
 						    </div>
@@ -214,7 +215,7 @@ window.onload=function (){
 		alert("Upload Success!");
 	}else if(get("tag")==2){
 		click3();
-		alert("Upload Failed!");
+		alert("Upload Failed or Not Time!");
 	}else if(get("tag")==3){
 		click4();
 		alert("Upload PDF Success!");
@@ -243,6 +244,8 @@ window.onload=function (){
 	if(now<s || now >e){
 		document.getElementById("upBtn").style.display="none";
 		document.getElementById("upBtnDis").style.display="block";
+		document.getElementById("upPDFbtn").style.display="none";
+		document.getElementById("upPDFbtnDis").style.display="block";
 	}
 }
 </script>

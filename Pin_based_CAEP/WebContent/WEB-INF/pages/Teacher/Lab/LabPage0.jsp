@@ -213,7 +213,19 @@
 						    <div class="card-body">
 						    	<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
 								  <button type="button" class="btn btn-outline-danger" onclick="checkDup()">查重</button>
-								  
+								</div>
+								<div style="">
+								<%
+									String resultURL=null;
+									List<Object> re=ld.query("Dup_Check", "tag", "1");
+									Dup_Check dp=null;
+									if(!re.isEmpty()){
+										dp=(Dup_Check)(re.get(0));
+								%>
+									<iframe id="resultpage" src="<%=dp.getSrc() %>" width="100%" height="500"></iframe>
+								<%
+									}
+								%>
 								</div>
 						    </div>
 					    </div>
@@ -290,7 +302,6 @@
 		</div>
 		</div>
 	</div>
-	
 	
 	<script src="./pageSources/footer.js"></script>
 </div>
@@ -426,6 +437,16 @@ window.onload=function (){
 	else if(get("tag")==8){
 		click4();
 		alert("Edit Failed!");
+	}
+	else if(get("tag")==9){
+		click3();
+		alert("Duplicate check Success!");
+		//document.getElementById("resultpage").style.display="block";
+		//document.getElementById("resultpage").innerHTML="http://moss.stanford.edu/results/884333163/"
+	}
+	else if(get("tag")==10){
+		click3();
+		alert("Duplicate check Failed!");
 	}
 	
 	

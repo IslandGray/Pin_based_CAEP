@@ -23,7 +23,7 @@ document.writeln("			  	</li>");
 document.writeln("		        <li class=\'nav-item\' id=\'navbar-achievement\'>");
 document.writeln("		        	<a class=\'nav-link\' href=\'GotoAchi.action\'>Achievement</a>");
 document.writeln("		        </li>");
-document.writeln("		        <li class=\'nav-item\' id=\'navbar-contact\'>");
+document.writeln("		        <li class=\'nav-item\' id=\'navbar-contact\' style=\'display:none\'>");
 document.writeln("		        	<a class=\'nav-link\' href=\'#\'>Contact</a>");
 document.writeln("		        </li>");
 document.writeln("		    </ul>");

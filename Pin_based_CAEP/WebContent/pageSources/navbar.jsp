@@ -23,7 +23,7 @@
 		        <li class="nav-item" id="navbar-achievement">
 		        	<a class="nav-link" href="GotoAchi.action">Achievement</a>
 		        </li>
-		        <li class="nav-item" id="navbar-contact">
+		        <li class="nav-item" id="navbar-contact" style="display:none">
 		        	<a class="nav-link" href="#">Contact</a>
 		        </li>
 		    </ul>

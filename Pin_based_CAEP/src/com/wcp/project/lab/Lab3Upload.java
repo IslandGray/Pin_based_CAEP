@@ -1,11 +1,13 @@
 package com.wcp.project.lab;
 
 import java.io.File;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.wcp.DAO.Lab;
 import com.wcp.DAO.LoadQuery;
 import com.wcp.DAO.X3;
 import com.wcp.tools.UsualTools;
@@ -42,10 +44,10 @@ public class Lab3Upload extends ActionSupport{
 			return "FAILED";
 		}
 		
-		try {
-			//添加时间检测逻辑！！！！！！
-		}catch(Exception e) {
-			e.printStackTrace();
+		//时间检测
+		int checktime=testTime();
+		if(checktime==1) {
+			return "FAILED";
 		}
 		
 		try {				//保存文件到指定路径
@@ -160,6 +162,12 @@ public class Lab3Upload extends ActionSupport{
 			e.printStackTrace();
 			return "FAILED";
 		}
+		//时间检测
+		int checktime=testTime();
+		if(checktime==1) {
+			return "FAILED";
+		}
+		
 		File newPDF=null;
 		try {				//保存文件到指定路径
 			//如果这个真实的目录不存在，需要创建
@@ -179,6 +187,24 @@ public class Lab3Upload extends ActionSupport{
 			return "FAILED";
 		}
 		return "SUCCESS";
+	}
+	
+	public int testTime(){
+		try {
+			LoadQuery loadQuery=new LoadQuery();
+			Lab list=(Lab)loadQuery.queryRTN("Lab", "number", "3","");
+			if(list!=null) {
+				Date sDate=list.getBegin();
+				Date eDate=list.getEnd();
+				Date now=new Date();
+				if(now.before(sDate) || now.after(eDate)) {
+					return 1;
+				}
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 	public File getLab3file() {

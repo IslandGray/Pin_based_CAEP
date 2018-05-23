@@ -142,7 +142,7 @@
 						  <div class="card-header">Lab4</div>
 						  <div class="card-body">
 						    <h4 class="card-title">多核处理器的多级缓存探索</h4>
-						    <p class="card-text" id="lab4status">尚未开放</p>
+						    <p class="card-text" id="lab4status">未开放</p>
 						    <div><div style="float: left;"></div>	<div style="float: right">	</div><div style="clear: both;"></div></div>
 						    <div class="progress">
 							  <div class="progress-bar progress-bar-striped bg-warning" id="lab4pro" role="progressbar" style="width: 1%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>

@@ -65,13 +65,13 @@
 							    <h6 class="card-subtitle mb-2 text-muted">Cost:1 Week</h6>
 							    <p class="card-text">依赖于：Pin，Linux</p>
 							    <ul class="list-group list-group-flush">
-								    <li class="list-group-item"><h6>Goal:</h6></li>
-								    <li class="list-group-item"><h7>在</h7></li>
-								    <li class="list-group-item"><h6>P</h6></li>
-								    <li class="list-group-item"><h7>在第二</h7></li>
+								    <li class="list-group-item"><h6>内存瓶颈是现代处理器设计中最重要的问题之一</h6></li>
+								    <li class="list-group-item"><h6>内存相对于处理器的速度而言是非常缓慢的，而内存访问却非常频繁</h6></li>
+								    <li class="list-group-item"><h6>软件对存储器的访问展现出高度的时间和空间局部性</h6></li>
+								    <li class="list-group-item"><h6>要提高内存访问的感知延迟</h6></li>
 								</ul>
 								<p> </p>
-								<p class="card-text">目的：</p>
+								<p class="card-text">目的：制造一个快速的，但必要的小内存——内存高速缓存，包含最近访问过的内存区域</p>
 						    </div>
 						</div>
 					</div>
@@ -80,7 +80,7 @@
 						    <div class="card-header">Guide</div>
 						    <div class="card-body">
 						    	<object data="./PDFsrc/Lab1.pdf" type="application/pdf" width="100%" height="1000">      
-								alt : <a href="./PDFsrc/Lab1.pdf">test.pdf</a>      
+								alt : <a href="./PDFsrc/Lab1.pdf">Lab1.pdf</a>      
 								</object> 
 						    </div>
 						</div>
@@ -152,7 +152,8 @@
 							    	<p class="text-primary">${reportstatus}</p>
 									<input class="form-control-file" id="lab1report" name="lab1report" aria-describedby="fileHelp" type="file">
 									<p></p>
-									<button type="submit" class="btn btn-primary btn-lg btn-block">上传</button>
+									<button type="submit" class="btn btn-primary btn-lg btn-block" id="upPDFbtn">上传</button>
+									<button type="button" class="btn btn-primary btn-lg btn-block disabled" id="upPDFbtnDis" style="display:none">上传</button>
 								</fieldset>
 								</form>
 						    </div>
@@ -207,7 +208,7 @@ window.onload=function (){
 		alert("Upload Success!");
 	}else if(get("tag")==2){
 		click3();
-		alert("Upload Failed!");
+		alert("Upload Failed or Not Time!");
 	}else if(get("tag")==3){
 		click4();
 		alert("Upload PDF Success!");
@@ -236,6 +237,8 @@ window.onload=function (){
 	if(now<s || now >e){
 		document.getElementById("upBtn").style.display="none";
 		document.getElementById("upBtnDis").style.display="block";
+		document.getElementById("upPDFbtn").style.display="none";
+		document.getElementById("upPDFbtnDis").style.display="block";
 	}
 }
 </script>

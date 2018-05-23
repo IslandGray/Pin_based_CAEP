@@ -62,16 +62,15 @@
 						<div class="card  " style="">
 						    <div class="card-body">
 						    	<h4 class="card-title">分支预测的算法与实践</h4>
-							    <h6 class="card-subtitle mb-2 text-muted">Cost:1 Week</h6>
+							    <h6 class="card-subtitle mb-2 text-muted">Cost:3 Week</h6>
 							    <p class="card-text">依赖于：Pin，Linux</p>
 							    <ul class="list-group list-group-flush">
-								    <li class="list-group-item"><h6>Goal:</h6></li>
-								    <li class="list-group-item"><h7>在</h7></li>
-								    <li class="list-group-item"><h6>P</h6></li>
-								    <li class="list-group-item"><h7>在第二</h7></li>
+								    <li class="list-group-item"><h6>分支结构在流水线处理器中可能会创建指令冒险</h6></li>
+								    <li class="list-group-item"><h6>处理器需要不间断地决定下一个要执行的指令</h6></li>
+								    <li class="list-group-item"><h6>错误地决定下一条指令的位置可能会极大影响处理器性能</h6></li>
 								</ul>
 								<p> </p>
-								<p class="card-text">目的：</p>
+								<p class="card-text">目的：实现分支预测器，接受来自处理器的指令地址并返回其分支方向。</p>
 						    </div>
 						</div>
 					</div>
@@ -80,7 +79,7 @@
 						    <div class="card-header">Guide</div>
 						    <div class="card-body">
 						    	<object data="./PDFsrc/Lab2.pdf" type="application/pdf" width="100%" height="1000">      
-								alt : <a href="./PDFsrc/Lab2.pdf">test.pdf</a>      
+								alt : <a href="./PDFsrc/Lab2.pdf">Lab2.pdf</a>      
 								</object> 
 						    </div>
 						</div>
@@ -152,7 +151,8 @@
 							    	<p class="text-primary">${reportstatus}</p>
 									<input class="form-control-file" id="lab2report" name="lab2report" aria-describedby="fileHelp" type="file">
 									<p></p>
-									<button type="submit" class="btn btn-primary btn-lg btn-block">上传</button>
+									<button type="submit" class="btn btn-primary btn-lg btn-block" id="upPDFbtn">上传</button>
+									<button type="button" class="btn btn-primary btn-lg btn-block disabled" id="upPDFbtnDis" style="display:none">上传</button>
 								</fieldset>
 								</form>
 						    </div>
@@ -207,7 +207,7 @@ window.onload=function (){
 		alert("Upload Success!");
 	}else if(get("tag")==2){
 		click3();
-		alert("Upload Failed!");
+		alert("Upload Failed or Not Time!");
 	}else if(get("tag")==3){
 		click4();
 		alert("Upload PDF Success!");
@@ -236,6 +236,8 @@ window.onload=function (){
 	if(now<s || now >e){
 		document.getElementById("upBtn").style.display="none";
 		document.getElementById("upBtnDis").style.display="block";
+		document.getElementById("upPDFbtn").style.display="none";
+		document.getElementById("upPDFbtnDis").style.display="block";
 	}
 }
 </script>

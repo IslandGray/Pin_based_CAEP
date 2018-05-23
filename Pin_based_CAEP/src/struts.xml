@@ -247,8 +247,26 @@
     		<result name="FAILED" type="redirectAction">GotoLab?tag=8</result>
     	</action>
     	<action name="CheckDup" class="com.wcp.project.teacher.lab.CheckDup" method="check">
-    		<result name="SUCCESS" type="redirectAction">GotoLab?tag=5</result>
-    		<result name="FAILED" type="redirectAction">GotoLab?tag=6</result>
+    		<result name="SUCCESS" type="redirectAction">GotoLab?tag=9</result>
+    		<result name="FAILED" type="redirectAction">GotoLab?tag=10</result>
+    	</action>
+    </package>
+    <package name="ACCOUNT" extends="struts-default">
+    	<action name="setMe" class="com.wcp.project.account.SetMe" method="set">
+    		<result name="STU"></result>
+    		<result name="TEACHER"></result>
+    		<result name="TA"></result>
+    		<result name="ADMIN"></result>
+    		<result name="SU"></result>
+    		<result name="FAILED"></result>
+    	</action>
+    	<action name="setAccount" class="com.wcp.project.account.SetMe" method="setAccount">
+    		<result name="STU"></result>
+    		<result name="TEACHER"></result>
+    		<result name="TA"></result>
+    		<result name="ADMIN"></result>
+    		<result name="SU"></result>
+    		<result name="FAILED"></result>
     	</action>
     </package>
    

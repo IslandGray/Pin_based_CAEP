@@ -100,7 +100,7 @@ public class LoadQuery {
 		 // 开启事务
          session.beginTransaction();
          // 操作
-         session.save(u);
+         session.saveOrUpdate(u);
          // 事务提交
          session.getTransaction().commit();
          session.close();
