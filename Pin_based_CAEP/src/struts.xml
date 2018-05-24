@@ -252,21 +252,25 @@
     	</action>
     </package>
     <package name="ACCOUNT" extends="struts-default">
-    	<action name="setMe" class="com.wcp.project.account.SetMe" method="set">
-    		<result name="STU"></result>
-    		<result name="TEACHER"></result>
-    		<result name="TA"></result>
-    		<result name="ADMIN"></result>
-    		<result name="SU"></result>
-    		<result name="FAILED"></result>
+    	<action name="setMe" class="com.wcp.project.account.Identify" method="set">
+    		<result name="stuLOGGED">/WEB-INF/pages/Student/MyProfile.jsp</result>
+    		<result name="teaLOGGED"></result>
+    		<result name="taLOGGED"></result>
+    		<result name="adLOGGED"></result>
+    		<result name="suLOGGED"></result>
+    		<result name="FAILED" type="redirectAction">GotoHomepage</result>
     	</action>
-    	<action name="setAccount" class="com.wcp.project.account.SetMe" method="setAccount">
-    		<result name="STU"></result>
-    		<result name="TEACHER"></result>
-    		<result name="TA"></result>
-    		<result name="ADMIN"></result>
-    		<result name="SU"></result>
-    		<result name="FAILED"></result>
+    	<action name="setAccount" class="com.wcp.project.account.Identify" method="set">
+    		<result name="stuLOGGED"></result>
+    		<result name="teaLOGGED"></result>
+    		<result name="taLOGGED"></result>
+    		<result name="adLOGGED"></result>
+    		<result name="suLOGGED"></result>
+    		<result name="FAILED" type="redirectAction">GotoHomepage</result>
+    	</action>
+    	<action name="editProfile" class="com.wcp.project.account.EditProfile" method="edit">
+    		<result name="SUCCESS">/WEB-INF/pages/Student/MyProfile.jsp</result>
+    		<result name="FAILED" type="redirectAction">GotoHomepage</result>
     	</action>
     </package>
    

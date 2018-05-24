@@ -21,7 +21,7 @@
             <column name="STUDENTID" />
         </property>
         <property name="Group" type="java.lang.String">
-            <column name="GROUP" />
+            <column name="GROUPID" />
         </property>
         <property name="Role" type="java.lang.String">
             <column name="ROLE" />

@@ -40,8 +40,8 @@
 	            <li class="nav-item dropdown">
 	            	<a class="nav-link dropdown-toggle" id="yourAccount" href="#" onclick="drop()" data-toggle="dropdown" href="#" role="button" data-target="#">YourAccount</a>
 	            	<div class="dropdown-menu" role="menu" id="accdropMenu" aria-labelledby="yourAccount">
-				        <a class="dropdown-item" href="#">个人资料</a>
-				        <a class="dropdown-item" href="#">账户设置</a>
+				        <a class="dropdown-item" href="setMe.action">个人资料</a>
+				        <a class="dropdown-item" href="setAccount.action">账户设置</a>
 				        <div class="dropdown-divider"></div>
 				        <a class="dropdown-item" href="#">遇到问题？</a>
 				        <a class="dropdown-item" href="loginExit.action">注销</a>
