@@ -164,11 +164,11 @@ window.onload=function (){
 }
 
 function checkAll() {
-	var email=document.getElementById('inputEmail');
-	var name=document.getElementById('inputName');
-	var id=document.getElementById('inputStuID');
-	var group=document.getElementById('inputPhone');
-	if(email.value=="" || name.value==""||passwd.value==""||id.value=="" || group.value==""){
+	var email=document.getElementById('inputEmail').value;
+	var name=document.getElementById('inputName').value;
+	var id=document.getElementById('inputStuID').value;
+	var group=document.getElementById('inputPhone').value;
+	if(email=="" || name=="" ||id=="" || group==""){
 		document.getElementById('alertEmpty').style.display="block";
 		return false;
 	}
