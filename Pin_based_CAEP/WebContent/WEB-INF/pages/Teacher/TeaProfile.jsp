@@ -73,10 +73,16 @@
 								    	<legend>Education Info</legend>
 									    <div class="form-group">
 									      <label for="inputRole">Role<a style="color:red">*</a></label>
-									      <select class="form-control" id="inputRole" name="inputRole">
-									        <option id="selectStu" value="0" selected="selected">Student/学生</option>
-									        
-									      </select>
+									      <%
+											  	String role=user.getRole();
+											  	switch(role){
+											  	case "1":
+											  		role="teacher";break;
+											  	case "2":
+											  		role="TA";break;									
+											  	}
+									      %>
+								          <input readonly="" class="form-control" id="inputRole" name="inputRole" placeholder="Enter Role" type="text" value="<%=role %>">
 									      
 									    </div>
 									     <div class="form-group">
@@ -90,24 +96,16 @@
 									       -->
 									    </div>
 									    <div class="form-group" id="stuForm">
-									      <label id="labelid" for="inputStuID">Student ID(学号)<a style="color:red">*</a></label>
+									      <label id="labelid" for="inputStuID">ID(教职工号)<a style="color:red">*</a></label>
 									      <input class="form-control" id="inputStuID" name="inputStuID" aria-describedby="stuidHelp" placeholder="Enter Student ID" type="text" value="<%=user.getStudentID()%>">
 									    </div>
-									    
+									    <!-- 
 									    <div class="form-group">
-									      <label for="inputPhone">Class No(班号)<a style="color:red">*</a></label>
+									      <label for="inputPhone">Group ID(班号)<a style="color:red">*</a></label>
 									      <input class="form-control" id="inputPhone" name="inputPhone" aria-describedby="phoneHelp" placeholder="Enter Class No." type="text" value="<%=user.getGroup()%>">
 									    </div>
-									    
-									    <div class="form-group" style="display:none">
-									      <label for="exampleTextarea">Example textarea</label>
-									      <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-									    </div>
-									    <div class="form-group" style="display:none">
-									      <label for="exampleInputFile">File input</label>
-									      <input class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" type="file">
-									      <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
-									    </div>
+									     -->
+									   
 								    </fieldset>
 								    
 									<div style="height:20px"></div>
@@ -187,8 +185,8 @@ function checkAll() {
 	var email=document.getElementById('inputEmail').value;
 	var name=document.getElementById('inputName').value;
 	var id=document.getElementById('inputStuID').value;
-	var group=document.getElementById('inputPhone').value;
-	if(email=="" || name=="" ||id=="" || group==""){
+	//var group=document.getElementById('inputPhone').value;
+	if(email=="" || name=="" ||id=="" ){
 		document.getElementById('alertEmpty').style.display="block";
 		return false;
 	}

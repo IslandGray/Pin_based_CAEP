@@ -1,5 +1,4 @@
 package com.wcp.project.teacher.lab;
-import org.eclipse.jdt.internal.compiler.ast.ThrowStatement;
 
 import com.wcp.DAO.LoadQuery;
 
@@ -10,42 +9,82 @@ public class EditExcute {
 	private String startT;
 	private String endT;
 	
+	private String labnum;
+	
 	public String edit() throws Exception{
 		try {
 			LoadQuery loadQuery=new LoadQuery();
-			loadQuery.update("update X0 x set x.excute='"+to+"' where account = '"+acc+"'");
+			String labTag=null;
+			switch(labnum) {
+			case "0":{
+				labTag="X0";
+				break;
+			}
+			case "1":{
+				labTag="X1";
+				break;
+			}
+			case "2":{
+				labTag="X2";
+				break;
+			}
+			case "3":{
+				labTag="X3";
+				break;
+			}
+			}
+			loadQuery.update("update "+labTag+" x set x.excute='"+to+"' where account = '"+acc+"'");
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-			return "FAILED";
+			return "FAILED"+labnum;
 		}
 		
-		return "SUCCESS";
+		return "SUCCESS"+labnum;
 	}
 	public String editTime() throws Exception{
 		System.out.println(startT);
 		try {
 			LoadQuery loadQuery=new LoadQuery();
-			loadQuery.update("update Lab x set x.begin='"+startT+" 00:00:00', x.end='"+endT+" 00:00:00' where number = 0");
+			loadQuery.update("update Lab x set x.begin='"+startT+" 00:00:00', x.end='"+endT+" 00:00:00' where number = "+labnum);
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-			return "FAILED";
+			return "FAILED"+labnum;
 		}
 		
-		return "SUCCESS";
+		return "SUCCESS"+labnum;
 	}
 	public String editPDF() throws Exception{
 		try {
 			LoadQuery loadQuery=new LoadQuery();
-			loadQuery.update("update X0 x set x.report='"+to+"' where account = '"+acc+"'");
+			String labTag=null;
+			switch(labnum) {
+			case "0":{
+				labTag="X0";
+				break;
+			}
+			case "1":{
+				labTag="X1";
+				break;
+			}
+			case "2":{
+				labTag="X2";
+				break;
+			}
+			case "3":{
+				labTag="X3";
+				break;
+			}
+			}
+			loadQuery.update("update "+labTag+" x set x.report='"+to+"' where account = '"+acc+"'");
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-			return "FAILED";
+			return "FAILED"+labnum;
 		}
 		
-		return "SUCCESS";
+		return "SUCCESS"+labnum;
 	}
 
 	public String getAcc() {
@@ -74,6 +113,12 @@ public class EditExcute {
 	}
 	public void setEndT(String endT) {
 		this.endT = endT;
+	}
+	public String getLabnum() {
+		return labnum;
+	}
+	public void setLabnum(String labnum) {
+		this.labnum = labnum;
 	}
 	
 	

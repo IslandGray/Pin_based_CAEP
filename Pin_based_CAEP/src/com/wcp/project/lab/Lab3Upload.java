@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.wcp.DAO.Excute;
 import com.wcp.DAO.Lab;
 import com.wcp.DAO.LoadQuery;
 import com.wcp.DAO.X3;
@@ -25,7 +26,7 @@ public class Lab3Upload extends ActionSupport{
 	private String resultstr1;
 	//类内变量
 	final String addr="/usr/services/cmurphi5.4/src";
-	//final String testBin="/home/wcp/Documents/testCache";
+	final String pdfaddr="/usr/services/pin-3.5/source/tools/ManualExamples";
 	String id;
 	String acc;
 	
@@ -171,7 +172,7 @@ public class Lab3Upload extends ActionSupport{
 		File newPDF=null;
 		try {				//保存文件到指定路径
 			//如果这个真实的目录不存在，需要创建
-			File file = new File(addr+"/"+id );
+			File file = new File(pdfaddr+"/"+id );
 			if(!file.exists()){
 				file.mkdirs();
 			}
@@ -182,6 +183,13 @@ public class Lab3Upload extends ActionSupport{
 			newPDF=new File(file,id+"_lab3.pdf");
 			lab3report.renameTo(newPDF);
 			System.out.println(newPDF.getPath()+" has saved.");
+
+			LoadQuery ld=new LoadQuery();
+			Excute excute=new Excute();
+			excute.setAccount(acc);
+			excute.setNumber("lab3");
+			excute.setInfo("true");
+			ld.savein(excute);
 		}catch(Exception e) {
 			e.printStackTrace();
 			return "FAILED";

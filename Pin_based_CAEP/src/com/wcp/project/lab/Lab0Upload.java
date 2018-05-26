@@ -253,6 +253,7 @@ public class Lab0Upload extends ActionSupport{
 			newPDF=new File(file,id+"_lab0.pdf");
 			lab0report.renameTo(newPDF);
 			System.out.println(newPDF.getPath()+" has saved.");
+			
 			LoadQuery ld=new LoadQuery();
 			Excute excute=new Excute();
 			excute.setAccount(acc);

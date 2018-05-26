@@ -1,5 +1,6 @@
 package com.wcp.project.account;
 
+import javax.persistence.criteria.CriteriaBuilder.Case;
 import javax.websocket.Session;
 
 import com.wcp.DAO.LoadQuery;
@@ -20,10 +21,22 @@ public class EditProfile {
 			UsualTools uTools=new UsualTools();
 			newU.setAccount(inputEmail);
 			newU.setName(inputName);
-			newU.setRole(uTools.exchangeRole(inputRole));
+			switch(inputRole) {
+			case "0":
+				newU.setRole(uTools.exchangeRole(inputRole));
+				newU.setGroup(inputPhone);
+				break;
+			case "teacher":
+				newU.setRole(inputRole);
+				newU.setGroup("teacher");break;
+			case "TA":
+				newU.setRole(inputRole);
+				newU.setGroup("TA");
+				break;
+			}
 			newU.setSchool(uTools.exchangeSchool(inputSchool));
 			newU.setStudentID(inputStuID);
-			newU.setGroup(inputPhone);
+			
 			LoadQuery loadQuery=new LoadQuery();
 			User old=(User)loadQuery.queryRTN("User", "account", inputEmail,"");
 			newU.setID(old.getID());

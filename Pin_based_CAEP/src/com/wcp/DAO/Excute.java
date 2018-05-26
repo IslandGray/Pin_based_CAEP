@@ -1,6 +1,8 @@
 package com.wcp.DAO;
 
-public class Excute {
+import java.io.Serializable;
+
+public class Excute implements Serializable{
 	private String account;
 	private String number;
 	private String info;

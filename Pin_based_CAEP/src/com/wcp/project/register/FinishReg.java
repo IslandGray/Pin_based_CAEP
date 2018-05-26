@@ -51,8 +51,8 @@ public class FinishReg {
 				break;
 			}
 			case "2":{
-				u.setRole("ta");
-				u.setGroup("ta");
+				u.setRole("TA");
+				u.setGroup("TA");
 				break;
 			}
 			default:u.setRole("student");

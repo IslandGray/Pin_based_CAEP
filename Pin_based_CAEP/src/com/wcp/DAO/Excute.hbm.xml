@@ -4,13 +4,10 @@
 <!-- Generated 2018-5-16 14:45:35 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="com.wcp.DAO.Excute" table="excute">
-        <id name="account" type="java.lang.String">
-            <column name="ACCOUNT" />
-            <generator class="assigned" />
-        </id>
-        <property name="number" type="java.lang.String">
-            <column name="NUMBER" />
-        </property>
+        <composite-id>
+        	<key-property name="account" column="ACCOUNT"></key-property>
+        	<key-property name="number" column="NUMBER"></key-property>
+        </composite-id>
         <property name="info" type="java.lang.String">
             <column name="INFO" />
         </property>

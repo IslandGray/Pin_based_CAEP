@@ -12,7 +12,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<title>个人资料</title>
+	<title>账户设置</title>
 	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
 	<link rel="stylesheet" href="./css/bootstrap.min.css">
 	<link rel="stylesheet" href="./css/bootstrap-theme.min.css">
@@ -44,7 +44,7 @@
 				<div class="col-md-2 column">
 					<div class="list-group">
 					    <a href="#" id="0Btn" class="list-group-item list-group-item-action active" style="box-pack:end;">
-					    	个人资料
+					    	修改密码
 					    	<span class="badge badge-light badge-pill"></span>
 					    </a>
 					    
@@ -52,7 +52,7 @@
 				</div>
 				<div class="col-md-10 column">
 					<div id="0c">
-						<form action="editProfile.action" method="post" enctype="multipart/form-data">
+						<form action="editAccount.action" method="post" enctype="multipart/form-data">
 							<fieldset>
 								<div class="card border-dark mb-3" style="">
 								<div class="card-body">
@@ -64,52 +64,21 @@
 											<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 										</div>
 									    <div class="form-group">
-									      <label for="inputName">Name<a style="color:red">*</a></label>
-									      <input class="form-control" id="inputName" name="inputName" aria-describedby="nameHelp" placeholder="Enter Name" type="text" value="<%=user.getName() %>">
-									    </div>
-									    
-								    </fieldset>
-								    <fieldset class="form-group">
-								    	<legend>Education Info</legend>
-									    <div class="form-group">
-									      <label for="inputRole">Role<a style="color:red">*</a></label>
-									      <select class="form-control" id="inputRole" name="inputRole">
-									        <option id="selectStu" value="0" selected="selected">Student/学生</option>
-									        
-									      </select>
-									      
-									    </div>
-									     <div class="form-group">
-									      <label for="inputSchool">School<a style="color:red">*</a></label>
-									      <select class="form-control" id="inputSchool" name="inputSchool">
-									        <option value="0">哈尔滨工业大学</option>
-									        <option value="65535">其他</option>
-									      </select>
-									      <!-- 
-									      <input class="form-control" id="inputSchool" aria-describedby="schoolHelp" placeholder="Enter School" type="text">
-									       -->
-									    </div>
-									    <div class="form-group" id="stuForm">
-									      <label id="labelid" for="inputStuID">Student ID(学号)<a style="color:red">*</a></label>
-									      <input class="form-control" id="inputStuID" name="inputStuID" aria-describedby="stuidHelp" placeholder="Enter Student ID" type="text" value="<%=user.getStudentID()%>">
+									      <label for="inputPassword">Old Password<a style="color:red">*</a></label>
+									      <input class="form-control" id="oldPassword" name="oldPassword" placeholder="Password" type="password">
 									    </div>
 									    
 									    <div class="form-group">
-									      <label for="inputPhone">Class No(班号)<a style="color:red">*</a></label>
-									      <input class="form-control" id="inputPhone" name="inputPhone" aria-describedby="phoneHelp" placeholder="Enter Class No." type="text" value="<%=user.getGroup()%>">
+									      <label for="inputPassword">New Password<a style="color:red">*</a></label>
+									      <input class="form-control" onchange="check()" id="inputPassword" name="newPassword" placeholder="Password" type="password">
+									      <small id="passHelp" class="form-text text-muted" ></small>
+									    
+									      <label for="inputPassword2">New Password Repeat<a style="color:red">*</a></label>
+									      <input class="form-control" onkeyup="check()" id="inputPassword2" placeholder="Password Repeat" type="password">
 									    </div>
 									    
-									    <div class="form-group" style="display:none">
-									      <label for="exampleTextarea">Example textarea</label>
-									      <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-									    </div>
-									    <div class="form-group" style="display:none">
-									      <label for="exampleInputFile">File input</label>
-									      <input class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" type="file">
-									      <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
-									    </div>
 								    </fieldset>
-								    
+								   
 									<div style="height:20px"></div>
 									<div id="alertEmpty" style="display:none" class="text-danger">Something Empty!</div>
 									<button type="submit" class="btn btn-dark" onclick="return checkAll();" id="submitButton" style="display:flex;box-sizing:border-box;justify-content:center;align-items:center;width:100%">Submit</button>
@@ -135,6 +104,26 @@
 <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
 <script src="./js/bootstrap.min.js"></script>
 <script type="text/javascript">
+function checkAll() {
+	var o=document.getElementById('oldPassword').value;
+	var p1=document.getElementById('inputPassword').value;
+	var p2=document.getElementById('inputPassword2').value;
+	if(p1=="" || p2=="" || o==""){
+		document.getElementById('alertEmpty').style.display="block";
+		return false;
+	}
+}
+function check() {
+		var pass1=document.getElementById('inputPassword').value;
+		var pass2=document.getElementById('inputPassword2').value;
+		if(pass1==pass2){
+			document.getElementById('passHelp').innerHTML="";
+			document.getElementById('submitButton').disabled=false;
+		}else{
+			document.getElementById('passHelp').innerHTML="<font color=red>Wrong Password.</font>";
+			document.getElementById('submitButton').disabled=true;
+		}
+}
 function get(p){
 	//var url=location.search;
 	var url= document.URL.toString();
@@ -164,9 +153,9 @@ window.onload=function (){
 	document.getElementById("HomeSummary").innerHTML=userName+" 的 个人资料";
 	
 	if(get("tag")==1){
-		alert("资料修改成功。");
+		alert("密码修改成功，下次登陆生效，或点击注销立即重新登陆。");
 	}else if(get("tag")==2){
-		alert("资料修改失败！");
+		alert("Wrong Password");
 	}
 	
 	var selectSchool=<%=user.getSchool() %>;
@@ -183,16 +172,6 @@ window.onload=function (){
 	
 }
 
-function checkAll() {
-	var email=document.getElementById('inputEmail').value;
-	var name=document.getElementById('inputName').value;
-	var id=document.getElementById('inputStuID').value;
-	var group=document.getElementById('inputPhone').value;
-	if(email=="" || name=="" ||id=="" || group==""){
-		document.getElementById('alertEmpty').style.display="block";
-		return false;
-	}
-}
 
 </script>
 

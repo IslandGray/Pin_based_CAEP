@@ -64,10 +64,10 @@
 					    <a href="#" id="2Btn" onclick="click2()" class="list-group-item list-group-item-action">
 					    	Resources
 					    </a>
-					    <a href="#" id="3Btn" onclick="click3()" class="list-group-item list-group-item-action disabled">
+					    <a href="#" id="3Btn" onclick="click3()" class="list-group-item list-group-item-action">
 					    	Check Students' Work
 					    </a>
-					    <a href="#" id="4Btn" onclick="click4()" class="list-group-item list-group-item-action disabled">
+					    <a href="#" id="4Btn" onclick="click4()" class="list-group-item list-group-item-action">
 					    	Check Reports
 					    </a>
 					</div>
@@ -129,7 +129,7 @@
 						<div class="card border-dark mb-3" id="border" style="">
 							<div class="card-header">Check Students' Work</div>
 						    <div class="card-body">
-						    	<form action="editTime.action" method="post" enctype="multipart/form-data">
+						    	<form action="editTime.action?labnum=0" method="post" enctype="multipart/form-data">
 							    	<p class="card-text">开始时间：(点击设定时间)
 								    	<h6 id="starttime">${starttime}</h6>
 								    	<div id="t1" style="display:none">
@@ -330,7 +330,7 @@
 		if(name)//如果返回的有内容
 		{
 			;
-			location.href="editExcute.action?acc="+val+"&to="+name;
+			location.href="editExcute.action?labnum=0&acc="+val+"&to="+name;
 		}
 	}
 	function showPDFDialog(val) {
@@ -338,7 +338,7 @@
 		if(name)//如果返回的有内容
 		{
 			;
-			location.href="editPDF.action?acc="+val+"&to="+name;
+			location.href="editPDF.action?labnum=1&acc="+val+"&to="+name;
 		}
 	}
 	function checkDup(){
