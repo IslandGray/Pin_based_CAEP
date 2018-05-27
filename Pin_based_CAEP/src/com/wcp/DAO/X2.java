@@ -5,7 +5,7 @@ public class X2 {
 	private int excute;
 	private int report;
 	private int another;
-	private int score;
+	private float score;
 	private String addon;
 	public String getAccount() {
 		return account;
@@ -31,10 +31,10 @@ public class X2 {
 	public void setAnother(int another) {
 		this.another = another;
 	}
-	public int getScore() {
+	public float getScore() {
 		return score;
 	}
-	public void setScore(int score) {
+	public void setScore(float score) {
 		this.score = score;
 	}
 	public String getAddon() {

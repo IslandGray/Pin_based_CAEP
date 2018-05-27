@@ -17,7 +17,7 @@
 				        <a class="dropdown-item" name="lab1" href="GotoLab1.action">Lab1 内存缓存的设计与性能分析</a>
 				        <a class="dropdown-item" name="lab2" href="GotoLab2.action">Lab2 分支预测的算法与实践</a>
 						<a class="dropdown-item" name="lab3" href="GotoLab3.action">Lab3 高速缓存一致性协议</a>
-						<a class="dropdown-item disabled" name="lab4" href="#">Lab4 多核处理器的多级缓存探索</a>
+						<!-- <a class="dropdown-item disabled" name="lab4" href="#">Lab4 多核处理器的多级缓存探索</a> -->
 				    </div>
 			  	</li>
 		        <li class="nav-item" id="navbar-achievement">

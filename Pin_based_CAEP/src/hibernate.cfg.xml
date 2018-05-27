@@ -27,5 +27,6 @@
         <mapping resource="./com/wcp/DAO/X3.hbm.xml" />
         <mapping resource="./com/wcp/DAO/Group.hbm.xml" />
         <mapping resource="./com/wcp/DAO/Dup_Check.hbm.xml" />
+        <mapping resource="./com/wcp/DAO/Score.hbm.xml" />
     </session-factory>
 </hibernate-configuration>

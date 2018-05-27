@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-5-27 16:23:01 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.wcp.DAO.Score" table="score">
+        <id name="account" type="java.lang.String">
+            <column name="ACCOUNT" />
+            <generator class="assigned" />
+        </id>
+        <property name="lab0" type="float">
+            <column name="LAB0" />
+        </property>
+        <property name="lab1" type="float">
+            <column name="LAB1" />
+        </property>
+        <property name="lab2" type="float">
+            <column name="LAB2" />
+        </property>
+        <property name="lab3" type="float">
+            <column name="LAB3" />
+        </property>
+        <property name="lab4" type="float">
+            <column name="LAB4" />
+        </property>
+        <property name="another" type="float">
+            <column name="ANOTHER" />
+        </property>
+        <property name="total" type="float">
+            <column name="TOTAL" />
+        </property>
+    </class>
+</hibernate-mapping>

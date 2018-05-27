@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="java.util.Date"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,11 +44,11 @@
 			<div class="row clearfix">
 				<div class="col-md-2 column">
 					<div class="list-group">
-					    <a href="#" id="0Btn" onclick="click0()" class="list-group-item list-group-item-action active" style="box-pack:end;">
+					    <a href="#" id="0Btn" onclick="click0()" class="list-group-item list-group-item-action" style="box-pack:end;display:none">
 					    	To-Do List
 					    	<span class="badge badge-light badge-pill">###</span>
 					    </a>
-					    <a href="#" id="1Btn" onclick="click1()" class="list-group-item list-group-item-action">
+					    <a href="#" id="1Btn" onclick="click1()" class="list-group-item list-group-item-action active">
 					    	Schedule
 					    </a>
 					    <a href="#" id="2Btn" onclick="click2()" class="list-group-item list-group-item-action">
@@ -59,7 +60,7 @@
 					</div>
 				</div>
 				<div class="col-md-8 column">
-					<div id="0c">
+					<div id="0c" style="display:none">
 						<div class="card mb-3">
 							  <h3 class="card-header">Card header</h3>
 							  <div class="card-body">
@@ -93,7 +94,7 @@
 							  </div>
 						</div>
 					</div>
-					<div id="1c" style="display:none">
+					<div id="1c">
 						<div class="card border-success mb-3" style="" id="lab0border">
 						  <div class="card-header">Lab0</div>
 						  <div class="card-body">
@@ -156,71 +157,23 @@
 						  <thead>
 						    <tr>
 						      <th scope="col">Type</th>
-						      <th scope="col">Column heading</th>
-						      <th scope="col">Column heading</th>
-						      <th scope="col">Column heading</th>
+						      <th scope="col">Name</th>
+						      <th scope="col">Link</th>
+						      <th scope="col"></th>
 						    </tr>
 						  </thead>
 						  <tbody>
-						    <tr class="table-active">
-						      <th scope="row">Active</th>
-						      <td>Column content</td>
-						      <td>Column content</td>
-						      <td>Column content</td>
-						    </tr>
-						    <tr>
-						      <th scope="row">Default</th>
-						      <td>Column content</td>
-						      <td>Column content</td>
-						      <td>Column content</td>
-						    </tr>
-						    <tr class="table-primary">
-						      <th scope="row">Primary</th>
-						      <td>Column content</td>
-						      <td>Column content</td>
-						      <td>Column content</td>
-						    </tr>
-						    <tr class="table-secondary">
-						      <th scope="row">Secondary</th>
-						      <td>Column content</td>
-						      <td>Column content</td>
-						      <td>Column content</td>
-						    </tr>
-						    <tr class="table-success">
-						      <th scope="row">Success</th>
-						      <td>Column content</td>
-						      <td>Column content</td>
-						      <td>Column content</td>
-						    </tr>
-						    <tr class="table-danger">
-						      <th scope="row">Danger</th>
-						      <td>Column content</td>
-						      <td>Column content</td>
-						      <td>Column content</td>
-						    </tr>
-						    <tr class="table-warning">
-						      <th scope="row">Warning</th>
-						      <td>Column content</td>
-						      <td>Column content</td>
-						      <td>Column content</td>
-						    </tr>
-						    <tr class="table-info">
-						      <th scope="row">Info</th>
-						      <td>Column content</td>
-						      <td>Column content</td>
-						      <td>Column content</td>
+						  	<tr class="table-light">
+						      <th scope="row">Guide</th>
+						      <td>Pin 3.2 User Guide</td>
+						      <td><a target="_blank" href="https://software.intel.com/sites/landingpage/pintool/docs/81205/Pin/html/">link to</a></td>
+						      <td></td>
 						    </tr>
 						    <tr class="table-light">
-						      <th scope="row">Light</th>
-						      <td>Column content</td>
-						      <td>Column content</td>
-						      <td>Column content</td>
-						    </tr>
-						    <tr class="table-dark">
-						      <th scope="row">Dark</th>
-						      <td>Column content</td>
-						      <td>Column content</td>
-						      <td>Column content</td>
+						      <th scope="row">Guide</th>
+						      <td>Intel Pin简介</td>
+						      <td><a target="_blank" href="http://terenceli.github.io/%E6%8A%80%E6%9C%AF/2014/01/02/intro-to-pin">link to</a></td>
+						      <td></td>
 						    </tr>
 						  </tbody>
 						</table> 
@@ -233,13 +186,14 @@
 					<div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
 						  <div class="card-header">Quickstart</div>
 						  <div class="card-body">
-						    <h4 class="card-title">Dark card title</h4>
-						    <p class="card-text">Some quick</p>
+						    <h4 class="card-title">当前时间:</h4>
+						    <p class="card-text"><%=(new Date()).toString() %></p>
 						  </div>
 						  <ul class="list-group list-group-flush">
-							    <li class="list-group-item text-white bg-dark mb-3">Cras justo odio</li>
-							    <li class="list-group-item text-white bg-dark mb-3">Dapibus ac facilisis in</li>
-							    <li class="list-group-item text-white bg-dark mb-3">Vestibulum at eros</li>
+							    <li class="list-group-item text-white bg-dark mb-3">教师可设置或更改各个实验的起止日期</li>
+							    <li class="list-group-item text-white bg-dark mb-3">学生在规定时间内上传的代码会自动评分，也可以手动修改</li>
+							    <li class="list-group-item text-white bg-dark mb-3">查重系统可在需要的时候手动点击使用</li>
+							    <li class="list-group-item text-white bg-dark mb-3">实验报告在线批改后，教师可以生成总成绩</li>
 						  </ul>
 					</div>
 				</div>

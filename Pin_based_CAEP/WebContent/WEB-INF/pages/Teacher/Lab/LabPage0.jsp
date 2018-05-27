@@ -208,27 +208,6 @@
 						    	</table>
 						    </div>
 						</div>
-						<div class="card border-dark mb-3" id="border" style="">
-							<div class="card-header">Duplicate check</div>
-						    <div class="card-body">
-						    	<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-								  <button type="button" class="btn btn-outline-danger" onclick="checkDup()">查重</button>
-								</div>
-								<div style="">
-								<%
-									String resultURL=null;
-									List<Object> re=ld.query("Dup_Check", "tag", "1");
-									Dup_Check dp=null;
-									if(!re.isEmpty()){
-										dp=(Dup_Check)(re.get(0));
-								%>
-									<iframe id="resultpage" src="<%=dp.getSrc() %>" width="100%" height="500"></iframe>
-								<%
-									}
-								%>
-								</div>
-						    </div>
-					    </div>
 					</div>
 					<div id="4c" style="display:none">
 						<div class="card border-dark mb-3" style="">
@@ -340,9 +319,6 @@
 			;
 			location.href="editPDF.action?labnum=1&acc="+val+"&to="+name;
 		}
-	}
-	function checkDup(){
-		location.href="CheckDup.action";
 	}
 	
 	function setTime() {
