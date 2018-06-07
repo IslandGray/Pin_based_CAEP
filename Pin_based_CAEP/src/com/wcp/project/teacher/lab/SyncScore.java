@@ -33,7 +33,9 @@ public class SyncScore {
 					X0 x0=(X0)(loadQuery.queryRTN("X0", "account", acc, ""));
 					float x0total=0;
 					if(x0==null) {
-						x0total=0;
+						//x0total=0;
+						x0=new X0();
+						x0.setAccount(acc);
 					}else {
 						x0total=(float) (0.7*x0.getExcute()+0.3*x0.getReport()+1.0*x0.getAnother());
 					}
@@ -44,6 +46,10 @@ public class SyncScore {
 					float x1total=0;
 					if(x1!=null)
 						x1total=(float) (0.7*x1.getExcute()+0.3*x1.getReport()+1.0*x1.getAnother());
+					else {
+						x1=new X1();
+						x1.setAccount(acc);
+					}
 					x1.setScore(x1total);
 					loadQuery.savein(x1);
 					
@@ -51,6 +57,10 @@ public class SyncScore {
 					float x2total=0;
 					if(x2!=null)
 						x2total=(float) (0.7*x2.getExcute()+0.3*x2.getReport()+1.0*x2.getAnother());
+					else {
+						x2=new X2();
+						x2.setAccount(acc);
+					}
 					x2.setScore(x2total);
 					loadQuery.savein(x2);
 					
@@ -58,7 +68,12 @@ public class SyncScore {
 					float x3total=0;
 					if(x3!=null)
 						x3total=(float) (0.7*x3.getExcute()+0.3*x3.getReport()+1.0*x3.getAnother());
+					else {
+						x3=new X3();
+						x3.setAccount(acc);
+					}
 					x3.setScore(x3total);
+					x3.setAccount(acc);
 					loadQuery.savein(x3);
 					
 					Score score=(Score)(loadQuery.queryRTN("Score", "account", acc, ""));
@@ -76,12 +91,12 @@ public class SyncScore {
 					score.setLab4(0);
 					score.setAnother(another);
 					float total=(float)((x0total+x1total+x2total+x3total+another)*0.05);
-					if(total==score.getTotal()) {
+					if(total==score.getTotal() && total!=0.0) {
 						continue;
 					}else {
 						score.setTotal(total);
-						loadQuery.savein(score);
 					}
+					loadQuery.savein(score);
 				}
 			}
 		}catch(Exception e) {
