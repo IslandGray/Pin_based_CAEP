@@ -66,7 +66,11 @@ public class LoadQuery {
 		 // 开启事务
 	     session.beginTransaction();
 	     Query query = session.createQuery("from "+table+" where "+para+" = ?");
-	     query.setParameter(0, value);
+	     if(para.equals("ID")) {
+	    	 query.setInteger(0, Integer.valueOf(value));
+	     }else {
+	    	 query.setParameter(0, value);
+	     }
 	     list=(List<Object>)query.list();
 	     session.close();
          sessionFactory.close();
@@ -120,5 +124,19 @@ public class LoadQuery {
          session.close();
          sessionFactory.close();
 		 return 0;
+	 }
+	 public int delect(Object u) {
+		 Configuration config=new Configuration().configure();// Hibernate框架加载hibernate.cfg.xml文件
+		 SessionFactory sessionFactory=config.buildSessionFactory();
+		 Session session=sessionFactory.openSession();// 相当于得到一个Connection
+		 // 开启事务
+         session.beginTransaction();
+         // 操作
+         session.delete(u);
+         // 事务提交
+         session.getTransaction().commit();
+         session.close();
+         sessionFactory.close();
+         return 0;
 	 }
 }

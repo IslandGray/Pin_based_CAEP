@@ -15,20 +15,54 @@
 	-->
 	<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
 	<link rel="stylesheet" href="./css/bootstrap-theme.min.css">
+	<style type="text/css">
+		.jumbotron {
+		    background-color: rgba(0,0,0,0.8);
+		    color: white;
+		    margin-top:-40px;
+		    
+		}
+		.jumbotron .container {
+		    max-width: 90%;
+		    margin-bottom:-70px;
+		}
+	</style>
 	
 </head>
 <body>
 
-<script src="./pageSources/navbar.js"></script>
+	<script src="./pageSources/navbar.js"></script>
+	<div id="main-content" role="main">
+	
+		<div class="jumbotron">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5">
+						<div style="margin-top: 30px;">
+							<h1>Architecture Labo. <strong>Redefined.</strong></h1>
+			                <div class="lead">
+			                    <p><p></p>
+			                        <span itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+			                            <span itemprop="description">Free</span>.
+			                        </span> Above hardware. Runs everywhere.</p>
+			                </div>
+		                </div>
+					</div>
+					<div class="col-md-7">
+						<img src="./images/screenshot.png" width="110%">
+					</div>
+					
+			  	</div>
+			</div>
 
-	<div class="jumbotron">
-	  <h1 class="display-3">Hello, world!</h1>
-	  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-	  <hr class="my-4">
-	  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-	  <p class="lead">
-	    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-	  </p>
+		</div>
+		<div class="value-props">
+		    <div class="container">
+		        <div class="row">
+		        	<img src="./images/four.png">
+		        </div>
+		    </div>
+		</div>
 	</div>
 
 

@@ -47,7 +47,7 @@ public class FinishReg {
 			}
 			case "1":{
 				u.setRole("teacher");
-				u.setGroup("teacher");
+				u.setGroup("invalid");
 				break;
 			}
 			case "2":{

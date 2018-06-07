@@ -50,19 +50,29 @@ public class Login  extends ActionSupport{
 		          session.put("ID", id);
 		          
 		          String role=rs.getString("Role");
+		          String group=rs.getString("groupid");
 		          switch(role) {
 		          case "student":
-		          case "teacher":
+		        	  session.put("role", role);break;
+		          case "teacher":{
+		        	  if(group.equals("teacher")) {
+		        		  session.put("role", role);
+		        	  }else if(group.equals("invalid")) {
+		        		  return "INVALID";
+		        	  }
+		        	  break;
+		          }
 		          case "TA":
+		        	  session.put("role", role);break;
 		          case "admin":
+		        	  session.put("role", role);break;
 		          case "SuperAdmin":{
-		        	  session.put("role", role);
-		        	  stmt.close();
-		        	  connect.close();
-		        	  return "SUCCESS";
+		        	  session.put("role", role);break;
 		          }
 		          }
-		          
+		          stmt.close();
+	        	  connect.close();
+	        	  return "SUCCESS";
 		      }
 	     }catch(Exception e) {
 	    	 e.printStackTrace();

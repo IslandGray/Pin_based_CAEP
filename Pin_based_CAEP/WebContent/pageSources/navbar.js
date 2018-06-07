@@ -17,7 +17,7 @@ document.writeln("				        <a class=\'dropdown-item\' name=\'lab0\' href=\'Go
 document.writeln("				        <a class=\'dropdown-item\' name=\'lab1\' href=\'GotoLab1.action\'>Lab1 内存缓存的设计与性能分析</a>");
 document.writeln("				        <a class=\'dropdown-item\' name=\'lab2\' href=\'GotoLab2.action\'>Lab2 分支预测的算法与实践</a>");
 document.writeln("						<a class=\'dropdown-item\' name=\'lab3\' href=\'GotoLab3.action\'>Lab3 高速缓存一致性协议</a>");
-document.writeln("						<a class=\'dropdown-item disabled\' name=\'lab4\' href=\'#\'>Lab4 多核处理器的多级缓存探索</a>");
+document.writeln("						<!-- <a class=\'dropdown-item disabled\' name=\'lab4\' href=\'#\'>Lab4 多核处理器的多级缓存探索</a> -->");
 document.writeln("				    </div>");
 document.writeln("			  	</li>");
 document.writeln("		        <li class=\'nav-item\' id=\'navbar-achievement\'>");
@@ -40,10 +40,9 @@ document.writeln("		    <ul class=\'nav navbar-nav ml-auto\' id=\'hasLog\' style
 document.writeln("	            <li class=\'nav-item dropdown\'>");
 document.writeln("	            	<a class=\'nav-link dropdown-toggle\' id=\'yourAccount\' href=\'#\' onclick=\'drop()\' data-toggle=\'dropdown\' href=\'#\' role=\'button\' data-target=\'#\'>YourAccount</a>");
 document.writeln("	            	<div class=\'dropdown-menu\' role=\'menu\' id=\'accdropMenu\' aria-labelledby=\'yourAccount\'>");
-document.writeln("				        <a class=\'dropdown-item\' href=\'setMe.action\'>个人资料</a>");
-document.writeln("				        <a class=\'dropdown-item\' href=\'setAccount.action\'>账户设置</a>");
+document.writeln("				        <a id=\'myprofile\' class=\'dropdown-item\' href=\'setMe.action\'>个人资料</a>");
+document.writeln("				        <a id=\'myaccount\' class=\'dropdown-item\' href=\'setAccount.action\'>账户设置</a>");
 document.writeln("				        <div class=\'dropdown-divider\'></div>");
-document.writeln("				        <a class=\'dropdown-item\' href=\'#\'>遇到问题？</a>");
 document.writeln("				        <a class=\'dropdown-item\' href=\'loginExit.action\'>注销</a>");
 document.writeln("				    </div>");
 document.writeln("	            </li> ");
