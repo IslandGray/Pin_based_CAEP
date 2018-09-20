@@ -80,13 +80,13 @@
 							    <h6 class="card-subtitle mb-2 text-muted">Cost:1 Week</h6>
 							    <p class="card-text">依赖于：Pin，Linux</p>
 							    <ul class="list-group list-group-flush">
-								    <li class="list-group-item"><h6>Pa</h6></li>
-								    <li class="list-group-item"><h7>在本</h7></li>
-								    <li class="list-group-item"><h6>Pa</h6></li>
-								    <li class="list-group-item"><h7>在第</h7></li>
+								    <li class="list-group-item"><h6>内存瓶颈是现代处理器设计中最重要的问题之一</h6></li>
+								    <li class="list-group-item"><h6>内存相对于处理器的速度而言是非常缓慢的，而内存访问却非常频繁</h6></li>
+								    <li class="list-group-item"><h6>软件对存储器的访问展现出高度的时间和空间局部性</h6></li>
+								    <li class="list-group-item"><h6>要提高内存访问的感知延迟</h6></li>
 								</ul>
 								<p> </p>
-								<p class="card-text">目的：</p>
+								<p class="card-text">目的：制造一个快速的，但必要的小内存——内存高速缓存，包含最近访问过的内存区域</p>
 						    </div>
 						</div>
 					</div>
